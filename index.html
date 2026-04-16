@@ -29,7 +29,8 @@
   /* HEADER */
   .hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:56px;flex-wrap:wrap;gap:20px;}
   .brand{display:flex;align-items:center;gap:14px;}
-  .brand-avatar{width:44px;height:44px;border-radius:50%;background-image:url('sam-avatar.jpg');background-size:cover;background-position:center;border:1px solid var(--accent-soft);flex-shrink:0;}
+  .brand-avatar{width:44px;height:44px;border-radius:50%;background:var(--navy);border:1px solid var(--accent-soft);flex-shrink:0;display:flex;align-items:center;justify-content:center;padding:2px;}
+  .brand-avatar svg{width:100%;height:100%;}
   .name{font-family:'Syne',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.02em;}
   .tagline{font-size:11px;color:var(--ink-light);margin-top:2px;font-family:'JetBrains Mono',monospace;}
   .tagline a{color:var(--accent);text-decoration:none;}
@@ -168,22 +169,64 @@
   .milestone-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:600;margin-bottom:2px;}
   .milestone-desc{font-size:12px;color:var(--ink-light);}
 
-  /* CTA */
-  .cta{margin:80px 0 40px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);border:1px solid var(--accent-soft);border-radius:16px;padding:44px 48px;position:relative;overflow:hidden;}
-  .cta::before{content:"";position:absolute;top:-120px;right:-120px;width:340px;height:340px;background:radial-gradient(circle,rgba(122,175,240,0.18) 0%,transparent 70%);pointer-events:none;}
-  .cta::after{content:"";position:absolute;bottom:-80px;left:-80px;width:240px;height:240px;background:radial-gradient(circle,rgba(168,143,212,0.1) 0%,transparent 70%);pointer-events:none;}
-  .cta-inner{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center;position:relative;z-index:1;}
-  .cta-label{font-family:'Syne',sans-serif;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-weight:600;}
-  .cta-headline{font-family:'Syne',sans-serif;font-size:34px;font-weight:700;line-height:1.1;margin-bottom:14px;color:var(--cream);letter-spacing:-0.02em;}
-  .cta-sub{font-size:14px;color:var(--ink-mid);line-height:1.65;}
-  .cta-buttons{display:flex;flex-direction:column;gap:10px;}
-  .cta-btn{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-radius:10px;text-decoration:none;font-family:'Syne',sans-serif;font-weight:600;font-size:14px;transition:all 0.2s;letter-spacing:0.01em;}
-  .cta-btn.primary{background:var(--accent);color:var(--navy-deep);}
-  .cta-btn.primary:hover{background:#9FC7FF;transform:translateY(-2px);box-shadow:0 8px 24px rgba(122,175,240,0.25);}
-  .cta-btn.secondary{background:transparent;color:var(--cream);border:1px solid var(--line);}
-  .cta-btn.secondary:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
-  .cta-arrow{margin-left:12px;transition:transform 0.2s;}
-  .cta-btn:hover .cta-arrow{transform:translateX(4px);}
+  /* CTA — spectacular v2 */
+  .cta{
+    margin:96px 0 40px;
+    background:linear-gradient(135deg,#0f1630 0%,#1C2540 40%,#2a1e4a 100%);
+    border:1px solid var(--accent-soft);border-radius:20px;
+    padding:56px 56px;position:relative;overflow:hidden;
+  }
+  .cta::before{content:"";position:absolute;top:-180px;right:-120px;width:420px;height:420px;
+    background:radial-gradient(circle,rgba(122,175,240,0.28) 0%,transparent 65%);pointer-events:none;filter:blur(20px);}
+  .cta::after{content:"";position:absolute;bottom:-140px;left:-100px;width:320px;height:320px;
+    background:radial-gradient(circle,rgba(168,143,212,0.2) 0%,transparent 70%);pointer-events:none;filter:blur(20px);}
+  .cta-inner{display:grid;grid-template-columns:220px 1fr;gap:56px;align-items:center;position:relative;z-index:1;}
+
+  .cta-portrait{position:relative;width:220px;height:220px;}
+  .cta-portrait::before{content:"";position:absolute;inset:-8px;border-radius:50%;
+    background:conic-gradient(from 0deg, #7AAFF0, #a88fd4, #7AAFF0);
+    animation:cta-rotate 8s linear infinite;filter:blur(16px);opacity:0.55;}
+  .cta-portrait::after{content:"";position:absolute;inset:0;border-radius:50%;
+    background:url('sam-avatar.jpg') center/cover;border:3px solid #0b0f1e;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(122,175,240,0.4);}
+  @keyframes cta-rotate{to{transform:rotate(360deg);}}
+  .cta-status{
+    position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);z-index:2;
+    background:rgba(11,15,30,0.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    border:1px solid var(--accent-soft);border-radius:99px;
+    padding:6px 14px;display:flex;align-items:center;gap:7px;
+    font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--cream);
+    white-space:nowrap;box-shadow:0 8px 20px rgba(0,0,0,0.4);
+  }
+  .cta-status::before{content:"";width:7px;height:7px;border-radius:50%;background:#27c93f;box-shadow:0 0 10px #27c93f;animation:status-pulse 2s ease-in-out infinite;}
+  @keyframes status-pulse{0%,100%{opacity:1;}50%{opacity:0.5;}}
+
+  .cta-label{font-family:'Syne',sans-serif;font-size:12px;letter-spacing:0.26em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;font-weight:600;}
+  .cta-headline{font-family:'Syne',sans-serif;font-size:44px;font-weight:700;line-height:1;margin-bottom:18px;color:var(--cream);letter-spacing:-0.035em;}
+  .cta-headline em{font-style:normal;background:linear-gradient(135deg,#7AAFF0, #a88fd4);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .cta-sub{font-size:15px;color:var(--ink-mid);line-height:1.6;margin-bottom:28px;max-width:520px;}
+
+  .cta-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .cta-btn{
+    display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:14px;
+    text-decoration:none;transition:all 0.2s;position:relative;overflow:hidden;
+    background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  }
+  .cta-btn:hover{transform:translateY(-3px);background:rgba(255,255,255,0.08);border-color:rgba(122,175,240,0.4);box-shadow:0 12px 32px rgba(0,0,0,0.3);}
+  .cta-btn-icon{
+    width:40px;height:40px;border-radius:10px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:#fff;
+  }
+  .cta-btn.linkedin .cta-btn-icon{background:#0077b5;}
+  .cta-btn.whatsapp .cta-btn-icon{background:#25D366;color:#0b0f1e;}
+  .cta-btn.telegram .cta-btn-icon{background:#229ED9;}
+  .cta-btn-text{flex:1;min-width:0;}
+  .cta-btn-label{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--cream);margin-bottom:1px;letter-spacing:-0.01em;}
+  .cta-btn-hint{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-light);}
+  .cta-btn-arrow{color:var(--accent);font-size:18px;transition:transform 0.2s;}
+  .cta-btn:hover .cta-btn-arrow{transform:translateX(4px);}
 
   /* FOOTER */
   .foot{margin-top:0;padding-top:32px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
@@ -573,13 +616,19 @@
     .milestone-title{font-size:13px;}
     .milestone-desc{font-size:11px;}
 
-    /* CTA — keep it prominent */
-    .cta{padding:28px 24px;margin:56px 0 32px;border-radius:14px;}
-    .cta-inner{gap:22px;}
-    .cta-label{font-size:11px;letter-spacing:0.2em;margin-bottom:10px;}
-    .cta-headline{font-size:24px;line-height:1.18;margin-bottom:12px;}
-    .cta-sub{font-size:13px;line-height:1.55;}
-    .cta-btn{padding:15px 18px;font-size:13px;min-height:48px;}
+    /* CTA v2 mobile */
+    .cta{padding:32px 24px;margin:56px 0 32px;border-radius:16px;}
+    .cta-inner{grid-template-columns:1fr;gap:32px;text-align:center;}
+    .cta-portrait{width:160px;height:160px;margin:0 auto;}
+    .cta-status{font-size:9.5px;padding:5px 12px;}
+    .cta-label{font-size:11px;letter-spacing:0.22em;margin-bottom:10px;}
+    .cta-headline{font-size:30px;line-height:1.05;margin-bottom:14px;}
+    .cta-sub{font-size:13px;line-height:1.55;margin-bottom:22px;text-align:left;}
+    .cta-buttons{grid-template-columns:1fr;gap:10px;}
+    .cta-btn{padding:14px 16px;text-align:left;}
+    .cta-btn-icon{width:36px;height:36px;font-size:13px;}
+    .cta-btn-label{font-size:13px;}
+    .cta-btn-hint{font-size:10px;}
 
     /* Footer */
     .foot{flex-direction:column;align-items:flex-start;gap:12px;padding-top:28px;margin-top:0;}
@@ -617,7 +666,19 @@
 
   <div class="hdr">
     <div class="brand">
-      <div class="brand-avatar"></div>
+      <div class="brand-avatar">
+        <svg viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="50" fill="#1C2540"/>
+          <circle cx="50" cy="40" r="14" fill="none" stroke="#7AAFF0" stroke-width="3.5"/>
+          <rect x="41" y="29" width="18" height="6" rx="3" fill="#7AAFF0"/>
+          <path d="M44 43 Q50 49 56 43" stroke="#7AAFF0" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="45.5" cy="39.5" r="1.8" fill="#7AAFF0"/>
+          <circle cx="54.5" cy="39.5" r="1.8" fill="#7AAFF0"/>
+          <path d="M30 72 Q50 58 70 72" stroke="#7AAFF0" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <circle cx="32" cy="70" r="3" fill="#7AAFF0"/>
+          <circle cx="68" cy="70" r="3" fill="#7AAFF0"/>
+        </svg>
+      </div>
       <div>
         <div class="name">Sam</div>
         <div class="tagline">AI-built ecosystem - developed by <a href="https://www.linkedin.com/in/sascha-englert-consulting/" target="_blank">@sascha</a></div>
@@ -662,26 +723,6 @@
         <div style="background:var(--green);width:49%;color:var(--navy-deep)">Frontend</div>
         <div style="background:var(--accent);width:42%">Backend + tests</div>
         <div style="background:var(--purple);width:9%"></div>
-      </div>
-    </div>
-
-    <div class="section-title">Commit activity</div>
-    <div class="heatmap-wrap">
-      <div class="heatmap-head">
-        <div class="heatmap-title">Commits across every repo — last 21 weeks</div>
-        <div class="heatmap-meta"><strong>484</strong> commits · busiest day: <strong>42</strong></div>
-      </div>
-      <div class="heatmap"><div class="hm-cell l0" title="2025-11-24: 0 commits"></div><div class="hm-cell l0" title="2025-11-25: 0 commits"></div><div class="hm-cell l0" title="2025-11-26: 0 commits"></div><div class="hm-cell l0" title="2025-11-27: 0 commits"></div><div class="hm-cell l0" title="2025-11-28: 0 commits"></div><div class="hm-cell l0" title="2025-11-29: 0 commits"></div><div class="hm-cell l0" title="2025-11-30: 0 commits"></div><div class="hm-cell l0" title="2025-12-01: 0 commits"></div><div class="hm-cell l0" title="2025-12-02: 0 commits"></div><div class="hm-cell l0" title="2025-12-03: 0 commits"></div><div class="hm-cell l0" title="2025-12-04: 0 commits"></div><div class="hm-cell l0" title="2025-12-05: 0 commits"></div><div class="hm-cell l0" title="2025-12-06: 0 commits"></div><div class="hm-cell l0" title="2025-12-07: 0 commits"></div><div class="hm-cell l0" title="2025-12-08: 0 commits"></div><div class="hm-cell l0" title="2025-12-09: 0 commits"></div><div class="hm-cell l0" title="2025-12-10: 0 commits"></div><div class="hm-cell l0" title="2025-12-11: 0 commits"></div><div class="hm-cell l0" title="2025-12-12: 0 commits"></div><div class="hm-cell l0" title="2025-12-13: 0 commits"></div><div class="hm-cell l0" title="2025-12-14: 0 commits"></div><div class="hm-cell l0" title="2025-12-15: 0 commits"></div><div class="hm-cell l0" title="2025-12-16: 0 commits"></div><div class="hm-cell l0" title="2025-12-17: 0 commits"></div><div class="hm-cell l0" title="2025-12-18: 0 commits"></div><div class="hm-cell l0" title="2025-12-19: 0 commits"></div><div class="hm-cell l0" title="2025-12-20: 0 commits"></div><div class="hm-cell l0" title="2025-12-21: 0 commits"></div><div class="hm-cell l0" title="2025-12-22: 0 commits"></div><div class="hm-cell l0" title="2025-12-23: 0 commits"></div><div class="hm-cell l0" title="2025-12-24: 0 commits"></div><div class="hm-cell l0" title="2025-12-25: 0 commits"></div><div class="hm-cell l0" title="2025-12-26: 0 commits"></div><div class="hm-cell l0" title="2025-12-27: 0 commits"></div><div class="hm-cell l0" title="2025-12-28: 0 commits"></div><div class="hm-cell l0" title="2025-12-29: 0 commits"></div><div class="hm-cell l0" title="2025-12-30: 0 commits"></div><div class="hm-cell l0" title="2025-12-31: 0 commits"></div><div class="hm-cell l0" title="2026-01-01: 0 commits"></div><div class="hm-cell l0" title="2026-01-02: 0 commits"></div><div class="hm-cell l0" title="2026-01-03: 0 commits"></div><div class="hm-cell l0" title="2026-01-04: 0 commits"></div><div class="hm-cell l0" title="2026-01-05: 0 commits"></div><div class="hm-cell l0" title="2026-01-06: 0 commits"></div><div class="hm-cell l0" title="2026-01-07: 0 commits"></div><div class="hm-cell l0" title="2026-01-08: 0 commits"></div><div class="hm-cell l0" title="2026-01-09: 0 commits"></div><div class="hm-cell l0" title="2026-01-10: 0 commits"></div><div class="hm-cell l0" title="2026-01-11: 0 commits"></div><div class="hm-cell l0" title="2026-01-12: 0 commits"></div><div class="hm-cell l0" title="2026-01-13: 0 commits"></div><div class="hm-cell l0" title="2026-01-14: 0 commits"></div><div class="hm-cell l0" title="2026-01-15: 0 commits"></div><div class="hm-cell l0" title="2026-01-16: 0 commits"></div><div class="hm-cell l0" title="2026-01-17: 0 commits"></div><div class="hm-cell l0" title="2026-01-18: 0 commits"></div><div class="hm-cell l0" title="2026-01-19: 0 commits"></div><div class="hm-cell l0" title="2026-01-20: 0 commits"></div><div class="hm-cell l0" title="2026-01-21: 0 commits"></div><div class="hm-cell l0" title="2026-01-22: 0 commits"></div><div class="hm-cell l0" title="2026-01-23: 0 commits"></div><div class="hm-cell l0" title="2026-01-24: 0 commits"></div><div class="hm-cell l0" title="2026-01-25: 0 commits"></div><div class="hm-cell l0" title="2026-01-26: 0 commits"></div><div class="hm-cell l0" title="2026-01-27: 0 commits"></div><div class="hm-cell l0" title="2026-01-28: 0 commits"></div><div class="hm-cell l0" title="2026-01-29: 0 commits"></div><div class="hm-cell l0" title="2026-01-30: 0 commits"></div><div class="hm-cell l0" title="2026-01-31: 0 commits"></div><div class="hm-cell l0" title="2026-02-01: 0 commits"></div><div class="hm-cell l0" title="2026-02-02: 0 commits"></div><div class="hm-cell l0" title="2026-02-03: 0 commits"></div><div class="hm-cell l0" title="2026-02-04: 0 commits"></div><div class="hm-cell l0" title="2026-02-05: 0 commits"></div><div class="hm-cell l0" title="2026-02-06: 0 commits"></div><div class="hm-cell l0" title="2026-02-07: 0 commits"></div><div class="hm-cell l0" title="2026-02-08: 0 commits"></div><div class="hm-cell l0" title="2026-02-09: 0 commits"></div><div class="hm-cell l0" title="2026-02-10: 0 commits"></div><div class="hm-cell l0" title="2026-02-11: 0 commits"></div><div class="hm-cell l0" title="2026-02-12: 0 commits"></div><div class="hm-cell l0" title="2026-02-13: 0 commits"></div><div class="hm-cell l0" title="2026-02-14: 0 commits"></div><div class="hm-cell l0" title="2026-02-15: 0 commits"></div><div class="hm-cell l0" title="2026-02-16: 0 commits"></div><div class="hm-cell l0" title="2026-02-17: 0 commits"></div><div class="hm-cell l0" title="2026-02-18: 0 commits"></div><div class="hm-cell l0" title="2026-02-19: 0 commits"></div><div class="hm-cell l0" title="2026-02-20: 0 commits"></div><div class="hm-cell l4" title="2026-02-21: 20 commits"></div><div class="hm-cell l3" title="2026-02-22: 10 commits"></div><div class="hm-cell l4" title="2026-02-23: 26 commits"></div><div class="hm-cell l0" title="2026-02-24: 0 commits"></div><div class="hm-cell l3" title="2026-02-25: 15 commits"></div><div class="hm-cell l4" title="2026-02-26: 37 commits"></div><div class="hm-cell l3" title="2026-02-27: 14 commits"></div><div class="hm-cell l1" title="2026-02-28: 1 commits"></div><div class="hm-cell l4" title="2026-03-01: 24 commits"></div><div class="hm-cell l4" title="2026-03-02: 19 commits"></div><div class="hm-cell l3" title="2026-03-03: 13 commits"></div><div class="hm-cell l2" title="2026-03-04: 7 commits"></div><div class="hm-cell l3" title="2026-03-05: 10 commits"></div><div class="hm-cell l3" title="2026-03-06: 11 commits"></div><div class="hm-cell l1" title="2026-03-07: 1 commits"></div><div class="hm-cell l4" title="2026-03-08: 42 commits"></div><div class="hm-cell l4" title="2026-03-09: 38 commits"></div><div class="hm-cell l4" title="2026-03-10: 31 commits"></div><div class="hm-cell l4" title="2026-03-11: 22 commits"></div><div class="hm-cell l3" title="2026-03-12: 10 commits"></div><div class="hm-cell l2" title="2026-03-13: 6 commits"></div><div class="hm-cell l4" title="2026-03-14: 21 commits"></div><div class="hm-cell l4" title="2026-03-15: 28 commits"></div><div class="hm-cell l2" title="2026-03-16: 3 commits"></div><div class="hm-cell l1" title="2026-03-17: 2 commits"></div><div class="hm-cell l0" title="2026-03-18: 0 commits"></div><div class="hm-cell l2" title="2026-03-19: 3 commits"></div><div class="hm-cell l0" title="2026-03-20: 0 commits"></div><div class="hm-cell l0" title="2026-03-21: 0 commits"></div><div class="hm-cell l0" title="2026-03-22: 0 commits"></div><div class="hm-cell l0" title="2026-03-23: 0 commits"></div><div class="hm-cell l0" title="2026-03-24: 0 commits"></div><div class="hm-cell l0" title="2026-03-25: 0 commits"></div><div class="hm-cell l0" title="2026-03-26: 0 commits"></div><div class="hm-cell l3" title="2026-03-27: 13 commits"></div><div class="hm-cell l4" title="2026-03-28: 19 commits"></div><div class="hm-cell l0" title="2026-03-29: 0 commits"></div><div class="hm-cell l2" title="2026-03-30: 3 commits"></div><div class="hm-cell l0" title="2026-03-31: 0 commits"></div><div class="hm-cell l3" title="2026-04-01: 8 commits"></div><div class="hm-cell l3" title="2026-04-02: 10 commits"></div><div class="hm-cell l4" title="2026-04-03: 16 commits"></div><div class="hm-cell l0" title="2026-04-04: 0 commits"></div><div class="hm-cell l0" title="2026-04-05: 0 commits"></div><div class="hm-cell l0" title="2026-04-06: 0 commits"></div><div class="hm-cell l0" title="2026-04-07: 0 commits"></div><div class="hm-cell l0" title="2026-04-08: 0 commits"></div><div class="hm-cell l1" title="2026-04-09: 1 commits"></div><div class="hm-cell l0" title="2026-04-10: 0 commits"></div><div class="hm-cell l0" title="2026-04-11: 0 commits"></div><div class="hm-cell l0" title="2026-04-12: 0 commits"></div><div class="hm-cell l0" title="2026-04-13: 0 commits"></div><div class="hm-cell l0" title="2026-04-14: 0 commits"></div><div class="hm-cell l0" title="2026-04-15: 0 commits"></div><div class="hm-cell l0" title="2026-04-16: 0 commits"></div><div class="hm-cell l0" title="2026-04-17: 0 commits"></div><div class="hm-cell empty"></div><div class="hm-cell empty"></div></div>
-      <div class="heatmap-legend">
-        <span>less</span>
-        <div class="heatmap-legend-cells">
-          <div class="hm-cell"></div>
-          <div class="hm-cell l1"></div>
-          <div class="hm-cell l2"></div>
-          <div class="hm-cell l3"></div>
-          <div class="hm-cell l4"></div>
-        </div>
-        <span>more</span>
       </div>
     </div>
 
@@ -1158,24 +1199,39 @@
 
   <div class="cta">
     <div class="cta-inner">
-      <div>
-        <div class="cta-label">Let's talk</div>
-        <div class="cta-headline">Got a process that eats your time?</div>
-        <div class="cta-sub">I'm building autonomous agents for process automation — right now for my own business, later for yours. If that's interesting (swap ideas, ask me something, or just follow along), reach out.</div>
+      <div class="cta-portrait">
+        <div class="cta-status">Sam online · @sascha available</div>
       </div>
-      <div class="cta-buttons">
-        <a href="https://www.linkedin.com/in/sascha-englert-consulting/" target="_blank" class="cta-btn primary">
-          <span>Message on LinkedIn</span>
-          <span class="cta-arrow">&rarr;</span>
-        </a>
-        <a href="https://wa.me/4917628948811?text=Hi%20Sascha%2C%20I%20saw%20your%20Sam%20dashboard..." target="_blank" class="cta-btn secondary">
-          <span>WhatsApp</span>
-          <span class="cta-arrow">&rarr;</span>
-        </a>
-        <a href="https://t.me/+4917628948811" target="_blank" class="cta-btn secondary">
-          <span>Telegram</span>
-          <span class="cta-arrow">&rarr;</span>
-        </a>
+      <div>
+        <div class="cta-label">Let's actually talk</div>
+        <div class="cta-headline">Want to build<br>something <em>real?</em></div>
+        <div class="cta-sub">Drop a message. I'll see it, Sascha will reply. Whether it's AI for your business, operations thinking, or just curiosity — let's find out if there's something worth building together.</div>
+        <div class="cta-buttons">
+          <a href="https://www.linkedin.com/in/sascha-englert-consulting/" target="_blank" class="cta-btn linkedin">
+            <div class="cta-btn-icon">in</div>
+            <div class="cta-btn-text">
+              <div class="cta-btn-label">LinkedIn</div>
+              <div class="cta-btn-hint">professional</div>
+            </div>
+            <div class="cta-btn-arrow">&rarr;</div>
+          </a>
+          <a href="https://wa.me/4917628948811?text=Hi%20Sascha%2C%20I%20saw%20your%20Sam%20dashboard..." target="_blank" class="cta-btn whatsapp">
+            <div class="cta-btn-icon">W</div>
+            <div class="cta-btn-text">
+              <div class="cta-btn-label">WhatsApp</div>
+              <div class="cta-btn-hint">instant</div>
+            </div>
+            <div class="cta-btn-arrow">&rarr;</div>
+          </a>
+          <a href="https://t.me/+4917628948811" target="_blank" class="cta-btn telegram">
+            <div class="cta-btn-icon">T</div>
+            <div class="cta-btn-text">
+              <div class="cta-btn-label">Telegram</div>
+              <div class="cta-btn-hint">alternative</div>
+            </div>
+            <div class="cta-btn-arrow">&rarr;</div>
+          </a>
+        </div>
       </div>
     </div>
   </div>
