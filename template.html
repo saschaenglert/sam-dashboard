@@ -53,8 +53,8 @@
   .hero-headline{font-family:'Syne',sans-serif;font-weight:700;font-size:54px;letter-spacing:-0.03em;line-height:1.02;color:var(--cream);margin-bottom:18px;}
   .hero-sub{font-size:14px;color:var(--ink-light);font-family:'JetBrains Mono',monospace;max-width:640px;line-height:1.6;}
 
-  /* STATS GRID */
-  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:64px;}
+  /* STATS GRID - auto-fit lets 4 or 5 tiles lay out gracefully */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:64px;}
   .stat{background:var(--navy);padding:28px 24px;}
   .stat-label{font-family:'Syne',sans-serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-light);margin-bottom:10px;}
   .stat-num{font-family:'Syne',sans-serif;font-weight:700;font-size:40px;letter-spacing:-0.02em;line-height:1;color:var(--cream);}
@@ -659,20 +659,21 @@
     <div class="grid">
       <div class="stat"><div class="stat-label">Scheduled jobs / day</div><div class="stat-num">{{SCHEDULED_JOBS}}</div><div class="stat-meta">cron + launchd</div></div>
       <div class="stat"><div class="stat-label">Automation code</div><div class="stat-num">{{AUTO_LOC}}</div><div class="stat-meta">Python across {{AUTO_SCRIPTS}} scripts</div></div>
-      <div class="stat"><div class="stat-label">Posts drafted</div><div class="stat-num">{{DRAFTS}}</div><div class="stat-meta">LinkedIn pipeline</div></div>
+      <div class="stat"><div class="stat-label">Background services</div><div class="stat-num">{{BG_SERVICES}}</div><div class="stat-meta">launchd + cron jobs</div></div>
+      <div class="stat"><div class="stat-label">Skill library</div><div class="stat-num">{{SKILLS}}</div><div class="stat-meta">Markdown instructions</div></div>
       <div class="stat"><div class="stat-label">Knowledge entries</div><div class="stat-num">{{KNOWLEDGE}}</div><div class="stat-meta">Supabase pgvector</div></div>
     </div>
 
     <div class="section-title">Agents in detail</div>
     <div class="agents">
-      <div class="agent"><div class="agent-dot"></div><div class="agent-body"><div class="agent-name">youtube-agent</div><div class="agent-job">Transcripts from subscribed channels</div></div><div class="agent-freq">scheduled</div></div>
-      <div class="agent"><div class="agent-dot"></div><div class="agent-body"><div class="agent-name">knowledge-indexer</div><div class="agent-job">Transcripts -> embeddings (bge-m3)</div></div><div class="agent-freq">scheduled</div></div>
-      <div class="agent"><div class="agent-dot"></div><div class="agent-body"><div class="agent-name">linkedin-agent</div><div class="agent-job">Topic -> draft -> QA -> post</div></div><div class="agent-freq">scheduled</div></div>
-      <div class="agent"><div class="agent-dot"></div><div class="agent-body"><div class="agent-name">qa-reviewer</div><div class="agent-job">Content evaluation against rubrics</div></div><div class="agent-freq">on-demand</div></div>
-      <div class="agent"><div class="agent-dot off"></div><div class="agent-body"><div class="agent-name">x-agent</div><div class="agent-job">Pipeline built, scheduling pending</div></div><div class="agent-freq">ready</div></div>
-      <div class="agent"><div class="agent-dot"></div><div class="agent-body"><div class="agent-name">newsletter-agent</div><div class="agent-job">Collecting newsletters from Mac Mail</div></div><div class="agent-freq">scheduled</div></div>
-      <div class="agent"><div class="agent-dot"></div><div class="agent-body"><div class="agent-name">claude-sessions-agent</div><div class="agent-job">Overnight analysis of checkpoints</div></div><div class="agent-freq">scheduled</div></div>
-      <div class="agent"><div class="agent-dot"></div><div class="agent-body"><div class="agent-name">sambrain</div><div class="agent-job">Checkpoints, watchdog, logger</div></div><div class="agent-freq">continuous</div></div>
+      <div class="agent"><div class="agent-dot"></div><div class="agent-body"><div class="agent-name">youtube-agent</div><div class="agent-job">yt-dlp harvest across a curated channel list. Structured transcript export with frontmatter metadata, deduped at source.</div></div><div class="agent-freq">scheduled</div></div>
+      <div class="agent"><div class="agent-dot"></div><div class="agent-body"><div class="agent-name">knowledge-indexer</div><div class="agent-job">Local-first embedding pipeline: text -> chunks -> 1024-dim vectors via Ollama bge-m3 -> Supabase pgvector. No cloud AI calls.</div></div><div class="agent-freq">scheduled</div></div>
+      <div class="agent"><div class="agent-dot"></div><div class="agent-body"><div class="agent-name">content-agent-a</div><div class="agent-job">Multi-stage content pipeline: topic picker -> draft generator -> QA pass 1 -> revision -> QA pass 2 -> approval loop. Skill-driven at every LLM step.</div></div><div class="agent-freq">scheduled</div></div>
+      <div class="agent"><div class="agent-dot"></div><div class="agent-body"><div class="agent-name">qa-reviewer</div><div class="agent-job">Rubric-based content evaluator. Returns a verdict, a numeric score, and a structured revision brief — ready to feed back into the writing loop.</div></div><div class="agent-freq">on-demand</div></div>
+      <div class="agent"><div class="agent-dot off"></div><div class="agent-body"><div class="agent-name">content-agent-b</div><div class="agent-job">Parallel pipeline for a second channel. Strict length discipline, OAuth 1.0a signing, human-in-the-loop approvals. Pipeline complete, go-live pending.</div></div><div class="agent-freq">ready</div></div>
+      <div class="agent"><div class="agent-dot"></div><div class="agent-body"><div class="agent-name">newsletter-agent</div><div class="agent-job">AppleScript-driven Mac Mail harvester. Extracts newsletter bodies from the inbox and normalizes them for the knowledge-indexer.</div></div><div class="agent-freq">scheduled</div></div>
+      <div class="agent"><div class="agent-dot"></div><div class="agent-body"><div class="agent-name">claude-sessions-agent</div><div class="agent-job">Nightly consolidator. Reads the day's raw checkpoints, extracts recurring patterns, writes compact learnings back into shared memory.</div></div><div class="agent-freq">scheduled</div></div>
+      <div class="agent"><div class="agent-dot"></div><div class="agent-body"><div class="agent-name">sambrain</div><div class="agent-job">Heartbeat orchestrator: cc-checkpoint, openclaw-checkpoint, telegram-logger, watchdog, health-checks. Keeps every agent honest and every hour logged.</div></div><div class="agent-freq">continuous</div></div>
     </div>
   </div>
 
@@ -733,23 +734,14 @@
 
     <div class="next-layout">
       <div class="next-text">
-        <h3>What I'm building next</h3>
-        <p>Right now every agent lives under <strong>one shared CLAUDE.md</strong>. That was fast to build but it creates leaks - context from one agent bleeds into another, and there's no clear boundary between what each one knows or is allowed to do.</p>
-        <p>The next iteration: <strong>every agent gets its own markdown brain</strong> - a dedicated folder with <code>soul.md</code> (role and boundaries), <code>identity.md</code> (name, tone), <code>user.md</code> (who it serves), <code>heartbeat.md</code> (30-minute checklist), and <code>memory.md</code> (what it has learned). Proper separation of concerns.</p>
+        <h3>Where I'm heading</h3>
+        <p>Right now every agent shares one brain. The next move gives each its own — own identity, own boundaries, own memory. Separation beats scale.</p>
 
-        <h3>Why this matters</h3>
-        <p>Agents don't scale because of bigger models. They scale because of <strong>sharper boundaries</strong>. An agent that knows exactly what it owns, what it can do, and who it answers to - is dramatically more useful than a general-purpose one sharing everything.</p>
-        <p>This pattern was crystallized by Nate B Jones in the video on the right. I had already been moving in this direction - the video gave me the vocabulary.</p>
+        <h3>Why</h3>
+        <p>Agents don't get better from bigger models. They get better from sharper boundaries. An agent that knows exactly what it owns is dramatically more useful than a general-purpose one sharing everything.</p>
 
-        <h3>The plan</h3>
-        <p><strong>1.</strong> Build a per-agent folder template (soul, identity, user, heartbeat, memory).<br>
-        <strong>2.</strong> Move each existing agent into its own scoped workspace.<br>
-        <strong>3.</strong> Add per-agent autonomy levels - not one global L1-L4 but one per agent.<br>
-        <strong>4.</strong> Introduce an orchestrator agent that delegates tasks, instead of a master CLAUDE.md that tries to know everything.<br>
-        <strong>5.</strong> Split memory in Supabase so each agent has its own scope - no cross-contamination.</p>
-
-        <h3>After that</h3>
-        <p>With separation in place, I can run <strong>specialist agents</strong>: a sales agent that only handles outreach, a research agent that only finds and scores opportunities, a content agent that only writes. Each one deeper, each one safer to give more autonomy.</p>
+        <h3>What comes next</h3>
+        <p>Per-agent markdown brains, scoped autonomy, and an orchestrator that delegates. Ground laid for specialist agents — each deeper, each safer to trust further. The pattern on the right (Nate B Jones) crystallizes something I was already moving toward.</p>
       </div>
       <div class="next-side">
         <div class="video-wrap">
@@ -771,7 +763,6 @@
         <div class="comp-header">Today</div>
         <div class="comp-item"><span class="comp-item-tag">Brain</span>one shared CLAUDE.md across all agents</div>
         <div class="comp-item"><span class="comp-item-tag">Identity</span>not defined per agent</div>
-        <div class="comp-item"><span class="comp-item-tag">Memory</span>one central Supabase table</div>
         <div class="comp-item"><span class="comp-item-tag">Heartbeat</span>watchdog only, no checklist</div>
         <div class="comp-item"><span class="comp-item-tag">Context</span>agents share - leakage possible</div>
       </div>
@@ -779,7 +770,6 @@
         <div class="comp-header">Goal</div>
         <div class="comp-item"><span class="comp-item-tag">Brain</span>soul.md, identity.md, user.md per agent</div>
         <div class="comp-item"><span class="comp-item-tag">Identity</span>role, tone, boundaries clear per agent</div>
-        <div class="comp-item"><span class="comp-item-tag">Memory</span>scoped memory per agent</div>
         <div class="comp-item"><span class="comp-item-tag">Heartbeat</span>30-min checklist per agent</div>
         <div class="comp-item"><span class="comp-item-tag">Context</span>strict separation of concerns</div>
       </div>
@@ -787,10 +777,9 @@
 
     <div class="section-title">Milestones</div>
     <div class="milestones">
-      <div class="milestone"><div class="milestone-num">1</div><div class="milestone-body"><div class="milestone-title">Per-agent folder system</div><div class="milestone-desc">soul.md, identity.md, user.md, heartbeat.md, memory.md - template-based</div></div></div>
-      <div class="milestone"><div class="milestone-num">2</div><div class="milestone-body"><div class="milestone-title">Per-agent autonomy levels</div><div class="milestone-desc">L1-L4 assigned per agent, not shared globally</div></div></div>
-      <div class="milestone"><div class="milestone-num">3</div><div class="milestone-body"><div class="milestone-title">Orchestrator agent</div><div class="milestone-desc">An agent that delegates, instead of one master CLAUDE.md that knows everything</div></div></div>
-      <div class="milestone"><div class="milestone-num">4</div><div class="milestone-body"><div class="milestone-title">Memory separation</div><div class="milestone-desc">Per-agent Supabase scope, no cross-contamination</div></div></div>
+      <div class="milestone"><div class="milestone-num">1</div><div class="milestone-body"><div class="milestone-title">Scoped agent workspaces</div><div class="milestone-desc">Each agent gets its own files — identity, boundaries, memory</div></div></div>
+      <div class="milestone"><div class="milestone-num">2</div><div class="milestone-body"><div class="milestone-title">Per-agent autonomy levels</div><div class="milestone-desc">Trust calibrated one agent at a time, not one global setting</div></div></div>
+      <div class="milestone"><div class="milestone-num">3</div><div class="milestone-body"><div class="milestone-title">Orchestrator layer</div><div class="milestone-desc">An agent that delegates to the others — the specialist model</div></div></div>
     </div>
   </div>
 

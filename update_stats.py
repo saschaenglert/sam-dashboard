@@ -40,6 +40,41 @@ COVERAGE_MIN = 60
 SCHEDULED_JOBS_PER_DAY = 7
 
 
+def count_background_services() -> int:
+    """Count launchd plist files relevant to Sascha's setup (sam + user-owned)."""
+    agents_dir = Path.home() / "Library" / "LaunchAgents"
+    patterns = ["com.sascha*.plist", "com.user*.plist"]
+    found = set()
+    for p in patterns:
+        for hit in agents_dir.glob(p):
+            found.add(hit.name)
+    return len(found)
+
+
+def count_skills() -> int:
+    """Count all Markdown skill files across the ecosystem.
+
+    Sources:
+    - orga/skillsystem/installed/*.md  (skills actively installed)
+    - orga/skillsystem/idee/*.md        (curated skill templates)
+    - orga/agents/*/skills/*.md         (agent-specific skills)
+    """
+    count = 0
+    skill_sys = ORGA_DIR / "skillsystem"
+    for sub in ("installed", "idee"):
+        d = skill_sys / sub
+        if d.exists():
+            count += len([f for f in d.iterdir()
+                          if f.is_file() and f.suffix == ".md"])
+    agents = ORGA_DIR / "agents"
+    if agents.exists():
+        for agent in agents.iterdir():
+            skills_dir = agent / "skills"
+            if skills_dir.is_dir():
+                count += sum(1 for _ in skills_dir.rglob("*.md"))
+    return count
+
+
 def count_lines(path: Path, patterns: list) -> int:
     """Sum line counts for files matching any pattern under path (skipping venv/cache)."""
     if not path.exists():
@@ -202,7 +237,8 @@ def main():
 
     # Agent metrics
     automation = count_automation()
-    drafts = count_linkedin_drafts()
+    background_services = count_background_services()
+    skills = count_skills()
     knowledge = count_knowledge()
 
     last_updated = datetime.now().strftime("%B %Y")
@@ -232,7 +268,8 @@ def main():
             "scheduled_jobs_per_day": SCHEDULED_JOBS_PER_DAY,
             "automation_scripts": automation["scripts"],
             "automation_loc": automation["loc"],
-            "drafts": drafts,
+            "background_services": background_services,
+            "skills": skills,
             "knowledge": knowledge,
         },
     }
@@ -287,7 +324,8 @@ def main():
         "SCHEDULED_JOBS": str(SCHEDULED_JOBS_PER_DAY),
         "AUTO_LOC": f"~{humanize(automation['loc'])}",
         "AUTO_SCRIPTS": str(automation["scripts"]),
-        "DRAFTS": str(drafts),
+        "BG_SERVICES": str(background_services),
+        "SKILLS": str(skills),
         "KNOWLEDGE": knowledge,
 
         "LAST_UPDATED": last_updated,

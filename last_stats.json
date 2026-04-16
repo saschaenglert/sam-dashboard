@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-16T23:58:43.525160",
+  "generated_at": "2026-04-17T00:05:17.978828",
   "last_updated": "April 2026",
   "totals": {
     "loc_all": 81245,
@@ -52,7 +52,8 @@
     "scheduled_jobs_per_day": 7,
     "automation_scripts": 43,
     "automation_loc": 11398,
-    "drafts": 14,
+    "background_services": 11,
+    "skills": 48,
     "knowledge": "400+"
   }
 }
