@@ -2,6 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0f1e">
+<meta name="description" content="Sam — an AI-built ecosystem by Sascha Englert. Code, autonomous agents, shared memory, next steps.">
+<meta property="og:title" content="Sam — an AI-built ecosystem">
+<meta property="og:description" content="Built without writing a single line of code myself. 4 production tools, 8 autonomous agents, one shared brain. Updated weekly.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://saschaenglert.github.io/sam-dashboard/">
+<meta name="twitter:card" content="summary_large_image">
 <title>Sam - an AI-built ecosystem</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -184,23 +192,150 @@
   .foot-links a:hover{color:var(--accent);}
   .foot-note{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-light);}
 
+  /* === TABLET (900px and below) === */
   @media (max-width:900px){
-    .hero.with-portrait{grid-template-columns:1fr;gap:24px;text-align:center;}
-    .sam-portrait{margin:0 auto;}
-    .brain{grid-template-columns:1fr;gap:12px;}
-    .brain-arrow{transform:rotate(90deg);padding:4px 0;}
-    .tool-grid,.infra,.compare,.next-layout{grid-template-columns:1fr;}
+    .hero.with-portrait{grid-template-columns:1fr;gap:28px;text-align:left;}
+    .sam-portrait{margin:0;}
+    .brain{grid-template-columns:1fr;gap:14px;}
+    .brain-arrow{transform:rotate(90deg);padding:8px 0;font-size:24px;}
+    .tool-grid,.compare,.next-layout{grid-template-columns:1fr;}
+    .infra{grid-template-columns:1fr;gap:12px;}
     .cta-inner{grid-template-columns:1fr;gap:28px;}
   }
-  @media (max-width:720px){
-    .grid,.brain-stats{grid-template-columns:repeat(2,1fr);}
+
+  /* === PHONE (768px and below) === */
+  @media (max-width:768px){
+    body{font-size:15px;}
+    .shell{padding:20px 18px 48px;max-width:100%;}
+
+    /* Header stacks, nav becomes full-width segmented bar */
+    .hdr{flex-direction:column;align-items:stretch;gap:18px;margin-bottom:36px;}
+    .brand{gap:12px;}
+    .brand-avatar{width:40px;height:40px;}
+    .name{font-size:16px;}
+    .tagline{font-size:10px;}
+    .nav{width:100%;padding:3px;gap:2px;}
+    .nav a{flex:1;text-align:center;padding:11px 8px;font-size:10.5px;letter-spacing:0.1em;min-width:0;}
+
+    /* Hero typography */
+    .hero{margin-bottom:48px;}
+    .hero.with-portrait{gap:24px;}
+    .sam-portrait{width:180px;height:180px;}
+    .sam-portrait::before{inset:-12px;filter:blur(24px);}
+    .label{font-size:11px;letter-spacing:0.2em;margin-bottom:10px;}
+    .hero-headline{font-size:30px;line-height:1.1;margin-bottom:14px;letter-spacing:-0.025em;}
+    .hero-sub{font-size:13px;line-height:1.55;}
+
+    /* Stats — single column for max readability */
+    .grid{grid-template-columns:1fr;gap:1px;margin-bottom:44px;}
+    .stat{padding:20px 22px;display:flex;align-items:baseline;justify-content:space-between;gap:16px;}
+    .stat-label{margin-bottom:0;font-size:10px;flex-shrink:0;order:1;}
+    .stat-num{font-size:30px;order:2;}
+    .stat-meta{margin-top:0;font-size:10px;width:100%;order:3;margin-top:6px;}
+
+    /* Restore vertical layout for stat cards with stat-meta below */
+    .stat{flex-wrap:wrap;}
+
+    /* Section titles */
+    .section-title{font-size:11px;letter-spacing:0.18em;margin-bottom:14px;}
+    .section-sub{font-size:12px;margin-bottom:18px;}
+
+    /* Split bar */
+    .split-bar{padding:20px;margin-bottom:40px;}
+    .split-bar-legend{flex-direction:column;gap:10px;font-size:11px;margin-bottom:14px;}
+    .split-bar-track{height:22px;border-radius:5px;}
+    .split-bar-track > div{font-size:10px;padding:0 6px;}
+
+    /* Tool cards — single column, richer head */
+    .tool-grid{grid-template-columns:1fr;gap:10px;margin-bottom:40px;}
+    .tool-card{padding:18px 20px;}
+    .tool-head{gap:12px;}
+    .tool-head-left{gap:10px;flex-wrap:wrap;}
+    .tool-icons svg{width:32px;height:32px;}
+    .tool-name{font-size:14px;}
+    .tool-loc{font-size:11px;}
+    .tool-cat{font-size:11px;margin-top:4px;}
+    .tool-split{grid-template-columns:repeat(3,1fr);gap:8px;}
+    .tool-split-item{padding:10px;}
+    .tool-split-val{font-size:16px;}
+
+    /* Infrastructure */
+    .infra-col{padding:18px;}
+    .infra-service{padding:10px 12px;gap:10px;}
+    .infra-icon{width:32px;height:32px;font-size:12px;}
+    .infra-name{font-size:13px;}
+    .infra-meta{font-size:10px;}
+    .infra-flow{padding:18px 20px;font-size:11px;line-height:1.9;}
+
+    /* Agents */
     .agents{grid-template-columns:1fr;}
-    .hero-headline{font-size:36px;}
-    .tool-split{grid-template-columns:1fr;}
-    .cta{padding:28px;margin:48px 0 32px;}
-    .cta-headline{font-size:26px;}
-    .shell{padding:24px 20px 48px;}
-    .hdr{margin-bottom:40px;}
+    .agent{padding:16px 18px;gap:12px;}
+    .agent-name{font-size:13px;}
+    .agent-job{font-size:11px;}
+    .agent-freq{font-size:10px;}
+
+    /* Brain sections */
+    .brain-col{padding:18px;}
+    .brain-col-label{font-size:10px;margin-bottom:12px;}
+    .brain-item{padding:10px 12px;}
+    .brain-item-name{font-size:12px;}
+    .brain-item-meta{font-size:10px;}
+    .brain-stats{grid-template-columns:1fr;}
+
+    /* Compare */
+    .compare{gap:12px;margin-bottom:36px;}
+    .comp-col{padding:20px;}
+    .comp-header{font-size:10px;margin-bottom:12px;}
+    .comp-item{font-size:12px;padding:9px 0;}
+    .comp-item-tag{font-size:10px;min-width:70px;}
+
+    /* Next page */
+    .next-text{padding:22px;}
+    .next-text h3{font-size:15px;margin:16px 0 8px;}
+    .next-text p{font-size:13px;line-height:1.6;margin-bottom:10px;}
+
+    /* Milestones */
+    .milestone{padding:14px 18px;gap:12px;margin-bottom:6px;}
+    .milestone-num{font-size:20px;min-width:28px;}
+    .milestone-title{font-size:13px;}
+    .milestone-desc{font-size:11px;}
+
+    /* CTA — keep it prominent */
+    .cta{padding:28px 24px;margin:56px 0 32px;border-radius:14px;}
+    .cta-inner{gap:22px;}
+    .cta-label{font-size:11px;letter-spacing:0.2em;margin-bottom:10px;}
+    .cta-headline{font-size:24px;line-height:1.18;margin-bottom:12px;}
+    .cta-sub{font-size:13px;line-height:1.55;}
+    .cta-btn{padding:15px 18px;font-size:13px;min-height:48px;}
+
+    /* Footer */
+    .foot{flex-direction:column;align-items:flex-start;gap:12px;padding-top:28px;margin-top:0;}
+    .foot-links{gap:14px;row-gap:10px;}
+    .foot-note{font-size:9px;}
+
+    /* Video */
+    .video-meta{padding:14px 16px;}
+    .video-title{font-size:12px;}
+    .video-channel{font-size:10px;}
+  }
+
+  /* === TINY (380px and below — iPhone SE etc) === */
+  @media (max-width:380px){
+    .shell{padding:16px 14px 40px;}
+    .hero-headline{font-size:26px;}
+    .sam-portrait{width:160px;height:160px;}
+    .nav a{padding:10px 6px;font-size:9.5px;}
+    .tool-split{grid-template-columns:1fr;gap:6px;}
+    .cta-headline{font-size:22px;}
+    .stat-num{font-size:26px;}
+  }
+
+  /* === Smooth scroll & iOS niceties === */
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+  .nav a,.cta-btn,.tool-card{-webkit-tap-highlight-color:transparent;}
+  @supports(padding:max(0px)){
+    .shell{padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right));}
   }
 </style>
 </head>
