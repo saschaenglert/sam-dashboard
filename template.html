@@ -192,6 +192,83 @@
   .foot-links a:hover{color:var(--accent);}
   .foot-note{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-light);}
 
+  /* === AGENTS PAGE — orbital visualization === */
+  .agents-hero{display:grid;grid-template-columns:320px 1fr;gap:56px;align-items:center;margin-bottom:72px;}
+  .orbital{position:relative;width:320px;height:320px;}
+  .orbit-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border:1px dashed rgba(122,175,240,0.2);border-radius:50%;width:240px;height:240px;}
+  .orbit-ring.outer{width:320px;height:320px;border-color:rgba(122,175,240,0.12);}
+  .ceo-core{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:86px;height:86px;border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, #FCD34D 0%, #D97706 55%, #78350F 100%);
+    box-shadow:0 0 50px rgba(252,211,77,0.45), inset 0 2px 15px rgba(255,255,255,0.3);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Syne',sans-serif;font-weight:700;font-size:11px;color:#1C2540;
+    letter-spacing:0.22em;text-transform:uppercase;z-index:4;
+    animation:ceo-pulse 4s ease-in-out infinite;
+  }
+  @keyframes ceo-pulse{
+    0%,100%{transform:translate(-50%,-50%) scale(1);box-shadow:0 0 50px rgba(252,211,77,0.45), inset 0 2px 15px rgba(255,255,255,0.3);}
+    50%{transform:translate(-50%,-50%) scale(1.06);box-shadow:0 0 70px rgba(252,211,77,0.65), inset 0 2px 15px rgba(255,255,255,0.35);}
+  }
+  .agent-orb{
+    position:absolute;width:52px;height:52px;border-radius:50%;
+    background:var(--navy);border:1.5px solid var(--color,#7AAFF0);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:600;
+    color:var(--color,#7AAFF0);letter-spacing:0.02em;text-align:center;line-height:1.1;
+    box-shadow:0 0 20px rgba(var(--shadow,122 175 240)/0.3);
+    transform:translate(-50%,-50%);
+    animation:orb-pulse 3s ease-in-out infinite;z-index:2;
+    padding:4px;
+  }
+  .agent-orb.off{border-color:var(--ink-light);color:var(--ink-light);box-shadow:none;animation:none;opacity:0.55;}
+  .agent-orb.off::before{display:none;}
+  @keyframes orb-pulse{
+    0%,100%{box-shadow:0 0 20px rgba(var(--shadow,122 175 240)/0.3);}
+    50%{box-shadow:0 0 30px rgba(var(--shadow,122 175 240)/0.55);}
+  }
+  /* Connection lines from each orb to CEO (radial) */
+  .agent-orb::before{
+    content:"";position:absolute;top:50%;left:50%;width:1px;
+    background:linear-gradient(to bottom, var(--color,#7AAFF0), transparent);
+    height:var(--line-len,90px);transform-origin:top;opacity:0.25;
+    transform:translate(-50%,0) rotate(var(--line-angle,0deg));z-index:-1;pointer-events:none;
+  }
+
+  /* === NEXT PAGE — visual timeline === */
+  .timeline{position:relative;padding-left:44px;margin-bottom:48px;}
+  .timeline::before{
+    content:"";position:absolute;left:11px;top:14px;bottom:14px;width:2px;
+    background:linear-gradient(to bottom,
+      var(--accent) 0%,
+      var(--accent) var(--progress,33%),
+      var(--accent-soft) var(--progress,33%),
+      var(--line) 100%);
+    border-radius:2px;
+  }
+  .timeline-item{position:relative;padding-bottom:22px;}
+  .timeline-item:last-child{padding-bottom:0;}
+  .timeline-dot{
+    position:absolute;left:-39px;top:8px;width:24px;height:24px;border-radius:50%;
+    background:var(--navy-deep);border:2px solid var(--accent);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Syne',sans-serif;font-weight:700;font-size:11px;color:var(--accent);
+    z-index:2;
+  }
+  .timeline-item.active .timeline-dot{background:var(--accent);color:var(--navy-deep);animation:tl-pulse 2.2s ease-in-out infinite;}
+  .timeline-item.future .timeline-dot{border-color:var(--line);color:var(--ink-light);}
+  @keyframes tl-pulse{
+    0%,100%{box-shadow:0 0 0 0 rgba(122,175,240,0.6);}
+    50%{box-shadow:0 0 0 10px rgba(122,175,240,0);}
+  }
+  .timeline-card{background:var(--navy);border:1px solid var(--line);border-radius:12px;padding:18px 22px;transition:all 0.2s;}
+  .timeline-item.active .timeline-card{border-color:var(--accent-soft);box-shadow:0 0 30px rgba(122,175,240,0.08);}
+  .timeline-phase{font-family:'Syne',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;font-weight:600;}
+  .timeline-item.future .timeline-phase{color:var(--ink-light);}
+  .timeline-title{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;margin-bottom:6px;letter-spacing:-0.01em;}
+  .timeline-desc{font-size:13px;color:var(--ink-mid);line-height:1.55;}
+
   /* === BRAIN PAGE — spectacular === */
   .brain-hero{display:grid;grid-template-columns:260px 1fr;gap:48px;align-items:center;margin-bottom:72px;}
   .brain-visual{position:relative;width:260px;height:260px;display:flex;align-items:center;justify-content:center;}
@@ -374,6 +451,18 @@
     @keyframes ring-pulse{0%{width:110px;height:110px;opacity:0.9;}100%{width:220px;height:220px;opacity:0;}}
     .terminal-body{padding:16px 18px;font-size:11px;line-height:1.75;}
     .terminal-title{font-size:10px;}
+    .agents-hero{grid-template-columns:1fr;gap:28px;}
+    .orbital{margin:0 auto;width:260px;height:260px;}
+    .ceo-core{width:70px;height:70px;font-size:10px;}
+    .agent-orb{width:44px;height:44px;font-size:7.5px;}
+    .orbit-ring.outer{width:260px;height:260px;}
+    .orbit-ring{width:190px;height:190px;}
+    .timeline{padding-left:36px;}
+    .timeline::before{left:9px;}
+    .timeline-dot{left:-33px;width:20px;height:20px;font-size:10px;}
+    .timeline-card{padding:14px 18px;}
+    .timeline-title{font-size:15px;}
+    .timeline-desc{font-size:12px;}
 
     /* Compare */
     .compare{gap:12px;margin-bottom:36px;}
@@ -743,10 +832,26 @@
   <!-- PAGE 2: AGENTS -->
   <!-- ============================================================ -->
   <div class="page" id="page-agents">
-    <div class="hero">
-      <div class="label">Autonomous agents</div>
-      <div class="hero-headline">8 agents.<br>Running without me.</div>
-      <div class="hero-sub">Running on cron + launchd. 2,000+ automated actions since launch - without human intervention.</div>
+    <div class="agents-hero">
+      <div class="orbital">
+        <div class="orbit-ring outer"></div>
+        <div class="orbit-ring"></div>
+        <div class="ceo-core">ceo sam</div>
+        <!-- 8 agents on a circle, radius ~120 on 320px canvas (center 160,160) -->
+        <div class="agent-orb" style="top:11%;left:50%;--color:#7AAFF0;--shadow:122 175 240;">youtube</div>
+        <div class="agent-orb" style="top:22%;left:78%;--color:#5EBF8A;--shadow:94 191 138;">indexer</div>
+        <div class="agent-orb" style="top:50%;left:89%;--color:#9AADCA;--shadow:154 173 202;">content a</div>
+        <div class="agent-orb" style="top:78%;left:78%;--color:#E8998F;--shadow:232 153 143;">qa</div>
+        <div class="agent-orb off" style="top:89%;left:50%;">content b</div>
+        <div class="agent-orb" style="top:78%;left:22%;--color:#FCD34D;--shadow:252 211 77;">newsletter</div>
+        <div class="agent-orb" style="top:50%;left:11%;--color:#B48AEF;--shadow:180 138 239;">sessions</div>
+        <div class="agent-orb" style="top:22%;left:22%;--color:#a88fd4;--shadow:168 143 212;">sambrain</div>
+      </div>
+      <div>
+        <div class="label">Autonomous agents</div>
+        <div class="hero-headline">8 agents.<br>Running without me.</div>
+        <div class="hero-sub">Running on cron + launchd. 2,000+ automated actions since launch — without human intervention. One CEO. Eight specialists. Each with its own job.</div>
+      </div>
     </div>
 
     <div class="grid">
@@ -911,11 +1016,32 @@
       </div>
     </div>
 
-    <div class="section-title">Milestones</div>
-    <div class="milestones">
-      <div class="milestone"><div class="milestone-num">1</div><div class="milestone-body"><div class="milestone-title">Scoped agent workspaces</div><div class="milestone-desc">Each agent gets its own files — identity, boundaries, memory</div></div></div>
-      <div class="milestone"><div class="milestone-num">2</div><div class="milestone-body"><div class="milestone-title">Per-agent autonomy levels</div><div class="milestone-desc">Trust calibrated one agent at a time, not one global setting</div></div></div>
-      <div class="milestone"><div class="milestone-num">3</div><div class="milestone-body"><div class="milestone-title">Orchestrator layer</div><div class="milestone-desc">An agent that delegates to the others — the specialist model</div></div></div>
+    <div class="section-title">Roadmap</div>
+    <div class="timeline">
+      <div class="timeline-item active">
+        <div class="timeline-dot">1</div>
+        <div class="timeline-card">
+          <div class="timeline-phase">Phase 1 · in progress</div>
+          <div class="timeline-title">Scoped agent workspaces</div>
+          <div class="timeline-desc">Each agent gets its own files — identity, boundaries, memory. Clean separation of concerns at the filesystem level.</div>
+        </div>
+      </div>
+      <div class="timeline-item future">
+        <div class="timeline-dot">2</div>
+        <div class="timeline-card">
+          <div class="timeline-phase">Phase 2 · next</div>
+          <div class="timeline-title">Per-agent autonomy levels</div>
+          <div class="timeline-desc">Trust calibrated one agent at a time. Sensitive tasks stay gated. Low-risk ones get more rope.</div>
+        </div>
+      </div>
+      <div class="timeline-item future">
+        <div class="timeline-dot">3</div>
+        <div class="timeline-card">
+          <div class="timeline-phase">Phase 3 · the specialist model</div>
+          <div class="timeline-title">Orchestrator layer</div>
+          <div class="timeline-desc">An agent that delegates to the others. Fewer generalists, more specialists — each deeper, each safer.</div>
+        </div>
+      </div>
     </div>
   </div>
 
