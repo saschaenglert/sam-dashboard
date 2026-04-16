@@ -160,8 +160,25 @@
   .milestone-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:600;margin-bottom:2px;}
   .milestone-desc{font-size:12px;color:var(--ink-light);}
 
+  /* CTA */
+  .cta{margin:80px 0 40px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);border:1px solid var(--accent-soft);border-radius:16px;padding:44px 48px;position:relative;overflow:hidden;}
+  .cta::before{content:"";position:absolute;top:-120px;right:-120px;width:340px;height:340px;background:radial-gradient(circle,rgba(122,175,240,0.18) 0%,transparent 70%);pointer-events:none;}
+  .cta::after{content:"";position:absolute;bottom:-80px;left:-80px;width:240px;height:240px;background:radial-gradient(circle,rgba(168,143,212,0.1) 0%,transparent 70%);pointer-events:none;}
+  .cta-inner{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center;position:relative;z-index:1;}
+  .cta-label{font-family:'Syne',sans-serif;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-weight:600;}
+  .cta-headline{font-family:'Syne',sans-serif;font-size:34px;font-weight:700;line-height:1.1;margin-bottom:14px;color:var(--cream);letter-spacing:-0.02em;}
+  .cta-sub{font-size:14px;color:var(--ink-mid);line-height:1.65;}
+  .cta-buttons{display:flex;flex-direction:column;gap:10px;}
+  .cta-btn{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-radius:10px;text-decoration:none;font-family:'Syne',sans-serif;font-weight:600;font-size:14px;transition:all 0.2s;letter-spacing:0.01em;}
+  .cta-btn.primary{background:var(--accent);color:var(--navy-deep);}
+  .cta-btn.primary:hover{background:#9FC7FF;transform:translateY(-2px);box-shadow:0 8px 24px rgba(122,175,240,0.25);}
+  .cta-btn.secondary{background:transparent;color:var(--cream);border:1px solid var(--line);}
+  .cta-btn.secondary:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
+  .cta-arrow{margin-left:12px;transition:transform 0.2s;}
+  .cta-btn:hover .cta-arrow{transform:translateX(4px);}
+
   /* FOOTER */
-  .foot{margin-top:64px;padding-top:32px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .foot{margin-top:0;padding-top:32px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
   .foot-links{display:flex;gap:24px;flex-wrap:wrap;}
   .foot-links a{color:var(--ink-light);text-decoration:none;font-family:'Syne',sans-serif;font-size:12px;letter-spacing:0.05em;font-weight:500;}
   .foot-links a:hover{color:var(--accent);}
@@ -173,12 +190,17 @@
     .brain{grid-template-columns:1fr;gap:12px;}
     .brain-arrow{transform:rotate(90deg);padding:4px 0;}
     .tool-grid,.infra,.compare,.next-layout{grid-template-columns:1fr;}
+    .cta-inner{grid-template-columns:1fr;gap:28px;}
   }
   @media (max-width:720px){
     .grid,.brain-stats{grid-template-columns:repeat(2,1fr);}
     .agents{grid-template-columns:1fr;}
     .hero-headline{font-size:36px;}
     .tool-split{grid-template-columns:1fr;}
+    .cta{padding:28px;margin:48px 0 32px;}
+    .cta-headline{font-size:26px;}
+    .shell{padding:24px 20px 48px;}
+    .hdr{margin-bottom:40px;}
   }
 </style>
 </head>
@@ -611,6 +633,26 @@
       <div class="milestone"><div class="milestone-num">2</div><div class="milestone-body"><div class="milestone-title">Per-agent autonomy levels</div><div class="milestone-desc">L1-L4 assigned per agent, not shared globally</div></div></div>
       <div class="milestone"><div class="milestone-num">3</div><div class="milestone-body"><div class="milestone-title">Orchestrator agent</div><div class="milestone-desc">An agent that delegates, instead of one master CLAUDE.md that knows everything</div></div></div>
       <div class="milestone"><div class="milestone-num">4</div><div class="milestone-body"><div class="milestone-title">Memory separation</div><div class="milestone-desc">Per-agent Supabase scope, no cross-contamination</div></div></div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <div class="cta-inner">
+      <div>
+        <div class="cta-label">Let's talk</div>
+        <div class="cta-headline">Got a process that eats your time?</div>
+        <div class="cta-sub">I'm building autonomous agents for process automation — right now for my own business, later for yours. If that's interesting (swap ideas, ask me something, or just follow along), reach out.</div>
+      </div>
+      <div class="cta-buttons">
+        <a href="https://www.linkedin.com/in/sascha-englert-consulting/" target="_blank" class="cta-btn primary">
+          <span>Message on LinkedIn</span>
+          <span class="cta-arrow">&rarr;</span>
+        </a>
+        <a href="https://x.com/ceosamgonzales" target="_blank" class="cta-btn secondary">
+          <span>Follow on X</span>
+          <span class="cta-arrow">&rarr;</span>
+        </a>
+      </div>
     </div>
   </div>
 
