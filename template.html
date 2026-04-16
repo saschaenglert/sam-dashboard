@@ -367,7 +367,7 @@
       <div>
         <div class="label">Code shipped</div>
         <div class="hero-headline">{{TOTAL_LOC}} lines.<br>{{TOOLS_COUNT}} tools + shared platform.</div>
-        <div class="hero-sub">Zero lines written by any human. Sam is the operator, @sascha is the PM. Click any tool for details. Real-estate toolkit also hosts the restaurant planner.</div>
+        <div class="hero-sub">Zero lines written by any human. Sam is the operator, @sascha is the PM. Click any tool for the breakdown.</div>
       </div>
     </div>
 
@@ -410,22 +410,12 @@
   <path d="M30 72 Q50 58 70 72" stroke="#7AAFF0" stroke-width="3.5" stroke-linecap="round" fill="none"/>
   <circle cx="32" cy="70" r="3" fill="#7AAFF0"/>
   <circle cx="68" cy="70" r="3" fill="#7AAFF0"/>
-</svg><svg class="tool-icon" viewBox="0 0 100 100" fill="none" width="40" height="40" style="flex-shrink:0;">
-  <circle cx="50" cy="50" r="50" fill="#1C2540"/>
-  <circle cx="50" cy="40" r="14" fill="none" stroke="#5EBF8A" stroke-width="3.5"/>
-  <rect x="41" y="29" width="18" height="6" rx="3" fill="#5EBF8A"/>
-  <path d="M44 43 Q50 49 56 43" stroke="#5EBF8A" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-  <circle cx="45.5" cy="39.5" r="1.8" fill="#5EBF8A"/>
-  <circle cx="54.5" cy="39.5" r="1.8" fill="#5EBF8A"/>
-  <path d="M30 72 Q50 58 70 72" stroke="#5EBF8A" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-  <circle cx="32" cy="70" r="3" fill="#5EBF8A"/>
-  <circle cx="68" cy="70" r="3" fill="#5EBF8A"/>
 </svg></div>
-            <div class="tool-title"><span class="dot"></span><span class="tool-name">Real-estate & restaurant toolkit</span></div>
+            <div class="tool-title"><span class="dot"></span><span class="tool-name">Real Estate Investment</span></div>
           </div>
           <span class="tool-loc">{{IMMO_LOC}} LOC</span>
         </div>
-        <div class="tool-cat">Property valuation + restaurant go/no-go planning - {{IMMO_COMMITS}} commits</div>
+        <div class="tool-cat">Property valuation, financing & investor analysis - {{IMMO_COMMITS}} commits</div>
         <div class="tool-body"><div class="tool-inner">
           <div class="tool-split">
             <div class="tool-split-item"><div class="tool-split-label">Frontend</div><div class="tool-split-val">{{IMMO_FRONTEND}}</div></div>
@@ -449,6 +439,39 @@
           <div class="tool-head-left">
             <div class="tool-icons"><svg class="tool-icon" viewBox="0 0 100 100" fill="none" width="40" height="40" style="flex-shrink:0;">
   <circle cx="50" cy="50" r="50" fill="#1C2540"/>
+  <circle cx="50" cy="40" r="14" fill="none" stroke="#5EBF8A" stroke-width="3.5"/>
+  <rect x="41" y="29" width="18" height="6" rx="3" fill="#5EBF8A"/>
+  <path d="M44 43 Q50 49 56 43" stroke="#5EBF8A" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <circle cx="45.5" cy="39.5" r="1.8" fill="#5EBF8A"/>
+  <circle cx="54.5" cy="39.5" r="1.8" fill="#5EBF8A"/>
+  <path d="M30 72 Q50 58 70 72" stroke="#5EBF8A" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <circle cx="32" cy="70" r="3" fill="#5EBF8A"/>
+  <circle cx="68" cy="70" r="3" fill="#5EBF8A"/>
+</svg></div>
+            <div class="tool-title"><span class="dot"></span><span class="tool-name">Restaurant Business Planner</span></div>
+          </div>
+          <span class="tool-loc">{{GASTRO_LOC}} LOC</span>
+        </div>
+        <div class="tool-cat">Go/no-go planning: revenue forecast, P&amp;L, break-even - {{GASTRO_COMMITS}} commits</div>
+        <div class="tool-body"><div class="tool-inner">
+          <div class="tool-split">
+            <div class="tool-split-item"><div class="tool-split-label">Frontend</div><div class="tool-split-val">{{GASTRO_LOC}}</div></div>
+            <div class="tool-split-item"><div class="tool-split-label">Hosted in</div><div class="tool-split-val" style="font-size:12px;font-weight:500;">Real Estate repo</div></div>
+            <div class="tool-split-item"><div class="tool-split-label">Status</div><div class="tool-split-val" style="font-size:12px;font-weight:500;">Live</div></div>
+          </div>
+          <div class="tool-tags">
+            <span class="tool-tag">HTML</span>
+            <span class="tool-tag">JS</span>
+            <span class="tool-tag">shared Flask backend</span>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="tool-card" onclick="toggleTool(this)">
+        <div class="tool-head">
+          <div class="tool-head-left">
+            <div class="tool-icons"><svg class="tool-icon" viewBox="0 0 100 100" fill="none" width="40" height="40" style="flex-shrink:0;">
+  <circle cx="50" cy="50" r="50" fill="#1C2540"/>
   <circle cx="50" cy="40" r="14" fill="none" stroke="#9AADCA" stroke-width="3.5"/>
   <rect x="41" y="29" width="18" height="6" rx="3" fill="#9AADCA"/>
   <path d="M44 43 Q50 49 56 43" stroke="#9AADCA" stroke-width="2.5" stroke-linecap="round" fill="none"/>
@@ -458,11 +481,11 @@
   <circle cx="32" cy="70" r="3" fill="#9AADCA"/>
   <circle cx="68" cy="70" r="3" fill="#9AADCA"/>
 </svg></div>
-            <div class="tool-title"><span class="dot"></span><span class="tool-name">Short-term rental OS</span></div>
+            <div class="tool-title"><span class="dot"></span><span class="tool-name">Airbnb &amp; Booking Manager</span></div>
           </div>
           <span class="tool-loc">{{FEWO_LOC}} LOC</span>
         </div>
-        <div class="tool-cat">Operations platform for vacation rentals - {{FEWO_COMMITS}} commits</div>
+        <div class="tool-cat">Short-term rental operations: bookings, pricing, portal sync - {{FEWO_COMMITS}} commits</div>
         <div class="tool-body"><div class="tool-inner">
           <div class="tool-split">
             <div class="tool-split-item"><div class="tool-split-label">Frontend</div><div class="tool-split-val">{{FEWO_FRONTEND}}</div></div>
@@ -494,11 +517,11 @@
   <circle cx="32" cy="70" r="3" fill="#E8998F"/>
   <circle cx="68" cy="70" r="3" fill="#E8998F"/>
 </svg></div>
-            <div class="tool-title"><span class="dot"></span><span class="tool-name">SMB bookkeeping automation</span></div>
+            <div class="tool-title"><span class="dot"></span><span class="tool-name">Freelance Business &amp; Rental Accountant</span></div>
           </div>
           <span class="tool-loc">{{BUCH_LOC}} LOC</span>
         </div>
-        <div class="tool-cat">Bank import, matching, DATEV export - {{BUCH_COMMITS}} commits</div>
+        <div class="tool-cat">Bank import, transaction matching, DATEV export - {{BUCH_COMMITS}} commits</div>
         <div class="tool-body"><div class="tool-inner">
           <div class="tool-split">
             <div class="tool-split-item"><div class="tool-split-label">Backend</div><div class="tool-split-val">{{BUCH_BACKEND}}</div></div>
@@ -530,11 +553,11 @@
   <circle cx="32" cy="70" r="3" fill="#B48AEF"/>
   <circle cx="68" cy="70" r="3" fill="#B48AEF"/>
 </svg></div>
-            <div class="tool-title"><span class="dot wip"></span><span class="tool-name">Property management suite</span></div>
+            <div class="tool-title"><span class="dot wip"></span><span class="tool-name">Property Management Suite</span></div>
           </div>
           <span class="tool-loc">{{HAUS_LOC}} LOC</span>
         </div>
-        <div class="tool-cat">Cost allocation, meter readings, tenant mgmt - {{HAUS_COMMITS}} commits - in dev</div>
+        <div class="tool-cat">Cost allocation, meter readings, tenant management - {{HAUS_COMMITS}} commits - in dev</div>
         <div class="tool-body"><div class="tool-inner">
           <div class="tool-split">
             <div class="tool-split-item"><div class="tool-split-label">Backend</div><div class="tool-split-val">{{HAUS_BACKEND}}</div></div>
@@ -565,7 +588,7 @@
   <circle cx="32" cy="70" r="3" fill="#a88fd4"/>
   <circle cx="68" cy="70" r="3" fill="#a88fd4"/>
 </svg></div>
-            <div class="tool-title"><span class="dot" style="background:var(--purple);box-shadow:0 0 0 4px rgba(168,143,212,0.12)"></span><span class="tool-name">Shared infrastructure</span></div>
+            <div class="tool-title"><span class="dot" style="background:var(--purple);box-shadow:0 0 0 4px rgba(168,143,212,0.12)"></span><span class="tool-name">Shared Infrastructure</span></div>
           </div>
           <span class="tool-loc">{{SHARED_LOC}} LOC</span>
         </div>
@@ -635,7 +658,7 @@
 
     <div class="grid">
       <div class="stat"><div class="stat-label">Scheduled jobs / day</div><div class="stat-num">{{SCHEDULED_JOBS}}</div><div class="stat-meta">cron + launchd</div></div>
-      <div class="stat"><div class="stat-label">Transcripts indexed</div><div class="stat-num">{{TRANSCRIPTS}}</div><div class="stat-meta">YouTube</div></div>
+      <div class="stat"><div class="stat-label">Automation code</div><div class="stat-num">{{AUTO_LOC}}</div><div class="stat-meta">Python across {{AUTO_SCRIPTS}} scripts</div></div>
       <div class="stat"><div class="stat-label">Posts drafted</div><div class="stat-num">{{DRAFTS}}</div><div class="stat-meta">LinkedIn pipeline</div></div>
       <div class="stat"><div class="stat-label">Knowledge entries</div><div class="stat-num">{{KNOWLEDGE}}</div><div class="stat-meta">Supabase pgvector</div></div>
     </div>

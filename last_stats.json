@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-16T23:48:38.838327",
+  "generated_at": "2026-04-16T23:58:43.525160",
   "last_updated": "April 2026",
   "totals": {
     "loc_all": 81245,
@@ -7,8 +7,8 @@
     "commits": 484,
     "quality_gates": 16,
     "coverage_min": 60,
-    "tools_live": 4,
-    "tools_status": "3 live, 1 in dev"
+    "tools_live": 5,
+    "tools_status": "4 live, 1 in dev"
   },
   "split": {
     "frontend_loc": 39489,
@@ -50,7 +50,8 @@
   },
   "agents": {
     "scheduled_jobs_per_day": 7,
-    "transcripts": 381,
+    "automation_scripts": 43,
+    "automation_loc": 11398,
     "drafts": 14,
     "knowledge": "400+"
   }

@@ -77,12 +77,46 @@ def tool_stats(tool_path: Path) -> dict:
     return {"backend": backend, "frontend": frontend, "tests": tests, "total": total, "commits": commits}
 
 
-def count_transcripts() -> int:
-    """Count transcripts in youtube-agent."""
-    tdir = ORGA_DIR / "agents" / "youtube-agent" / "transcripts"
-    if not tdir.exists():
-        return 0
-    return sum(1 for _ in tdir.rglob("*.md"))
+def file_stats(tool_path: Path, relative_file: str) -> dict:
+    """Stats for a single file inside a repo: LOC + git commits."""
+    f = tool_path / relative_file
+    loc = 0
+    if f.exists():
+        try:
+            loc = sum(1 for _ in f.open("rb"))
+        except OSError:
+            loc = 0
+
+    commits = 0
+    if (tool_path / ".git").exists():
+        try:
+            out = subprocess.check_output(
+                ["git", "-C", str(tool_path), "log", "--oneline", "--", relative_file],
+                stderr=subprocess.DEVNULL,
+            ).decode()
+            commits = len([line for line in out.splitlines() if line.strip()])
+        except subprocess.CalledProcessError:
+            commits = 0
+    return {"loc": loc, "commits": commits}
+
+
+def count_automation() -> dict:
+    """Count Python scripts + LOC under /orga (agents, sambrain, platform code).
+
+    Excludes venv/__pycache__/archiv so we measure only live automation code.
+    """
+    scripts = 0
+    loc = 0
+    for f in ORGA_DIR.rglob("*.py"):
+        parts = set(f.parts)
+        if "venv" in parts or "__pycache__" in parts or "archiv" in parts:
+            continue
+        scripts += 1
+        try:
+            loc += sum(1 for _ in f.open("rb"))
+        except OSError:
+            continue
+    return {"scripts": scripts, "loc": loc}
 
 
 def count_linkedin_drafts() -> int:
@@ -130,10 +164,23 @@ def main():
     # Collect tool stats
     tools = {name: tool_stats(TOOLS_DIR / repo) for name, repo in TOOL_REPOS.items()}
 
+    # Restaurant planner lives inside the immo repo as gastrocheck.html —
+    # measure it separately so it can be shown as its own card.
+    gastro = file_stats(TOOLS_DIR / "immo", "frontend/gastrocheck.html")
+
+    # "Real Estate Investment" = immo repo minus the gastro frontend file
+    real_estate = {
+        "backend": tools["immo"]["backend"],
+        "frontend": tools["immo"]["frontend"] - gastro["loc"],
+        "tests": tools["immo"]["tests"],
+        "total": tools["immo"]["total"] - gastro["loc"],
+        "commits": tools["immo"]["commits"] - gastro["commits"],
+    }
+
     # Shared platform LOC
     shared_loc = count_lines(PLATTFORM_DIR, ["*.py"])
 
-    # Aggregate
+    # Aggregate (use original immo totals so we don't double-count)
     frontend = sum(t["frontend"] for t in tools.values())
     backend = sum(t["backend"] for t in tools.values())
     tests = sum(t["tests"] for t in tools.values())
@@ -148,13 +195,13 @@ def main():
     backend_pct = round(backend_and_tests / total_all * 100)
     shared_pct = round(shared_loc / total_all * 100)
 
-    # Tools count: living tool repos
-    tools_live = len(TOOL_REPOS)
-    # Simple heuristic: hausverwalter in dev, others live
-    tools_status = f"{tools_live - 1} live, 1 in dev"
+    # 5 distinct products on the page + shared infrastructure (not counted)
+    # Real Estate, Restaurant Planner, Freelance Accountant, Airbnb/Booking, Property Mgmt
+    tools_live = 5
+    tools_status = "4 live, 1 in dev"
 
     # Agent metrics
-    transcripts = count_transcripts()
+    automation = count_automation()
     drafts = count_linkedin_drafts()
     knowledge = count_knowledge()
 
@@ -183,7 +230,8 @@ def main():
         "tools": tools,
         "agents": {
             "scheduled_jobs_per_day": SCHEDULED_JOBS_PER_DAY,
-            "transcripts": transcripts,
+            "automation_scripts": automation["scripts"],
+            "automation_loc": automation["loc"],
             "drafts": drafts,
             "knowledge": knowledge,
         },
@@ -205,11 +253,16 @@ def main():
         "SHARED_LOC": f"~{humanize(shared_loc)}",
         "SHARED_PCT": str(shared_pct),
 
-        "IMMO_LOC": humanize(tools["immo"]["total"]),
-        "IMMO_FRONTEND": humanize(tools["immo"]["frontend"]),
-        "IMMO_BACKEND": humanize(tools["immo"]["backend"]),
-        "IMMO_TESTS": humanize(tools["immo"]["tests"]),
-        "IMMO_COMMITS": str(tools["immo"]["commits"]),
+        # Real Estate Investment (immo minus gastro)
+        "IMMO_LOC": humanize(real_estate["total"]),
+        "IMMO_FRONTEND": humanize(real_estate["frontend"]),
+        "IMMO_BACKEND": humanize(real_estate["backend"]),
+        "IMMO_TESTS": humanize(real_estate["tests"]),
+        "IMMO_COMMITS": str(real_estate["commits"]),
+
+        # Restaurant Business Planner (gastrocheck.html inside immo)
+        "GASTRO_LOC": humanize(gastro["loc"]),
+        "GASTRO_COMMITS": str(gastro["commits"]),
 
         "FEWO_LOC": humanize(tools["fewo"]["total"]),
         "FEWO_FRONTEND": humanize(tools["fewo"]["frontend"]),
@@ -232,7 +285,8 @@ def main():
         "SHARED_LOC": humanize(shared_loc),
 
         "SCHEDULED_JOBS": str(SCHEDULED_JOBS_PER_DAY),
-        "TRANSCRIPTS": humanize(transcripts),
+        "AUTO_LOC": f"~{humanize(automation['loc'])}",
+        "AUTO_SCRIPTS": str(automation["scripts"]),
         "DRAFTS": str(drafts),
         "KNOWLEDGE": knowledge,
 
