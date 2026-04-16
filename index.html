@@ -192,6 +192,93 @@
   .foot-links a:hover{color:var(--accent);}
   .foot-note{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-light);}
 
+  /* === BRAIN PAGE — spectacular === */
+  .brain-hero{display:grid;grid-template-columns:260px 1fr;gap:48px;align-items:center;margin-bottom:72px;}
+  .brain-visual{position:relative;width:260px;height:260px;display:flex;align-items:center;justify-content:center;}
+  .brain-core{
+    width:150px;height:150px;border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, #C4DCFE 0%, #7AAFF0 35%, #3a5a8a 75%, #1C2540 100%);
+    box-shadow:0 0 60px rgba(122,175,240,0.5), inset 0 2px 20px rgba(255,255,255,0.25);
+    position:relative;z-index:3;display:flex;align-items:center;justify-content:center;
+    font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:rgba(11,15,30,0.75);
+    letter-spacing:0.22em;text-transform:uppercase;
+    animation:brain-pulse 3.2s ease-in-out infinite;
+  }
+  .brain-ring{
+    position:absolute;top:50%;left:50%;border:1.5px solid #7AAFF0;border-radius:50%;
+    transform:translate(-50%,-50%);animation:ring-pulse 3.2s ease-out infinite;opacity:0;pointer-events:none;
+  }
+  .brain-ring.r1{animation-delay:0s;}
+  .brain-ring.r2{animation-delay:1.07s;}
+  .brain-ring.r3{animation-delay:2.13s;}
+  @keyframes brain-pulse{
+    0%,100%{transform:scale(1);box-shadow:0 0 60px rgba(122,175,240,0.5), inset 0 2px 20px rgba(255,255,255,0.25);}
+    50%{transform:scale(1.05);box-shadow:0 0 100px rgba(122,175,240,0.75), inset 0 2px 20px rgba(255,255,255,0.3);}
+  }
+  @keyframes ring-pulse{
+    0%{width:150px;height:150px;opacity:0.9;border-width:2px;}
+    100%{width:300px;height:300px;opacity:0;border-width:1px;}
+  }
+
+  /* Animated flow arrow with traveling pulse dots */
+  .brain-arrow-anim{display:flex;align-items:center;justify-content:center;position:relative;height:60px;}
+  .brain-arrow-track{position:relative;width:100%;height:2px;max-width:60px;
+    background:linear-gradient(90deg, transparent 0%, rgba(122,175,240,0.4) 20%, rgba(122,175,240,0.6) 50%, rgba(122,175,240,0.4) 80%, transparent 100%);
+    overflow:visible;}
+  .brain-arrow-track::after{content:"▸";position:absolute;right:-12px;top:-10px;color:var(--accent);font-size:18px;opacity:0.7;}
+  .brain-arrow-dot{
+    position:absolute;top:50%;width:6px;height:6px;border-radius:50%;
+    background:var(--accent);margin-top:-3px;margin-left:-3px;
+    box-shadow:0 0 12px var(--accent), 0 0 4px #fff;
+    animation:flow-dot 2.4s linear infinite;
+  }
+  .brain-arrow-dot.d2{animation-delay:0.8s;}
+  .brain-arrow-dot.d3{animation-delay:1.6s;}
+  @keyframes flow-dot{
+    0%{left:0;opacity:0;}
+    10%{opacity:1;}
+    90%{opacity:1;}
+    100%{left:100%;opacity:0;}
+  }
+
+  /* Center column glow */
+  .brain-col.center{position:relative;box-shadow:0 0 30px rgba(122,175,240,0.15), inset 0 1px 0 rgba(122,175,240,0.2);}
+  .brain-col.center .brain-item{position:relative;overflow:hidden;}
+  .brain-col.center .brain-item::before{
+    content:"";position:absolute;left:-100%;top:0;width:50%;height:100%;
+    background:linear-gradient(90deg, transparent, rgba(122,175,240,0.08), transparent);
+    animation:scan 4s linear infinite;
+  }
+  @keyframes scan{0%{left:-100%;}100%{left:200%;}}
+
+  /* Terminal */
+  .terminal{
+    background:#08090f;border:1px solid var(--line);border-radius:12px;
+    overflow:hidden;margin-bottom:48px;box-shadow:0 20px 60px rgba(0,0,0,0.4);
+  }
+  .terminal-header{
+    background:#141823;padding:10px 16px;display:flex;align-items:center;gap:8px;
+    border-bottom:1px solid var(--line);
+  }
+  .terminal-dot{width:10px;height:10px;border-radius:50%;}
+  .terminal-dot.r{background:#ff5f56;}
+  .terminal-dot.y{background:#ffbd2e;}
+  .terminal-dot.g{background:#27c93f;}
+  .terminal-title{margin-left:12px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-light);}
+  .terminal-body{padding:24px 28px;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.9;color:var(--ink-mid);white-space:pre-wrap;}
+  .terminal-body .prompt{color:#27c93f;font-weight:600;}
+  .terminal-body .cmd{color:var(--cream);}
+  .terminal-body .comment{color:var(--ink-light);}
+  .terminal-body .score{color:var(--accent);font-weight:600;}
+  .terminal-body .src{color:#a88fd4;}
+  .terminal-body .match{color:var(--cream);}
+  .terminal-body .timing{color:#27c93f;}
+  .terminal-body .sep{color:var(--line);}
+  .terminal-cursor{display:inline-block;width:8px;height:14px;background:#27c93f;margin-left:2px;vertical-align:text-bottom;animation:blink 1.1s steps(2) infinite;}
+  @keyframes blink{50%{opacity:0;}}
+
+  .brain-stats{grid-template-columns:repeat(3,1fr);}
+
   /* === TABLET (900px and below) === */
   @media (max-width:900px){
     .hero.with-portrait{grid-template-columns:1fr;gap:28px;text-align:left;}
@@ -281,6 +368,12 @@
     .brain-item-name{font-size:12px;}
     .brain-item-meta{font-size:10px;}
     .brain-stats{grid-template-columns:1fr;}
+    .brain-hero{grid-template-columns:1fr;gap:28px;}
+    .brain-visual{margin:0 auto;width:200px;height:200px;}
+    .brain-core{width:110px;height:110px;font-size:11px;}
+    @keyframes ring-pulse{0%{width:110px;height:110px;opacity:0.9;}100%{width:220px;height:220px;opacity:0;}}
+    .terminal-body{padding:16px 18px;font-size:11px;line-height:1.75;}
+    .terminal-title{font-size:10px;}
 
     /* Compare */
     .compare{gap:12px;margin-bottom:36px;}
@@ -681,10 +774,18 @@
   <!-- PAGE 3: BRAIN -->
   <!-- ============================================================ -->
   <div class="page" id="page-brain">
-    <div class="hero">
-      <div class="label">The Open Brain</div>
-      <div class="hero-headline">One brain.<br>Many agents.</div>
-      <div class="hero-sub">Central vector store every agent reads from and writes to. Supabase pgvector + local bge-m3 embeddings. Knowledge compounds daily.</div>
+    <div class="brain-hero">
+      <div class="brain-visual">
+        <div class="brain-ring r1"></div>
+        <div class="brain-ring r2"></div>
+        <div class="brain-ring r3"></div>
+        <div class="brain-core">sam's brain</div>
+      </div>
+      <div>
+        <div class="label">The Open Brain</div>
+        <div class="hero-headline">One brain.<br>Many agents.</div>
+        <div class="hero-sub">A local-first vector store. Every agent reads from it, writes to it, learns from it. No cloud AI calls. Knowledge compounds daily.</div>
+      </div>
     </div>
 
     <div class="section-title">Data flow</div>
@@ -696,7 +797,13 @@
         <div class="brain-item"><div class="brain-item-name">Knowledge base</div><div class="brain-item-meta">manual entries, 400+</div></div>
         <div class="brain-item"><div class="brain-item-name">Newsletters</div><div class="brain-item-meta">Mac Mail collector</div></div>
       </div>
-      <div class="brain-arrow">&rarr;</div>
+      <div class="brain-arrow-anim">
+        <div class="brain-arrow-track">
+          <div class="brain-arrow-dot d1"></div>
+          <div class="brain-arrow-dot d2"></div>
+          <div class="brain-arrow-dot d3"></div>
+        </div>
+      </div>
       <div class="brain-col center">
         <div class="brain-col-label">Open Brain</div>
         <div class="brain-item" style="border-color:var(--accent-soft);"><div class="brain-item-name">Supabase pgvector</div><div class="brain-item-meta">1 table, 3 source types</div></div>
@@ -704,21 +811,50 @@
         <div class="brain-item" style="border-color:var(--accent-soft);"><div class="brain-item-name">RPC: search_documents</div><div class="brain-item-meta">cosine similarity + rank</div></div>
         <div class="brain-item" style="border-color:var(--accent-soft);"><div class="brain-item-name">Idempotent indexing</div><div class="brain-item-meta">source_ref as dedup key</div></div>
       </div>
-      <div class="brain-arrow">&rarr;</div>
+      <div class="brain-arrow-anim">
+        <div class="brain-arrow-track">
+          <div class="brain-arrow-dot d1"></div>
+          <div class="brain-arrow-dot d2"></div>
+          <div class="brain-arrow-dot d3"></div>
+        </div>
+      </div>
       <div class="brain-col">
         <div class="brain-col-label">Consumers</div>
-        <div class="brain-item"><div class="brain-item-name">topic picker</div><div class="brain-item-meta">linkedin-agent, x-agent</div></div>
+        <div class="brain-item"><div class="brain-item-name">topic picker</div><div class="brain-item-meta">content agents</div></div>
         <div class="brain-item"><div class="brain-item-name">draft generator</div><div class="brain-item-meta">reads transcript chunks</div></div>
         <div class="brain-item"><div class="brain-item-name">qa-reviewer</div><div class="brain-item-meta">pulls context for checks</div></div>
         <div class="brain-item"><div class="brain-item-name">Manual queries</div><div class="brain-item-meta">wissen_api.py CLI</div></div>
       </div>
     </div>
 
+    <div class="section-title">A query's journey</div>
+    <div class="section-sub">When an agent needs context, this is what actually happens.</div>
+    <div class="terminal">
+      <div class="terminal-header">
+        <span class="terminal-dot r"></span><span class="terminal-dot y"></span><span class="terminal-dot g"></span>
+        <span class="terminal-title">sam ~ wissen_api.py</span>
+      </div>
+      <div class="terminal-body"><span class="prompt">$</span> <span class="cmd">sam query "how to position an AI-for-SMB consulting offer"</span>
+
+<span class="comment">  → embedding query via ollama bge-m3 (local)</span>
+<span class="comment">  → searching documents table (cosine similarity + rank)</span>
+<span class="comment">  → 3 matches above threshold 0.75</span>
+
+  <span class="score">0.924</span>  <span class="src">youtube  </span>  <span class="match">how-to-pick-a-niche-as-a-non-coder</span>
+  <span class="score">0.878</span>  <span class="src">session  </span>  <span class="match">build-decision · ai-for-smb positioning</span>
+  <span class="score">0.841</span>  <span class="src">wissen   </span>  <span class="match">consulting-engagement-playbook</span>
+
+<span class="timing">  ✓ completed in 78 ms · 0 cloud calls · €0</span><span class="terminal-cursor"></span></div>
+    </div>
+
     <div class="section-title">Brain at a glance</div>
     <div class="brain-stats">
       <div class="brain-stat"><div class="stat-label">Entries</div><div class="stat-num">400+</div><div class="stat-meta">growing daily</div></div>
       <div class="brain-stat"><div class="stat-label">Source types</div><div class="stat-num">3</div><div class="stat-meta">youtube, wissen, session</div></div>
-      <div class="brain-stat"><div class="stat-label">Embedding model</div><div class="stat-num">bge-m3</div><div class="stat-meta">local, offline-capable</div></div>
+      <div class="brain-stat"><div class="stat-label">Dimensions</div><div class="stat-num">1,024</div><div class="stat-meta">per embedding vector</div></div>
+      <div class="brain-stat"><div class="stat-label">Model</div><div class="stat-num">bge-m3</div><div class="stat-meta">Ollama, offline-capable</div></div>
+      <div class="brain-stat"><div class="stat-label">Cloud AI calls</div><div class="stat-num">0</div><div class="stat-meta">all embeddings local</div></div>
+      <div class="brain-stat"><div class="stat-label">Dedup</div><div class="stat-num">idempotent</div><div class="stat-meta">by source_ref key</div></div>
     </div>
   </div>
 
