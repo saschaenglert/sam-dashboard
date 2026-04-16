@@ -1,0 +1,57 @@
+{
+  "generated_at": "2026-04-16T23:35:34.628705",
+  "last_updated": "April 2026",
+  "totals": {
+    "loc_all": 81245,
+    "loc_tools": 73883,
+    "commits": 484,
+    "quality_gates": 16,
+    "coverage_min": 60,
+    "tools_live": 4,
+    "tools_status": "3 live, 1 in dev"
+  },
+  "split": {
+    "frontend_loc": 39489,
+    "frontend_pct": 49,
+    "backend_loc": 34394,
+    "backend_pct": 42,
+    "shared_loc": 7362,
+    "shared_pct": 9
+  },
+  "tools": {
+    "immo": {
+      "backend": 1016,
+      "frontend": 20301,
+      "tests": 1415,
+      "total": 22732,
+      "commits": 243
+    },
+    "fewo": {
+      "backend": 8689,
+      "frontend": 10634,
+      "tests": 731,
+      "total": 20054,
+      "commits": 131
+    },
+    "buchhaltung": {
+      "backend": 5217,
+      "frontend": 4011,
+      "tests": 4551,
+      "total": 13779,
+      "commits": 67
+    },
+    "hausverwalter": {
+      "backend": 8057,
+      "frontend": 4543,
+      "tests": 4718,
+      "total": 17318,
+      "commits": 43
+    }
+  },
+  "agents": {
+    "scheduled_jobs_per_day": 7,
+    "transcripts": 381,
+    "drafts": 14,
+    "knowledge": "400+"
+  }
+}
