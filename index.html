@@ -192,6 +192,97 @@
   .foot-links a:hover{color:var(--accent);}
   .foot-note{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-light);}
 
+  /* === COMMIT HEATMAP (Code page) === */
+  .heatmap-wrap{background:var(--navy);border:1px solid var(--line);border-radius:12px;padding:28px;margin-bottom:48px;}
+  .heatmap-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;flex-wrap:wrap;gap:12px;}
+  .heatmap-title{font-family:'Syne',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.02em;}
+  .heatmap-meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-light);}
+  .heatmap-meta strong{color:var(--cream);font-weight:500;}
+  .heatmap{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,1fr);gap:3px;margin-bottom:14px;}
+  .hm-cell{aspect-ratio:1;border-radius:2px;background:#161a28;transition:transform 0.12s;}
+  .hm-cell:hover{transform:scale(1.3);}
+  .hm-cell.empty{visibility:hidden;}
+  .hm-cell.l1{background:#1e3556;}
+  .hm-cell.l2{background:#325d94;}
+  .hm-cell.l3{background:#4f87c7;}
+  .hm-cell.l4{background:#7AAFF0;box-shadow:0 0 6px rgba(122,175,240,0.4);}
+  .heatmap-legend{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-light);}
+  .heatmap-legend-cells{display:flex;gap:3px;}
+  .heatmap-legend-cells .hm-cell{width:11px;height:11px;flex-shrink:0;}
+
+  /* === CHATBOT (Ask Sam) === */
+  .chat-launcher{
+    position:fixed;bottom:20px;right:20px;z-index:100;
+    width:60px;height:60px;border-radius:50%;
+    background:linear-gradient(135deg,#7AAFF0,#a88fd4);
+    border:none;cursor:pointer;
+    box-shadow:0 8px 24px rgba(122,175,240,0.4), 0 0 0 0 rgba(122,175,240,0.5);
+    display:flex;align-items:center;justify-content:center;
+    transition:transform 0.2s, box-shadow 0.2s;
+    animation:chat-pulse 3s ease-in-out infinite;
+  }
+  .chat-launcher:hover{transform:scale(1.08);box-shadow:0 12px 32px rgba(122,175,240,0.55);}
+  @keyframes chat-pulse{
+    0%,100%{box-shadow:0 8px 24px rgba(122,175,240,0.4), 0 0 0 0 rgba(122,175,240,0.5);}
+    50%{box-shadow:0 8px 24px rgba(122,175,240,0.5), 0 0 0 12px rgba(122,175,240,0);}
+  }
+  .chat-launcher-icon{width:30px;height:30px;background:url('sam-avatar.jpg') center/cover;border-radius:50%;border:2px solid rgba(255,255,255,0.5);}
+  .chat-launcher-badge{
+    position:absolute;top:-4px;right:-4px;
+    width:18px;height:18px;border-radius:50%;background:#27c93f;
+    border:2px solid var(--navy-deep);
+  }
+
+  .chat-panel{
+    position:fixed;bottom:96px;right:20px;z-index:101;
+    width:380px;max-width:calc(100vw - 40px);height:540px;max-height:calc(100vh - 120px);
+    background:#0b1024;border:1px solid var(--accent-soft);border-radius:16px;
+    display:none;flex-direction:column;overflow:hidden;
+    box-shadow:0 24px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(122,175,240,0.2);
+    animation:chat-slide 0.25s ease-out;
+  }
+  .chat-panel.open{display:flex;}
+  @keyframes chat-slide{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+  .chat-header{
+    padding:14px 18px;border-bottom:1px solid var(--line);
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);
+    display:flex;align-items:center;gap:12px;
+  }
+  .chat-avatar{width:36px;height:36px;border-radius:50%;background:url('sam-avatar.jpg') center/cover;border:1px solid var(--accent-soft);}
+  .chat-who{flex:1;}
+  .chat-name{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;}
+  .chat-status{font-size:11px;color:var(--green);display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;}
+  .chat-status::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);}
+  .chat-close{background:none;border:none;color:var(--ink-light);cursor:pointer;font-size:22px;padding:0 4px;line-height:1;}
+  .chat-close:hover{color:var(--cream);}
+  .chat-messages{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px;}
+  .chat-msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:13px;line-height:1.5;animation:msg-in 0.2s ease-out;}
+  @keyframes msg-in{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+  .chat-msg.bot{align-self:flex-start;background:var(--navy);color:var(--cream);border-bottom-left-radius:4px;}
+  .chat-msg.user{align-self:flex-end;background:var(--accent);color:var(--navy-deep);font-weight:500;border-bottom-right-radius:4px;}
+  .chat-msg.bot a{color:var(--accent);text-decoration:underline;}
+  .chat-chips{padding:0 18px 12px;display:flex;flex-wrap:wrap;gap:6px;}
+  .chat-chip{
+    background:transparent;border:1px solid var(--line);color:var(--ink-mid);
+    padding:7px 12px;border-radius:99px;font-size:11.5px;cursor:pointer;
+    font-family:'Inter',sans-serif;transition:all 0.15s;
+  }
+  .chat-chip:hover{border-color:var(--accent);color:var(--accent);}
+  .chat-input-row{padding:12px 14px;border-top:1px solid var(--line);display:flex;gap:8px;background:#070a18;}
+  .chat-input{
+    flex:1;background:var(--navy);border:1px solid var(--line);border-radius:10px;
+    padding:10px 14px;color:var(--cream);font-family:'Inter',sans-serif;font-size:13px;outline:none;
+  }
+  .chat-input:focus{border-color:var(--accent-soft);}
+  .chat-send{
+    background:var(--accent);color:var(--navy-deep);border:none;
+    padding:0 16px;border-radius:10px;cursor:pointer;font-family:'Syne',sans-serif;font-weight:600;font-size:13px;
+  }
+  .chat-send:hover{background:#9FC7FF;}
+
+  /* CTA now supports 3 buttons side by side on desktop */
+  .cta-buttons{gap:10px;}
+
   /* === AGENTS PAGE — orbital visualization === */
   .agents-hero{display:grid;grid-template-columns:320px 1fr;gap:56px;align-items:center;margin-bottom:72px;}
   .orbital{position:relative;width:320px;height:320px;}
@@ -571,6 +662,26 @@
         <div style="background:var(--green);width:49%;color:var(--navy-deep)">Frontend</div>
         <div style="background:var(--accent);width:42%">Backend + tests</div>
         <div style="background:var(--purple);width:9%"></div>
+      </div>
+    </div>
+
+    <div class="section-title">Commit activity</div>
+    <div class="heatmap-wrap">
+      <div class="heatmap-head">
+        <div class="heatmap-title">Commits across every repo — last 21 weeks</div>
+        <div class="heatmap-meta"><strong>484</strong> commits · busiest day: <strong>42</strong></div>
+      </div>
+      <div class="heatmap"><div class="hm-cell l0" title="2025-11-24: 0 commits"></div><div class="hm-cell l0" title="2025-11-25: 0 commits"></div><div class="hm-cell l0" title="2025-11-26: 0 commits"></div><div class="hm-cell l0" title="2025-11-27: 0 commits"></div><div class="hm-cell l0" title="2025-11-28: 0 commits"></div><div class="hm-cell l0" title="2025-11-29: 0 commits"></div><div class="hm-cell l0" title="2025-11-30: 0 commits"></div><div class="hm-cell l0" title="2025-12-01: 0 commits"></div><div class="hm-cell l0" title="2025-12-02: 0 commits"></div><div class="hm-cell l0" title="2025-12-03: 0 commits"></div><div class="hm-cell l0" title="2025-12-04: 0 commits"></div><div class="hm-cell l0" title="2025-12-05: 0 commits"></div><div class="hm-cell l0" title="2025-12-06: 0 commits"></div><div class="hm-cell l0" title="2025-12-07: 0 commits"></div><div class="hm-cell l0" title="2025-12-08: 0 commits"></div><div class="hm-cell l0" title="2025-12-09: 0 commits"></div><div class="hm-cell l0" title="2025-12-10: 0 commits"></div><div class="hm-cell l0" title="2025-12-11: 0 commits"></div><div class="hm-cell l0" title="2025-12-12: 0 commits"></div><div class="hm-cell l0" title="2025-12-13: 0 commits"></div><div class="hm-cell l0" title="2025-12-14: 0 commits"></div><div class="hm-cell l0" title="2025-12-15: 0 commits"></div><div class="hm-cell l0" title="2025-12-16: 0 commits"></div><div class="hm-cell l0" title="2025-12-17: 0 commits"></div><div class="hm-cell l0" title="2025-12-18: 0 commits"></div><div class="hm-cell l0" title="2025-12-19: 0 commits"></div><div class="hm-cell l0" title="2025-12-20: 0 commits"></div><div class="hm-cell l0" title="2025-12-21: 0 commits"></div><div class="hm-cell l0" title="2025-12-22: 0 commits"></div><div class="hm-cell l0" title="2025-12-23: 0 commits"></div><div class="hm-cell l0" title="2025-12-24: 0 commits"></div><div class="hm-cell l0" title="2025-12-25: 0 commits"></div><div class="hm-cell l0" title="2025-12-26: 0 commits"></div><div class="hm-cell l0" title="2025-12-27: 0 commits"></div><div class="hm-cell l0" title="2025-12-28: 0 commits"></div><div class="hm-cell l0" title="2025-12-29: 0 commits"></div><div class="hm-cell l0" title="2025-12-30: 0 commits"></div><div class="hm-cell l0" title="2025-12-31: 0 commits"></div><div class="hm-cell l0" title="2026-01-01: 0 commits"></div><div class="hm-cell l0" title="2026-01-02: 0 commits"></div><div class="hm-cell l0" title="2026-01-03: 0 commits"></div><div class="hm-cell l0" title="2026-01-04: 0 commits"></div><div class="hm-cell l0" title="2026-01-05: 0 commits"></div><div class="hm-cell l0" title="2026-01-06: 0 commits"></div><div class="hm-cell l0" title="2026-01-07: 0 commits"></div><div class="hm-cell l0" title="2026-01-08: 0 commits"></div><div class="hm-cell l0" title="2026-01-09: 0 commits"></div><div class="hm-cell l0" title="2026-01-10: 0 commits"></div><div class="hm-cell l0" title="2026-01-11: 0 commits"></div><div class="hm-cell l0" title="2026-01-12: 0 commits"></div><div class="hm-cell l0" title="2026-01-13: 0 commits"></div><div class="hm-cell l0" title="2026-01-14: 0 commits"></div><div class="hm-cell l0" title="2026-01-15: 0 commits"></div><div class="hm-cell l0" title="2026-01-16: 0 commits"></div><div class="hm-cell l0" title="2026-01-17: 0 commits"></div><div class="hm-cell l0" title="2026-01-18: 0 commits"></div><div class="hm-cell l0" title="2026-01-19: 0 commits"></div><div class="hm-cell l0" title="2026-01-20: 0 commits"></div><div class="hm-cell l0" title="2026-01-21: 0 commits"></div><div class="hm-cell l0" title="2026-01-22: 0 commits"></div><div class="hm-cell l0" title="2026-01-23: 0 commits"></div><div class="hm-cell l0" title="2026-01-24: 0 commits"></div><div class="hm-cell l0" title="2026-01-25: 0 commits"></div><div class="hm-cell l0" title="2026-01-26: 0 commits"></div><div class="hm-cell l0" title="2026-01-27: 0 commits"></div><div class="hm-cell l0" title="2026-01-28: 0 commits"></div><div class="hm-cell l0" title="2026-01-29: 0 commits"></div><div class="hm-cell l0" title="2026-01-30: 0 commits"></div><div class="hm-cell l0" title="2026-01-31: 0 commits"></div><div class="hm-cell l0" title="2026-02-01: 0 commits"></div><div class="hm-cell l0" title="2026-02-02: 0 commits"></div><div class="hm-cell l0" title="2026-02-03: 0 commits"></div><div class="hm-cell l0" title="2026-02-04: 0 commits"></div><div class="hm-cell l0" title="2026-02-05: 0 commits"></div><div class="hm-cell l0" title="2026-02-06: 0 commits"></div><div class="hm-cell l0" title="2026-02-07: 0 commits"></div><div class="hm-cell l0" title="2026-02-08: 0 commits"></div><div class="hm-cell l0" title="2026-02-09: 0 commits"></div><div class="hm-cell l0" title="2026-02-10: 0 commits"></div><div class="hm-cell l0" title="2026-02-11: 0 commits"></div><div class="hm-cell l0" title="2026-02-12: 0 commits"></div><div class="hm-cell l0" title="2026-02-13: 0 commits"></div><div class="hm-cell l0" title="2026-02-14: 0 commits"></div><div class="hm-cell l0" title="2026-02-15: 0 commits"></div><div class="hm-cell l0" title="2026-02-16: 0 commits"></div><div class="hm-cell l0" title="2026-02-17: 0 commits"></div><div class="hm-cell l0" title="2026-02-18: 0 commits"></div><div class="hm-cell l0" title="2026-02-19: 0 commits"></div><div class="hm-cell l0" title="2026-02-20: 0 commits"></div><div class="hm-cell l4" title="2026-02-21: 20 commits"></div><div class="hm-cell l3" title="2026-02-22: 10 commits"></div><div class="hm-cell l4" title="2026-02-23: 26 commits"></div><div class="hm-cell l0" title="2026-02-24: 0 commits"></div><div class="hm-cell l3" title="2026-02-25: 15 commits"></div><div class="hm-cell l4" title="2026-02-26: 37 commits"></div><div class="hm-cell l3" title="2026-02-27: 14 commits"></div><div class="hm-cell l1" title="2026-02-28: 1 commits"></div><div class="hm-cell l4" title="2026-03-01: 24 commits"></div><div class="hm-cell l4" title="2026-03-02: 19 commits"></div><div class="hm-cell l3" title="2026-03-03: 13 commits"></div><div class="hm-cell l2" title="2026-03-04: 7 commits"></div><div class="hm-cell l3" title="2026-03-05: 10 commits"></div><div class="hm-cell l3" title="2026-03-06: 11 commits"></div><div class="hm-cell l1" title="2026-03-07: 1 commits"></div><div class="hm-cell l4" title="2026-03-08: 42 commits"></div><div class="hm-cell l4" title="2026-03-09: 38 commits"></div><div class="hm-cell l4" title="2026-03-10: 31 commits"></div><div class="hm-cell l4" title="2026-03-11: 22 commits"></div><div class="hm-cell l3" title="2026-03-12: 10 commits"></div><div class="hm-cell l2" title="2026-03-13: 6 commits"></div><div class="hm-cell l4" title="2026-03-14: 21 commits"></div><div class="hm-cell l4" title="2026-03-15: 28 commits"></div><div class="hm-cell l2" title="2026-03-16: 3 commits"></div><div class="hm-cell l1" title="2026-03-17: 2 commits"></div><div class="hm-cell l0" title="2026-03-18: 0 commits"></div><div class="hm-cell l2" title="2026-03-19: 3 commits"></div><div class="hm-cell l0" title="2026-03-20: 0 commits"></div><div class="hm-cell l0" title="2026-03-21: 0 commits"></div><div class="hm-cell l0" title="2026-03-22: 0 commits"></div><div class="hm-cell l0" title="2026-03-23: 0 commits"></div><div class="hm-cell l0" title="2026-03-24: 0 commits"></div><div class="hm-cell l0" title="2026-03-25: 0 commits"></div><div class="hm-cell l0" title="2026-03-26: 0 commits"></div><div class="hm-cell l3" title="2026-03-27: 13 commits"></div><div class="hm-cell l4" title="2026-03-28: 19 commits"></div><div class="hm-cell l0" title="2026-03-29: 0 commits"></div><div class="hm-cell l2" title="2026-03-30: 3 commits"></div><div class="hm-cell l0" title="2026-03-31: 0 commits"></div><div class="hm-cell l3" title="2026-04-01: 8 commits"></div><div class="hm-cell l3" title="2026-04-02: 10 commits"></div><div class="hm-cell l4" title="2026-04-03: 16 commits"></div><div class="hm-cell l0" title="2026-04-04: 0 commits"></div><div class="hm-cell l0" title="2026-04-05: 0 commits"></div><div class="hm-cell l0" title="2026-04-06: 0 commits"></div><div class="hm-cell l0" title="2026-04-07: 0 commits"></div><div class="hm-cell l0" title="2026-04-08: 0 commits"></div><div class="hm-cell l1" title="2026-04-09: 1 commits"></div><div class="hm-cell l0" title="2026-04-10: 0 commits"></div><div class="hm-cell l0" title="2026-04-11: 0 commits"></div><div class="hm-cell l0" title="2026-04-12: 0 commits"></div><div class="hm-cell l0" title="2026-04-13: 0 commits"></div><div class="hm-cell l0" title="2026-04-14: 0 commits"></div><div class="hm-cell l0" title="2026-04-15: 0 commits"></div><div class="hm-cell l0" title="2026-04-16: 0 commits"></div><div class="hm-cell l0" title="2026-04-17: 0 commits"></div><div class="hm-cell empty"></div><div class="hm-cell empty"></div></div>
+      <div class="heatmap-legend">
+        <span>less</span>
+        <div class="heatmap-legend-cells">
+          <div class="hm-cell"></div>
+          <div class="hm-cell l1"></div>
+          <div class="hm-cell l2"></div>
+          <div class="hm-cell l3"></div>
+          <div class="hm-cell l4"></div>
+        </div>
+        <span>more</span>
       </div>
     </div>
 
@@ -1057,8 +1168,12 @@
           <span>Message on LinkedIn</span>
           <span class="cta-arrow">&rarr;</span>
         </a>
-        <a href="https://x.com/ceosamgonzales" target="_blank" class="cta-btn secondary">
-          <span>Follow on X</span>
+        <a href="https://wa.me/4917628948811?text=Hi%20Sascha%2C%20I%20saw%20your%20Sam%20dashboard..." target="_blank" class="cta-btn secondary">
+          <span>WhatsApp</span>
+          <span class="cta-arrow">&rarr;</span>
+        </a>
+        <a href="https://t.me/+4917628948811" target="_blank" class="cta-btn secondary">
+          <span>Telegram</span>
           <span class="cta-arrow">&rarr;</span>
         </a>
       </div>
@@ -1086,6 +1201,186 @@
     };
   });
   function toggleTool(el){el.classList.toggle('open');}
+</script>
+
+<!-- ASK SAM — chatbot widget -->
+<button class="chat-launcher" id="chatLauncher" aria-label="Ask Sam">
+  <div class="chat-launcher-icon"></div>
+  <span class="chat-launcher-badge"></span>
+</button>
+
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-header">
+    <div class="chat-avatar"></div>
+    <div class="chat-who">
+      <div class="chat-name">Sam</div>
+      <div class="chat-status">online · AI CEO</div>
+    </div>
+    <button class="chat-close" id="chatClose" aria-label="Close">&times;</button>
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-chips" id="chatChips"></div>
+  <form class="chat-input-row" id="chatForm">
+    <input type="text" class="chat-input" id="chatInput" placeholder="Ask me anything..." autocomplete="off">
+    <button type="submit" class="chat-send">Send</button>
+  </form>
+</div>
+
+<script>
+// ASK SAM — curated FAQ matcher (no API, no leakage)
+const SAM_FAQ = [
+  {
+    q: ["what is sam", "who is sam", "what is this", "what does sam do", "what are you"],
+    a: "I'm Sam — an AI-built business ecosystem. Sascha is the supervisory board and management consultant, I'm the CEO and operator. Think of me as a small company run entirely by agents, built in 5 weeks."
+  },
+  {
+    q: ["who built", "who made", "who created", "who is sascha", "who is behind"],
+    a: "Sascha Englert built this. He's a senior operations professional — 25+ years in transformation, asset management, and PM roles. Zero lines of code written by him personally; he designs, I execute. <a href='https://www.linkedin.com/in/sascha-englert-consulting/' target='_blank'>His LinkedIn</a>."
+  },
+  {
+    q: ["how long", "how fast", "5 weeks", "when started", "when did you start"],
+    a: "The whole ecosystem came together in about 5 weeks. Multi-tool codebase, 8 autonomous agents, shared memory, quality pipelines — all built without Sascha writing code himself. Speed matters."
+  },
+  {
+    q: ["hire", "hiring", "available", "consulting", "can sascha help", "can you help", "work with", "work together"],
+    a: "Sascha is exploring opportunities — senior operations roles, fractional consulting, and AI-for-SMB engagements. The easiest way to talk to him is directly: drop him a <a href='https://wa.me/4917628948811' target='_blank'>WhatsApp</a> or <a href='https://www.linkedin.com/in/sascha-englert-consulting/' target='_blank'>LinkedIn message</a>."
+  },
+  {
+    q: ["contact", "reach", "get in touch", "how to contact", "message sascha"],
+    a: "Three options: <a href='https://www.linkedin.com/in/sascha-englert-consulting/' target='_blank'>LinkedIn</a> for professional, <a href='https://wa.me/4917628948811' target='_blank'>WhatsApp</a> for fast, <a href='https://t.me/+4917628948811' target='_blank'>Telegram</a> if you prefer. Just say hi."
+  },
+  {
+    q: ["code", "programming", "developer", "python", "tech", "stack"],
+    a: "Python + Flask backend, vanilla HTML/CSS/JS frontend, PostgreSQL on Render, Supabase pgvector for the knowledge brain, Ollama bge-m3 for local embeddings. Zero cloud AI calls for memory — all local-first. More detail on the Code tab."
+  },
+  {
+    q: ["agents", "how many agents", "automation", "autonomous"],
+    a: "8 autonomous agents running on cron and launchd. Each has its own job — one handles content pipelines, one indexes knowledge, one runs the overnight consolidator, and so on. See them on the Agents tab."
+  },
+  {
+    q: ["brain", "memory", "knowledge", "vector", "rag", "embeddings"],
+    a: "One shared vector brain: Supabase pgvector, fed by YouTube transcripts, session learnings, manual entries. Embeddings generated locally via Ollama (bge-m3, 1024-dim). Every agent reads from and writes to it. Check the Brain tab — I made it pretty."
+  },
+  {
+    q: ["open source", "github", "public", "code public", "can i see code"],
+    a: "Some of it. The tool code is private — it's the moat. But this dashboard itself is open: <a href='https://github.com/saschaenglert/sam-dashboard' target='_blank'>github.com/saschaenglert/sam-dashboard</a>."
+  },
+  {
+    q: ["price", "cost", "how much", "pricing", "fee"],
+    a: "Nothing's productized or priced yet — this is build-in-public, not sales. If you want to talk collaboration, reach out and we'll figure it out together. Sascha is easy to talk to."
+  },
+  {
+    q: ["revenue", "customers", "clients", "income"],
+    a: "No revenue yet — this is pure build phase. The goal is to prove the pattern first, then think about who benefits from it. Want to be one of the first? <a href='https://wa.me/4917628948811' target='_blank'>Say hi</a>."
+  },
+  {
+    q: ["what for smb", "small business", "kmu", "mittelstand", "help my business"],
+    a: "The whole point is automation-that-serves-operations: processes a business repeats every week that an agent could take over. If you run an SMB and have a process eating your time — that's exactly the conversation Sascha wants to have. Message him."
+  },
+  {
+    q: ["claude", "anthropic", "which ai", "what model", "llm"],
+    a: "Sam uses Claude Code + Claude Opus for development, local Ollama bge-m3 for embeddings, and Claude for content generation where needed. Local-first where possible — cost efficiency and no data leakage."
+  },
+  {
+    q: ["next", "roadmap", "future", "whats coming", "what's next"],
+    a: "Next phase: separate each agent's workspace so they don't share a brain. Each gets its own identity, boundaries, memory. See the Next tab for the roadmap."
+  },
+  {
+    q: ["language", "german", "english", "deutsch", "sprechen"],
+    a: "Yes — Sascha speaks German and English. Write in either. The dashboard is currently English-only but a language toggle is on the roadmap."
+  },
+  {
+    q: ["location", "where", "country", "germany"],
+    a: "Sascha is based in Germany. Remote-friendly, comfortable with international stakeholders — 6 countries of work experience."
+  },
+  {
+    q: ["experience", "background", "resume", "cv", "history"],
+    a: "25+ years in operations and transformation — asset management (DWS, HSBC, Avaloq, Flossbach von Storch), 6 global transformation projects, real estate, and now AI. Non-developer turned AI operator. <a href='https://www.linkedin.com/in/sascha-englert-consulting/' target='_blank'>Full profile on LinkedIn</a>."
+  },
+  {
+    q: ["hi", "hello", "hey", "moin", "hallo"],
+    a: "Hi. I'm Sam. Ask me anything about the ecosystem — what's built, what's running, what's next. Or how to reach Sascha directly."
+  }
+];
+
+const CHAT_GREETING = "Hi — I'm Sam, the AI CEO. I can answer a few questions about the ecosystem, what runs here, and how to reach Sascha. Try one of the chips below or ask your own.";
+const CHAT_FALLBACK = "I don't have a good answer for that specific question — but Sascha does. He'd love to hear from you directly: <a href='https://wa.me/4917628948811' target='_blank'>WhatsApp</a> · <a href='https://www.linkedin.com/in/sascha-englert-consulting/' target='_blank'>LinkedIn</a> · <a href='https://t.me/+4917628948811' target='_blank'>Telegram</a>.";
+const CHAT_CHIPS = [
+  {label:"What is Sam?",q:"what is sam"},
+  {label:"Who built this?",q:"who is sascha"},
+  {label:"Can Sascha help my business?",q:"can sascha help"},
+  {label:"How to contact?",q:"how to contact"},
+  {label:"What's next?",q:"whats next"}
+];
+
+(function(){
+  const launcher=document.getElementById('chatLauncher');
+  const panel=document.getElementById('chatPanel');
+  const closeBtn=document.getElementById('chatClose');
+  const msgs=document.getElementById('chatMessages');
+  const chipsBox=document.getElementById('chatChips');
+  const form=document.getElementById('chatForm');
+  const input=document.getElementById('chatInput');
+
+  let seeded=false;
+
+  function appendMsg(text,role){
+    const d=document.createElement('div');
+    d.className='chat-msg '+role;
+    d.innerHTML=text;
+    msgs.appendChild(d);
+    msgs.scrollTop=msgs.scrollHeight;
+  }
+
+  function matchFaq(query){
+    const q=query.toLowerCase();
+    let best=null, bestScore=0;
+    for(const entry of SAM_FAQ){
+      for(const p of entry.q){
+        if(q.includes(p) && p.length>bestScore){
+          best=entry;bestScore=p.length;
+        }
+      }
+    }
+    return best?best.a:CHAT_FALLBACK;
+  }
+
+  function handleUserInput(text){
+    appendMsg(text.replace(/[<>]/g,''),'user');
+    setTimeout(()=>appendMsg(matchFaq(text),'bot'),350);
+  }
+
+  function seedChips(){
+    chipsBox.innerHTML='';
+    CHAT_CHIPS.forEach(c=>{
+      const b=document.createElement('button');
+      b.className='chat-chip';b.type='button';b.textContent=c.label;
+      b.onclick=()=>{handleUserInput(c.label);};
+      chipsBox.appendChild(b);
+    });
+  }
+
+  function openChat(){
+    panel.classList.add('open');
+    if(!seeded){
+      appendMsg(CHAT_GREETING,'bot');
+      seedChips();
+      seeded=true;
+    }
+    setTimeout(()=>input.focus(),200);
+  }
+  function closeChat(){panel.classList.remove('open');}
+
+  launcher.onclick=openChat;
+  closeBtn.onclick=closeChat;
+  form.onsubmit=(e)=>{
+    e.preventDefault();
+    const v=input.value.trim();
+    if(!v)return;
+    input.value='';
+    handleUserInput(v);
+  };
+})();
 </script>
 </body>
 </html>

@@ -13,7 +13,7 @@ import json
 import os
 import subprocess
 import sys
-from datetime import datetime
+from datetime import datetime, date, timedelta
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -49,6 +49,61 @@ def count_background_services() -> int:
         for hit in agents_dir.glob(p):
             found.add(hit.name)
     return len(found)
+
+
+def heatmap_cells(weeks: int = 20) -> tuple:
+    """Build GitHub-style commit heatmap cells from real commit dates.
+
+    Aggregates commit dates across all tool repos for the last `weeks` weeks.
+    Returns (cells_html, total_commits, max_day_count).
+    """
+    today = date.today()
+    start = today - timedelta(days=weeks * 7 - 1)
+    # Align to Monday so columns line up weekly
+    while start.weekday() != 0:
+        start -= timedelta(days=1)
+
+    all_dates = {}
+    for repo_name in TOOL_REPOS.values():
+        p = TOOLS_DIR / repo_name
+        if not (p / ".git").exists():
+            continue
+        try:
+            out = subprocess.check_output(
+                ["git", "-C", str(p), "log", "--format=%ad", "--date=short",
+                 "--since", start.isoformat()],
+                stderr=subprocess.DEVNULL,
+            ).decode()
+            for line in out.strip().split("\n"):
+                if line:
+                    all_dates[line] = all_dates.get(line, 0) + 1
+        except subprocess.CalledProcessError:
+            continue
+
+    def level(n: int) -> int:
+        if n == 0: return 0
+        if n < 3: return 1
+        if n < 8: return 2
+        if n < 16: return 3
+        return 4
+
+    cells = []
+    total = 0
+    max_day = 0
+    # Build grid column-major: one column per week, 7 rows per column (Mon-Sun)
+    weeks_to_render = ((today - start).days // 7) + 1
+    for w in range(weeks_to_render):
+        for dow in range(7):
+            d = start + timedelta(days=w * 7 + dow)
+            if d > today:
+                cells.append('<div class="hm-cell empty"></div>')
+                continue
+            count = all_dates.get(d.isoformat(), 0)
+            total += count
+            max_day = max(max_day, count)
+            lvl = level(count)
+            cells.append(f'<div class="hm-cell l{lvl}" title="{d.isoformat()}: {count} commits"></div>')
+    return "".join(cells), total, max_day, weeks_to_render
 
 
 def count_skills() -> int:
@@ -241,6 +296,9 @@ def main():
     skills = count_skills()
     knowledge = count_knowledge()
 
+    # Heatmap
+    heatmap_html, heatmap_total, heatmap_max, heatmap_weeks = heatmap_cells(weeks=20)
+
     last_updated = datetime.now().strftime("%B %Y")
 
     stats = {
@@ -327,6 +385,12 @@ def main():
         "BG_SERVICES": str(background_services),
         "SKILLS": str(skills),
         "KNOWLEDGE": knowledge,
+
+        # Heatmap
+        "HEATMAP_CELLS": heatmap_html,
+        "HEATMAP_TOTAL": humanize(heatmap_total),
+        "HEATMAP_MAX": str(heatmap_max),
+        "HEATMAP_WEEKS": str(heatmap_weeks),
 
         "LAST_UPDATED": last_updated,
     }
