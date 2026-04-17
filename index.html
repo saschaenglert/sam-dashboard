@@ -1368,7 +1368,7 @@
 
     <div class="infra-flow">
       <span class="svc">GitHub push</span> <span class="arrow">-></span> <span class="svc">Render auto-deploy</span> <span class="arrow">-></span> <span class="svc">Live URL</span><br>
-      <span class="svc">YouTube transcripts</span> <span class="arrow">-></span> <span class="svc">Ollama (embed)</span> <span class="arrow">-></span> <span class="svc">Supabase pgvector</span> <span class="arrow">-></span> <span class="svc">Agents read on demand</span><br>
+      <span class="svc">Video transcripts</span> <span class="arrow">-></span> <span class="svc">Ollama (embed)</span> <span class="arrow">-></span> <span class="svc">Supabase pgvector</span> <span class="arrow">-></span> <span class="svc">Agents read on demand</span><br>
       <span class="svc">Draft ready</span> <span class="arrow">-></span> <span class="svc">Telegram approval</span> <span class="arrow">-></span> <span class="svc">Auto-post</span> (or archive)
     </div>
   </div>
@@ -1524,10 +1524,10 @@
     <div class="brain">
       <div class="brain-col">
         <div class="brain-col-label">Sources</div>
-        <div class="brain-item"><div class="brain-item-name">YouTube transcripts</div><div class="brain-item-meta">subscribed channels</div></div>
+        <div class="brain-item"><div class="brain-item-name">Video transcripts</div><div class="brain-item-meta">curated sources</div></div>
         <div class="brain-item"><div class="brain-item-name">Session learnings</div><div class="brain-item-meta">claude-sessions-agent</div></div>
         <div class="brain-item"><div class="brain-item-name">Knowledge base</div><div class="brain-item-meta">manual entries, 400+</div></div>
-        <div class="brain-item"><div class="brain-item-name">Newsletters</div><div class="brain-item-meta">Mac Mail collector</div></div>
+        <div class="brain-item"><div class="brain-item-name">Email digests</div><div class="brain-item-meta">subscribed feeds</div></div>
       </div>
       <div class="brain-arrow-anim">
         <div class="brain-arrow-track">
@@ -2029,7 +2029,7 @@ const SAM_FAQ = [
   },
   {
     q: ["brain", "memory", "knowledge", "vector", "rag", "embeddings"],
-    a: "One shared vector brain: Supabase pgvector, fed by YouTube transcripts, session learnings, manual entries. Embeddings generated locally via Ollama (bge-m3, 1024-dim). Every agent reads from and writes to it. Check the Brain tab — I made it pretty."
+    a: "One shared vector brain: Supabase pgvector, fed by video transcripts, session learnings, manual entries. Embeddings generated locally via Ollama (bge-m3, 1024-dim). Every agent reads from and writes to it. Check the Brain tab — I made it pretty."
   },
   {
     q: ["open source", "github", "public", "code public", "can i see code"],
