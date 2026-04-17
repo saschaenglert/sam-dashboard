@@ -301,20 +301,23 @@
   /* Book mockup */
   .playbook-book-wrap{display:flex;flex-direction:column;gap:20px;align-items:center;}
   .playbook-book{
-    width:210px;height:280px;border-radius:6px;
-    background:linear-gradient(145deg,#f5f1e8 0%,#ddd4bd 100%);
-    box-shadow:0 30px 70px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,177,238,0.3), inset 3px 0 6px rgba(0,0,0,0.1);
-    padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;
-    color:#1a1a2e;transform:perspective(900px) rotateY(-7deg);position:relative;
+    width:210px;height:280px;border-radius:4px;
+    background:linear-gradient(145deg,#1C2540 0%,#0b0f1e 100%);
+    box-shadow:0 30px 70px rgba(0,0,0,0.7), 0 0 0 1px rgba(251,191,36,0.2), inset 3px 0 8px rgba(0,0,0,0.4);
+    padding:26px 22px;display:flex;flex-direction:column;justify-content:space-between;
+    color:var(--cream);transform:perspective(900px) rotateY(-8deg);position:relative;
     transition:transform 0.4s ease;
+    animation:book-breathe 6s ease-in-out infinite;
   }
-  .playbook-book:hover{transform:perspective(900px) rotateY(-2deg) translateY(-4px);}
-  .playbook-book::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(to right,rgba(0,0,0,0.18),transparent);border-radius:6px 0 0 6px;}
-  .playbook-book-brand-top{font-family:'Syne',sans-serif;font-size:9px;letter-spacing:0.25em;color:#8a6f2e;text-transform:uppercase;font-weight:600;}
-  .playbook-book-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:700;line-height:1.1;letter-spacing:-0.01em;}
-  .playbook-book-sub{font-size:11px;color:#5a544a;line-height:1.5;}
-  .playbook-book-bar{height:1px;background:#c9a94b;margin:0;}
-  .playbook-book-brand{font-family:'Syne',sans-serif;font-size:9px;letter-spacing:0.2em;color:#8a6f2e;text-transform:uppercase;font-weight:600;}
+  @keyframes book-breathe{0%,100%{transform:perspective(900px) rotateY(-8deg) translateY(0);}50%{transform:perspective(900px) rotateY(-7deg) translateY(-6px);}}
+  .playbook-book:hover{transform:perspective(900px) rotateY(-3deg) translateY(-8px);animation:none;}
+  .playbook-book::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(to right,rgba(0,0,0,0.5),transparent);border-radius:4px 0 0 4px;}
+  .playbook-book::after{content:"";position:absolute;inset:10px;border:1px solid rgba(251,191,36,0.2);border-radius:2px;pointer-events:none;}
+  .playbook-book-brand-top{font-family:'Syne',sans-serif;font-size:9px;letter-spacing:0.28em;color:#FBBF24;text-transform:uppercase;font-weight:600;}
+  .playbook-book-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:700;line-height:1.08;letter-spacing:-0.015em;color:var(--cream);}
+  .playbook-book-sub{font-size:11px;color:var(--ink-mid);line-height:1.5;}
+  .playbook-book-bar{height:1px;background:linear-gradient(to right,#FBBF24,transparent);margin:0;}
+  .playbook-book-brand{font-family:'Syne',sans-serif;font-size:9px;letter-spacing:0.22em;color:#FBBF24;text-transform:uppercase;font-weight:600;}
 
   /* Header playbook pill */
   .playbook-btn-header{
@@ -1047,7 +1050,7 @@
       <a data-page="agents" data-en="Agents" data-de="Agenten">Agents</a>
       <a data-page="brain" data-en="Brain" data-de="Gehirn">Brain</a>
       <a data-page="next" data-en="Next" data-de="Naechstes">Next</a>
-      <a data-page="playbook" class="playbook-nav" data-en="Playbook" data-de="Playbook">Playbook</a>
+      <a data-page="playbook" class="playbook-nav" data-en="Manual" data-de="Manual">Manual</a>
     </nav>
     <div class="lang-toggle">
       <button class="active" data-lang="en">EN</button>
@@ -1701,15 +1704,15 @@
       <div>
         <div class="pb-hero-badge" data-en="Coming soon · Q2 2026" data-de="Bald verfuegbar · Q2 2026">Coming soon · Q2 2026</div>
         <div class="pb-hero-title" data-en="Operations<br>for <em>AI Teams</em>." data-de="Operations<br>fuer <em>AI-Teams</em>.">Operations<br>for <em>AI Teams</em>.</div>
-        <div class="pb-hero-sub" data-en="The practical playbook for running an AI team like a real team. Not a chatbot. Not a demo. The patterns no pure-tech founder could write — from 25 years of operations DNA." data-de="Das praktische Playbook, um ein AI-Team wie ein echtes Team zu fuehren. Kein Chatbot. Keine Demo. Die Patterns die kein Pure-Tech-Gruender schreiben koennte — aus 25 Jahren Operations-DNA.">The practical playbook for running an AI team like a real team. Not a chatbot. Not a demo. The patterns no pure-tech founder could write — from 25 years of operations DNA.</div>
-        <div class="pb-hero-tagline">Sam · Operator Series — Book 1</div>
+        <div class="pb-hero-sub" data-en="The operator's manual for running an AI team like a real team. Not a chatbot. Not a demo. The patterns no pure-tech founder could write — from 25 years of operations DNA." data-de="Das Operator-Manual, um ein AI-Team wie ein echtes Team zu fuehren. Kein Chatbot. Keine Demo. Die Patterns die kein Pure-Tech-Gruender schreiben koennte — aus 25 Jahren Operations-DNA.">The operator's manual for running an AI team like a real team. Not a chatbot. Not a demo. The patterns no pure-tech founder could write — from 25 years of operations DNA.</div>
+        <div class="pb-hero-tagline">Sam · Operator Manuals — Vol. 01</div>
       </div>
       <div class="playbook-book-wrap">
         <div class="playbook-book">
-          <div class="playbook-book-brand-top" data-en="Sam · Operator Series" data-de="Sam · Operator-Reihe">Sam · Operator Series</div>
+          <div class="playbook-book-brand-top" data-en="Sam · Operator Manuals" data-de="Sam · Operator Manuals">Sam · Operator Manuals</div>
           <div>
             <div class="playbook-book-title" data-en="Operations<br>for AI Teams" data-de="Operations<br>fuer AI-Teams">Operations<br>for AI Teams</div>
-            <div class="playbook-book-sub" data-en="A practical playbook for running an AI team like a real team." data-de="Ein praktischer Playbook um ein AI-Team wie ein echtes zu fuehren." style="margin-top:10px;">A practical playbook for running an AI team like a real team.</div>
+            <div class="playbook-book-sub" data-en="The operator's manual for AI teams." data-de="Das Operator-Manual fuer AI-Teams." style="margin-top:10px;">The operator's manual for AI teams.</div>
           </div>
           <div class="playbook-book-bar"></div>
           <div class="playbook-book-brand">Sascha Englert</div>
@@ -1737,7 +1740,7 @@
             <span><strong id="pbWaitlistCount">32</strong> / 100</span>
           </div>
           <div class="progress-track"><div class="progress-fill" id="pbWaitlistFill" style="width:32%;"></div></div>
-          <div class="playbook-fine" style="margin-top:0;" data-en="First 100 waitlist subscribers get the €29 price. After that, the playbook is €39 at launch." data-de="Die ersten 100 Waitlist-Abonnenten bekommen den €29-Preis. Danach ist der Playbook zum Launch €39.">First 100 waitlist subscribers get the €29 price. After that, the playbook is €39 at launch.</div>
+          <div class="playbook-fine" style="margin-top:0;" data-en="First 100 waitlist subscribers get the €29 price. After that, the manual is €39 at launch." data-de="Die ersten 100 Waitlist-Abonnenten bekommen den €29-Preis. Danach ist das Manual zum Launch €39.">First 100 waitlist subscribers get the €29 price. After that, the manual is €39 at launch.</div>
         </div>
         <div class="playbook-form-wrap">
           <div class="playbook-form-label" data-en="Claim your spot" data-de="Deinen Platz sichern">Claim your spot</div>
@@ -1750,7 +1753,7 @@
               <span>&rarr;</span>
             </button>
           </form>
-          <div class="playbook-success" id="playbookSuccess" data-en="Thanks — you're on the list. I'll email you when the playbook is ready." data-de="Danke — du stehst auf der Liste. Ich melde mich, sobald der Playbook fertig ist.">Thanks — you're on the list. I'll email you when the playbook is ready.</div>
+          <div class="playbook-success" id="playbookSuccess" data-en="Thanks — you're on the list. I'll email you when the manual is ready." data-de="Danke — du stehst auf der Liste. Ich melde mich, sobald das Manual fertig ist.">Thanks — you're on the list. I'll email you when the manual is ready.</div>
           <div class="playbook-fine" data-en="No spam · one email per major update · unsubscribe anytime." data-de="Kein Spam · eine Mail pro grossem Update · jederzeit abmeldbar.">No spam · one email per major update · unsubscribe anytime.</div>
         </div>
       </div>
@@ -1789,7 +1792,7 @@
           <span data-en="Is this consulting or advice?" data-de="Ist das Beratung?">Is this consulting or advice?</span>
           <span class="faq-q-toggle">+</span>
         </div>
-        <div class="faq-a" data-en="No. It's a written playbook based on my own practice. Think of it as a craft book, not a service. What works for me may not work for your specific situation — you adapt, you own the implementation." data-de="Nein. Es ist ein Playbook aus meiner eigenen Praxis. Denke an ein Handwerksbuch, nicht an Beratung. Was bei mir funktioniert muss nicht in deiner Situation passen — du adaptierst, du bist fuer die Umsetzung verantwortlich.">No. It's a written playbook based on my own practice. Think of it as a craft book, not a service. What works for me may not work for your specific situation — you adapt, you own the implementation.</div>
+        <div class="faq-a" data-en="No. It's a written manual based on my own practice. Think of it as a craft book, not a service. What works for me may not work for your specific situation — you adapt, you own the implementation." data-de="Nein. Es ist ein Manual aus meiner eigenen Praxis. Denke an ein Handwerksbuch, nicht an Beratung. Was bei mir funktioniert muss nicht in deiner Situation passen — du adaptierst, du bist fuer die Umsetzung verantwortlich.">No. It's a written manual based on my own practice. Think of it as a craft book, not a service. What works for me may not work for your specific situation — you adapt, you own the implementation.</div>
       </div>
       <div class="faq-item" onclick="this.classList.toggle('open')">
         <div class="faq-q">
@@ -1817,7 +1820,7 @@
           <span data-en="Will there be updates?" data-de="Wird es Updates geben?">Will there be updates?</span>
           <span class="faq-q-toggle">+</span>
         </div>
-        <div class="faq-a" data-en="No commitment on updates. The playbook captures what's working right now. If I decide to revise it later, subscribers will hear about it first." data-de="Keine festen Update-Versprechen. Der Playbook hält fest, was gerade funktioniert. Falls ich später eine neue Version mache, hören Abonnenten zuerst davon.">No commitment on updates. The playbook captures what's working right now. If I decide to revise it later, subscribers will hear about it first.</div>
+        <div class="faq-a" data-en="No commitment on updates. The manual captures what's working right now. If I decide to revise it later, subscribers will hear about it first." data-de="Keine festen Update-Versprechen. Das Manual haelt fest, was gerade funktioniert. Falls ich spaeter eine neue Version mache, hoeren Abonnenten zuerst davon.">No commitment on updates. The manual captures what's working right now. If I decide to revise it later, subscribers will hear about it first.</div>
       </div>
     </div>
 
