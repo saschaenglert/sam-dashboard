@@ -47,6 +47,7 @@
   /* HERO */
   .hero{margin-bottom:64px;}
   .hero.with-portrait{display:grid;grid-template-columns:240px 1fr;gap:48px;align-items:center;}
+  .hero.with-terminal{display:grid;grid-template-columns:400px 1fr;gap:56px;align-items:center;margin-bottom:72px;}
   .sam-portrait{position:relative;width:240px;height:240px;}
   .sam-portrait::before{content:"";position:absolute;inset:-20px;border-radius:50%;background:radial-gradient(circle at 30% 30%, rgba(122,175,240,0.25), transparent 70%);filter:blur(30px);z-index:0;}
   .sam-portrait .sam-img{position:relative;width:100%;height:100%;border-radius:24px;background-image:url('sam-avatar.jpg');background-size:cover;background-position:center;border:2px solid var(--accent-soft);z-index:1;box-shadow:0 20px 60px rgba(0,0,0,0.4);}
@@ -234,6 +235,35 @@
   .foot-links a{color:var(--ink-light);text-decoration:none;font-family:'Syne',sans-serif;font-size:12px;letter-spacing:0.05em;font-weight:500;}
   .foot-links a:hover{color:var(--accent);}
   .foot-note{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-light);}
+
+  /* === CODE HERO — build-log terminal === */
+  .build-log{
+    width:100%;background:#08090f;border:1px solid var(--line);border-radius:14px;
+    overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(122,175,240,0.1);
+  }
+  .build-log-header{
+    background:#141823;padding:10px 14px;display:flex;align-items:center;gap:7px;
+    border-bottom:1px solid var(--line);
+  }
+  .build-log-dot{width:11px;height:11px;border-radius:50%;}
+  .build-log-dot.r{background:#ff5f56;}
+  .build-log-dot.y{background:#ffbd2e;}
+  .build-log-dot.g{background:#27c93f;}
+  .build-log-title{margin-left:12px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-light);}
+  .build-log-body{padding:20px 22px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.95;color:var(--ink-mid);}
+  .build-log-body .prompt{color:#27c93f;font-weight:600;}
+  .build-log-body .cmd{color:var(--cream);}
+  .build-log-entry{display:grid;grid-template-columns:16px 1fr auto auto;gap:10px;align-items:center;}
+  .build-log-entry-dot{width:8px;height:8px;border-radius:50%;background:#27c93f;box-shadow:0 0 8px rgba(39,201,63,0.5);}
+  .build-log-entry-dot.wip{background:#ffbd2e;box-shadow:0 0 8px rgba(255,189,46,0.6);animation:bl-pulse 1.1s ease-in-out infinite;}
+  @keyframes bl-pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.2);}}
+  .build-log-entry-name{color:var(--cream);font-weight:500;}
+  .build-log-entry-status{color:var(--green);font-size:11px;}
+  .build-log-entry-status.wip{color:var(--amber);}
+  .build-log-entry-time{color:var(--ink-light);font-size:11px;min-width:36px;text-align:right;}
+  .build-log-sep{color:var(--line);margin:10px 0 6px;letter-spacing:1px;overflow:hidden;}
+  .build-log-summary{color:var(--green);font-weight:500;font-size:11px;}
+  .build-log-cursor{display:inline-block;width:7px;height:13px;background:#27c93f;margin-left:2px;vertical-align:text-bottom;animation:blink 1.1s steps(2) infinite;}
 
   /* === COMMIT HEATMAP (Code page) === */
   .heatmap-wrap{background:var(--navy);border:1px solid var(--line);border-radius:12px;padding:28px;margin-bottom:48px;}
@@ -493,6 +523,10 @@
   /* === TABLET (900px and below) === */
   @media (max-width:900px){
     .hero.with-portrait{grid-template-columns:1fr;gap:28px;text-align:left;}
+    .hero.with-terminal{grid-template-columns:1fr;gap:28px;}
+    .build-log-body{padding:14px 16px;font-size:10.5px;line-height:1.9;}
+    .build-log-entry{gap:6px;}
+    .build-log-entry-name{font-size:11px;}
     .sam-portrait{margin:0;}
     .brain{grid-template-columns:1fr;gap:14px;}
     .brain-arrow{transform:rotate(90deg);padding:8px 0;font-size:24px;}
@@ -696,8 +730,27 @@
   <!-- PAGE 1: CODE -->
   <!-- ============================================================ -->
   <div class="page active" id="page-code">
-    <div class="hero with-portrait">
-      <div class="sam-portrait"><div class="sam-img"></div></div>
+    <div class="hero with-terminal">
+      <div class="build-log">
+        <div class="build-log-header">
+          <span class="build-log-dot r"></span>
+          <span class="build-log-dot y"></span>
+          <span class="build-log-dot g"></span>
+          <span class="build-log-title">sam ~ sam status</span>
+        </div>
+        <div class="build-log-body">
+<span class="prompt">$</span> <span class="cmd">sam status --all</span>
+
+          <div class="build-log-entry"><span class="build-log-entry-dot"></span><span class="build-log-entry-name">real-estate-inv</span><span class="build-log-entry-status">live</span><span class="build-log-entry-time">2m</span></div>
+          <div class="build-log-entry"><span class="build-log-entry-dot"></span><span class="build-log-entry-name">rental-manager</span><span class="build-log-entry-status">live</span><span class="build-log-entry-time">14m</span></div>
+          <div class="build-log-entry"><span class="build-log-entry-dot"></span><span class="build-log-entry-name">restaurant-plan</span><span class="build-log-entry-status">live</span><span class="build-log-entry-time">1h</span></div>
+          <div class="build-log-entry"><span class="build-log-entry-dot"></span><span class="build-log-entry-name">fl-accountant</span><span class="build-log-entry-status">live</span><span class="build-log-entry-time">3h</span></div>
+          <div class="build-log-entry"><span class="build-log-entry-dot wip"></span><span class="build-log-entry-name">property-mgmt</span><span class="build-log-entry-status wip">building</span><span class="build-log-entry-time">—</span></div>
+          <div class="build-log-entry"><span class="build-log-entry-dot"></span><span class="build-log-entry-name">shared-infra</span><span class="build-log-entry-status">live</span><span class="build-log-entry-time">4h</span></div>
+          <div class="build-log-sep">────────────────────────</div>
+          <span class="build-log-summary">✓ 5/6 live · 16/16 checks · all green</span><span class="build-log-cursor"></span>
+        </div>
+      </div>
       <div>
         <div class="label">Code shipped</div>
         <div class="hero-headline">~81,245 lines.<br>5 tools + shared platform.</div>
@@ -709,7 +762,7 @@
       <div class="stat"><div class="stat-label">Tools live</div><div class="stat-num">5</div><div class="stat-meta">4 live, 1 in dev</div></div>
       <div class="stat"><div class="stat-label">Commits</div><div class="stat-num">484</div><div class="stat-meta">and counting</div></div>
       <div class="stat"><div class="stat-label">Quality gates</div><div class="stat-num">16</div><div class="stat-meta">pre-commit checks</div></div>
-      <div class="stat"><div class="stat-label">Coverage min.</div><div class="stat-num">60%</div><div class="stat-meta">enforced</div></div>
+      <div class="stat"><div class="stat-label">Test coverage</div><div class="stat-num">60%+</div><div class="stat-meta">required per commit</div></div>
     </div>
 
     <div class="section-title">Frontend vs. backend split</div>
@@ -858,9 +911,9 @@
         <div class="tool-cat">Bank import, transaction matching, DATEV export - 67 commits</div>
         <div class="tool-body"><div class="tool-inner">
           <div class="tool-split">
+            <div class="tool-split-item"><div class="tool-split-label">Frontend</div><div class="tool-split-val">4,011</div></div>
             <div class="tool-split-item"><div class="tool-split-label">Backend</div><div class="tool-split-val">5,217</div></div>
             <div class="tool-split-item"><div class="tool-split-label">Tests</div><div class="tool-split-val">4,551</div></div>
-            <div class="tool-split-item"><div class="tool-split-label">Frontend</div><div class="tool-split-val">4,011</div></div>
           </div>
           <div class="tool-tags">
             <span class="tool-tag">Python</span>
@@ -894,9 +947,9 @@
         <div class="tool-cat">Cost allocation, meter readings, tenant management - 43 commits - in dev</div>
         <div class="tool-body"><div class="tool-inner">
           <div class="tool-split">
+            <div class="tool-split-item"><div class="tool-split-label">Frontend</div><div class="tool-split-val">4,543</div></div>
             <div class="tool-split-item"><div class="tool-split-label">Backend</div><div class="tool-split-val">8,057</div></div>
             <div class="tool-split-item"><div class="tool-split-label">Tests</div><div class="tool-split-val">4,718</div></div>
-            <div class="tool-split-item"><div class="tool-split-label">Frontend</div><div class="tool-split-val">4,543</div></div>
           </div>
           <div class="tool-tags">
             <span class="tool-tag">Python</span>
