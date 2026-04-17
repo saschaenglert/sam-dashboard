@@ -264,6 +264,34 @@
   .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s, margin 0.3s;font-size:14px;color:var(--ink-mid);line-height:1.65;}
   .faq-item.open .faq-a{max-height:300px;margin-top:14px;}
 
+  /* Coming Soon sign */
+  .coming-soon-sign{
+    position:relative;margin:32px 0 56px;padding:56px 48px;
+    background:linear-gradient(135deg,#1a1e38 0%,#0f1120 100%);
+    border:2px solid #FBBF24;border-radius:18px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5), inset 0 0 40px rgba(251,191,36,0.04);
+    overflow:hidden;text-align:center;
+  }
+  .coming-soon-sign::before{content:"";position:absolute;inset:8px;border:1px dashed rgba(251,191,36,0.3);border-radius:12px;pointer-events:none;}
+  .coming-soon-tape{
+    position:absolute;left:-12%;right:-12%;height:32px;
+    background:repeating-linear-gradient(-45deg,#FBBF24 0 18px,#1a1e38 18px 36px);
+    opacity:0.75;transform:rotate(-2deg);
+  }
+  .coming-soon-tape-top{top:-6px;}
+  .coming-soon-tape-bot{bottom:-6px;transform:rotate(2deg);}
+  .coming-soon-inner{position:relative;z-index:1;}
+  .coming-soon-kicker{font-family:'Syne',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#FBBF24;margin-bottom:14px;}
+  .coming-soon-big{
+    font-family:'Syne',sans-serif;font-weight:800;font-size:68px;line-height:0.95;letter-spacing:-0.03em;
+    background:linear-gradient(180deg,#fff 0%,#c9b1ee 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    margin-bottom:8px;animation:cs-pulse 3s ease-in-out infinite;
+  }
+  @keyframes cs-pulse{0%,100%{filter:drop-shadow(0 0 20px rgba(251,191,36,0.25));}50%{filter:drop-shadow(0 0 30px rgba(251,191,36,0.45));}}
+  .coming-soon-date{font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.2em;color:#FBBF24;margin-bottom:20px;}
+  .coming-soon-sub{font-size:14px;color:var(--ink-mid);line-height:1.6;max-width:560px;margin:0 auto;}
+
   /* Disclaimer block */
   .playbook-disclaimer{
     margin:32px 0 56px;padding:18px 22px;
@@ -987,6 +1015,11 @@
     .price-block{padding:16px;}
     .price-amount{font-size:28px;}
     .faq-q{font-size:14px;}
+    .coming-soon-sign{padding:40px 28px;margin:24px 0 40px;}
+    .coming-soon-big{font-size:44px;}
+    .coming-soon-date{font-size:12px;}
+    .coming-soon-sub{font-size:13px;}
+    .coming-soon-tape{height:24px;}
 
     /* CTA v2 mobile */
     .cta{padding:32px 24px;margin:56px 0 32px;border-radius:16px;}
@@ -1731,46 +1764,18 @@
       </div>
     </div>
 
-    <div class="early-bird">
-      <div class="early-bird-inner">
-        <div>
-          <div class="early-bird-prices">
-            <div class="price-block early">
-              <div class="price-label" data-en="Waitlist" data-de="Waitlist">Waitlist</div>
-              <div class="price-amount">€29</div>
-              <div class="price-note" data-en="first 100 only" data-de="nur die ersten 100">first 100 only</div>
-            </div>
-            <div class="price-block">
-              <div class="price-label" data-en="Launch price" data-de="Launch-Preis">Launch price</div>
-              <div class="price-amount">€39</div>
-              <div class="price-note" data-en="after launch" data-de="nach Launch">after launch</div>
-            </div>
-          </div>
-          <div class="progress-label">
-            <span data-en="Waitlist signups" data-de="Waitlist-Anmeldungen">Waitlist signups</span>
-            <span><strong id="pbWaitlistCount">32</strong> / 100</span>
-          </div>
-          <div class="progress-track"><div class="progress-fill" id="pbWaitlistFill" style="width:32%;"></div></div>
-          <div class="playbook-fine" style="margin-top:0;" data-en="First 100 waitlist subscribers get the €29 price. After that, the manual is €39 at launch." data-de="Die ersten 100 Waitlist-Abonnenten bekommen den €29-Preis. Danach ist das Manual zum Launch €39.">First 100 waitlist subscribers get the €29 price. After that, the manual is €39 at launch.</div>
-        </div>
-        <div class="playbook-form-wrap">
-          <div class="playbook-form-label" data-en="Claim your spot" data-de="Deinen Platz sichern">Claim your spot</div>
-          <form class="playbook-form" id="playbookForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-            <input type="email" name="email" class="playbook-input" id="playbookEmail" placeholder="your@email.com" required data-en-placeholder="your@email.com" data-de-placeholder="deine@email.de">
-            <input type="hidden" name="_subject" value="Sam dashboard · playbook waitlist">
-            <input type="hidden" name="source" value="sam-dashboard">
-            <button type="submit" class="playbook-submit">
-              <span data-en="Get early access" data-de="Early Access sichern">Get early access</span>
-              <span>&rarr;</span>
-            </button>
-          </form>
-          <div class="playbook-success" id="playbookSuccess" data-en="Thanks — you're on the list. I'll email you when the manual is ready." data-de="Danke — du stehst auf der Liste. Ich melde mich, sobald das Manual fertig ist.">Thanks — you're on the list. I'll email you when the manual is ready.</div>
-          <div class="playbook-fine" data-en="No spam · one email per major update · unsubscribe anytime." data-de="Kein Spam · eine Mail pro grossem Update · jederzeit abmeldbar.">No spam · one email per major update · unsubscribe anytime.</div>
-        </div>
+    <div class="coming-soon-sign">
+      <div class="coming-soon-tape coming-soon-tape-top"></div>
+      <div class="coming-soon-tape coming-soon-tape-bot"></div>
+      <div class="coming-soon-inner">
+        <div class="coming-soon-kicker" data-en="The Operator's Manual" data-de="Das Operator-Manual">The Operator's Manual</div>
+        <div class="coming-soon-big">COMING SOON</div>
+        <div class="coming-soon-date">Q2 · 2026</div>
+        <div class="coming-soon-sub" data-en="In the workshop. Check back — or reach out below if you want a ping when it drops." data-de="In der Werkstatt. Schau wieder vorbei — oder meld dich unten wenn du Bescheid haben willst, sobald es da ist.">In the workshop. Check back — or reach out below if you want a ping when it drops.</div>
       </div>
     </div>
 
-    <div class="playbook-disclaimer" data-en="A personal playbook based on my own practice — not consulting, not legal or business advice. Patterns and starters you adapt to your context. Implementation responsibility is yours." data-de="Ein persoenliches Playbook aus eigener Praxis — keine Beratung, keine rechtliche oder geschaeftliche Empfehlung. Patterns und Vorlagen, die du an deinen Kontext anpasst. Umsetzungsverantwortung liegt bei dir.">A personal playbook based on my own practice — not consulting, not legal or business advice. Patterns and starters you adapt to your context. Implementation responsibility is yours.</div>
+    <div class="playbook-disclaimer" data-en="A personal manual based on my own practice — not consulting, not legal or business advice. Patterns and starters you adapt to your context. Implementation responsibility is yours." data-de="Ein persoenliches Manual aus eigener Praxis — keine Beratung, keine rechtliche oder geschaeftliche Empfehlung. Patterns und Vorlagen, die du an deinen Kontext anpasst. Umsetzungsverantwortung liegt bei dir.">A personal manual based on my own practice — not consulting, not legal or business advice. Patterns and starters you adapt to your context. Implementation responsibility is yours.</div>
 
     <div class="section-title" data-en="What's inside" data-de="Was drin ist">What's inside</div>
     <div class="section-sub" data-en="Eight chapters. Each one a pattern you can apply tomorrow." data-de="Acht Kapitel. Jedes ein Pattern das du morgen anwenden kannst.">Eight chapters. Each one a pattern you can apply tomorrow.</div>
