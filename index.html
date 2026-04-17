@@ -420,6 +420,53 @@
   .foot-links a:hover{color:var(--accent);}
   .foot-note{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-light);}
 
+  /* === TOOL MOCKUPS (Code page) === */
+  .tool-mocks{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:48px;}
+  .tool-mock{display:flex;flex-direction:column;gap:12px;}
+  .browser-frame{
+    background:#eef1f6;border-radius:10px 10px 8px 8px;overflow:hidden;
+    box-shadow:0 20px 50px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.04);
+    transition:transform 0.2s;
+  }
+  .browser-frame:hover{transform:translateY(-4px);}
+  .browser-head{background:#e4e8ef;padding:8px 12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #d0d5df;}
+  .browser-dots{display:flex;gap:5px;}
+  .browser-dots span{width:10px;height:10px;border-radius:50%;}
+  .browser-dots span:nth-child(1){background:#ff5f56;}
+  .browser-dots span:nth-child(2){background:#ffbd2e;}
+  .browser-dots span:nth-child(3){background:#27c93f;}
+  .browser-url{
+    flex:1;background:#fff;border-radius:5px;padding:4px 10px;
+    font-family:'JetBrains Mono',monospace;font-size:10px;color:#555;
+    text-align:center;
+  }
+  .browser-body{
+    background:#fff;min-height:220px;padding:16px 18px;color:#1a2138;
+    font-family:'Inter',-apple-system,sans-serif;font-size:11px;
+  }
+  .tool-mock-label{display:flex;justify-content:space-between;align-items:center;}
+  .tool-mock-name{font-family:'Syne',sans-serif;font-weight:600;font-size:13px;color:var(--cream);}
+  .tool-mock-link{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);text-decoration:none;}
+  .tool-mock-link:hover{text-decoration:underline;}
+
+  /* Immo mockup internals */
+  .immo-mock-head{display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid #e4e7ee;margin-bottom:12px;}
+  .immo-mock-brand{display:flex;align-items:center;gap:8px;font-family:'Syne',sans-serif;font-weight:700;font-size:12px;}
+  .immo-mock-brand-dot{width:22px;height:22px;border-radius:50%;background:#1C2540;position:relative;}
+  .immo-mock-brand-dot::after{content:"";position:absolute;top:6px;left:5px;right:5px;height:1.5px;background:#7AAFF0;box-shadow:0 5px 0 #7AAFF0, 0 -3px 0 #7AAFF0;border-radius:1px;}
+  .immo-mock-tabs{display:flex;gap:14px;font-size:9.5px;color:#677088;}
+  .immo-mock-tabs .active{color:#4A7CDB;font-weight:600;}
+  .immo-mock-title{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:10px;color:#1a2138;}
+  .immo-mock-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;}
+  .immo-mock-input{background:#f6f8fc;border:1px solid #e4e7ee;border-radius:5px;padding:6px 8px;}
+  .immo-mock-input-label{font-size:8px;color:#8a95aa;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:2px;}
+  .immo-mock-input-val{font-family:'Syne',sans-serif;font-weight:600;font-size:11px;color:#1a2138;}
+  .immo-mock-result{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .immo-mock-stat{background:linear-gradient(135deg,#EBF1FC,#dbe7f9);border-radius:6px;padding:8px 10px;}
+  .immo-mock-stat-label{font-size:8px;color:#4A7CDB;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;}
+  .immo-mock-stat-val{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:#1C2540;margin-top:2px;}
+  .immo-mock-stat-sub{font-size:8px;color:#677088;margin-top:2px;}
+
   /* === CODE HERO — build-log terminal === */
   .build-log{
     width:100%;background:#08090f;border:1px solid var(--line);border-radius:14px;
@@ -853,6 +900,9 @@
     .infra-name{font-size:13px;}
     .infra-meta{font-size:10px;}
     .infra-flow{padding:18px 20px;font-size:11px;line-height:1.9;}
+    .tool-mocks{grid-template-columns:1fr;gap:16px;}
+    .browser-body{padding:12px 14px;min-height:auto;}
+    .immo-mock-grid,.immo-mock-result{grid-template-columns:1fr 1fr;gap:6px;}
 
     /* Agents */
     .agents{grid-template-columns:1fr;}
@@ -1309,6 +1359,43 @@
       <span class="svc">GitHub push</span> <span class="arrow">-></span> <span class="svc">Render auto-deploy</span> <span class="arrow">-></span> <span class="svc">Live URL</span><br>
       <span class="svc">YouTube transcripts</span> <span class="arrow">-></span> <span class="svc">Ollama (embed)</span> <span class="arrow">-></span> <span class="svc">Supabase pgvector</span> <span class="arrow">-></span> <span class="svc">Agents read on demand</span><br>
       <span class="svc">Draft ready</span> <span class="arrow">-></span> <span class="svc">Telegram approval</span> <span class="arrow">-></span> <span class="svc">Auto-post</span> (or archive)
+    </div>
+
+    <div class="section-title" data-en="See them in action" data-de="So sehen sie aus">See them in action</div>
+    <div class="section-sub" data-en="Simplified mockups — click to open the live tool." data-de="Vereinfachte Mockups — klick fuer das Live-Tool.">Simplified mockups — click to open the live tool.</div>
+
+    <div class="tool-mocks">
+      <div class="tool-mock">
+        <a href="https://immo-experte.onrender.com" target="_blank" style="text-decoration:none;">
+          <div class="browser-frame">
+            <div class="browser-head">
+              <div class="browser-dots"><span></span><span></span><span></span></div>
+              <div class="browser-url">immo-experte.onrender.com</div>
+            </div>
+            <div class="browser-body">
+              <div class="immo-mock-head">
+                <div class="immo-mock-brand"><div class="immo-mock-brand-dot"></div>Real Estate Investment</div>
+                <div class="immo-mock-tabs"><span class="active">Analysis</span><span>Financing</span><span>Return</span></div>
+              </div>
+              <div class="immo-mock-title">Kaufentscheidung — Objekt #247</div>
+              <div class="immo-mock-grid">
+                <div class="immo-mock-input"><div class="immo-mock-input-label">Kaufpreis</div><div class="immo-mock-input-val">€ 485,000</div></div>
+                <div class="immo-mock-input"><div class="immo-mock-input-label">Wohnflaeche</div><div class="immo-mock-input-val">142 m²</div></div>
+                <div class="immo-mock-input"><div class="immo-mock-input-label">Jahresmiete</div><div class="immo-mock-input-val">€ 19,200</div></div>
+                <div class="immo-mock-input"><div class="immo-mock-input-label">Baujahr</div><div class="immo-mock-input-val">1998</div></div>
+              </div>
+              <div class="immo-mock-result">
+                <div class="immo-mock-stat"><div class="immo-mock-stat-label">Ertragswert</div><div class="immo-mock-stat-val">€ 478,400</div><div class="immo-mock-stat-sub">Multiplikator 24,9x</div></div>
+                <div class="immo-mock-stat"><div class="immo-mock-stat-label">Rendite netto</div><div class="immo-mock-stat-val">3.1%</div><div class="immo-mock-stat-sub">nach Kosten</div></div>
+              </div>
+            </div>
+          </div>
+        </a>
+        <div class="tool-mock-label">
+          <div class="tool-mock-name">Real Estate Investment</div>
+          <a href="https://immo-experte.onrender.com" target="_blank" class="tool-mock-link">Open live &rarr;</a>
+        </div>
+      </div>
     </div>
   </div>
 
