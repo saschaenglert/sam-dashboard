@@ -356,6 +356,37 @@
   /* CTA now supports 3 buttons side by side on desktop */
   .cta-buttons{gap:10px;}
 
+  /* === IDEAS PIPELINE (Brain page) === */
+  .ideas-pipeline{background:var(--navy);border:1px solid var(--line);border-radius:12px;padding:28px;margin-bottom:48px;}
+  .ideas-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:0;align-items:center;}
+  .ideas-node{
+    background:var(--navy-deep);border:1px solid var(--line);border-radius:10px;padding:14px 16px;
+    text-align:center;transition:all 0.2s;
+  }
+  .ideas-node-label{font-family:'Syne',sans-serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-light);margin-bottom:6px;font-weight:600;}
+  .ideas-node-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:var(--cream);margin-bottom:3px;}
+  .ideas-node-meta{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-light);}
+  .ideas-node.highlight{background:linear-gradient(135deg,var(--navy),var(--navy2));border-color:var(--accent-soft);box-shadow:0 0 20px rgba(122,175,240,0.15);}
+  .ideas-node.highlight .ideas-node-label{color:var(--accent);}
+  .ideas-arrow{color:var(--accent);font-size:18px;opacity:0.7;padding:0 8px;}
+  .ideas-cycle{margin-top:20px;padding-top:20px;border-top:1px dashed var(--line);text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-light);}
+  .ideas-cycle strong{color:var(--accent);font-weight:500;}
+
+  /* === SKILL LIBRARY (Agents page) === */
+  .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:48px;}
+  .skill-card{background:var(--navy);padding:18px 22px;display:flex;align-items:flex-start;gap:14px;}
+  .skill-icon{
+    width:36px;height:36px;border-radius:8px;flex-shrink:0;
+    background:linear-gradient(135deg,var(--accent-soft),var(--accent));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--navy-deep);
+  }
+  .skill-body{flex:1;min-width:0;}
+  .skill-name{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;color:var(--accent);margin-bottom:4px;}
+  .skill-desc{font-size:12px;color:var(--ink-mid);line-height:1.5;margin-bottom:6px;}
+  .skill-trigger{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-light);}
+  .skill-trigger strong{color:var(--cream);}
+
   /* === AGENTS PAGE — orbital visualization === */
   .agents-hero{display:grid;grid-template-columns:320px 1fr;gap:56px;align-items:center;margin-bottom:72px;}
   .orbital{position:relative;width:320px;height:320px;}
@@ -527,6 +558,12 @@
     .build-log-body{padding:14px 16px;font-size:10.5px;line-height:1.9;}
     .build-log-entry{gap:6px;}
     .build-log-entry-name{font-size:11px;}
+    .ideas-pipeline{padding:20px;}
+    .ideas-flow{grid-template-columns:1fr;gap:12px;}
+    .ideas-arrow{transform:rotate(90deg);padding:4px 0;}
+    .skills-grid{grid-template-columns:1fr;}
+    .skill-card{padding:16px 18px;gap:12px;}
+    .skill-icon{width:32px;height:32px;font-size:12px;}
     .sam-portrait{margin:0;}
     .brain{grid-template-columns:1fr;gap:14px;}
     .brain-arrow{transform:rotate(90deg);padding:8px 0;font-size:24px;}
@@ -1078,6 +1115,63 @@
       <div class="agent"><div class="agent-dot"></div><div class="agent-body"><div class="agent-name">claude-sessions-agent</div><div class="agent-job">Nightly consolidator. Reads the day's raw checkpoints, extracts recurring patterns, writes compact learnings back into shared memory.</div></div><div class="agent-freq">scheduled</div></div>
       <div class="agent"><div class="agent-dot"></div><div class="agent-body"><div class="agent-name">sambrain</div><div class="agent-job">Heartbeat orchestrator: cc-checkpoint, openclaw-checkpoint, telegram-logger, watchdog, health-checks. Keeps every agent honest and every hour logged.</div></div><div class="agent-freq">continuous</div></div>
     </div>
+
+    <div class="section-title">Skill library</div>
+    <div class="section-sub">Skills are Markdown-defined instructions that teach agents how to handle specific tasks. Each skill has triggers, boundaries, and concrete commands. {{SKILLS}} total across installed, curated, and agent-specific.</div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">/i</div>
+        <div class="skill-body">
+          <div class="skill-name">sam_idee</div>
+          <div class="skill-desc">Capture a new idea via CLI or voice. Creates the Markdown file, appends to JSONL log, and writes an Apple Note — all in one call.</div>
+          <div class="skill-trigger">trigger: <strong>/idee &lt;text&gt;</strong></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">/p</div>
+        <div class="skill-body">
+          <div class="skill-name">sam_phase</div>
+          <div class="skill-desc">Move an idea through its lifecycle — Idea → Plan → Backlog → Done — using Apple Notes drag-and-drop; the watchdog syncs the filesystem.</div>
+          <div class="skill-trigger">trigger: <strong>drag Apple Note to target folder</strong></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">/s</div>
+        <div class="skill-body">
+          <div class="skill-name">sam_stand</div>
+          <div class="skill-desc">Reconstruct the current working state from checkpoints, overnight analysis, Supabase knowledge, and git log. Replaces guessing with receipts.</div>
+          <div class="skill-trigger">trigger: <strong>"wo stehen wir?"</strong></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">/w</div>
+        <div class="skill-body">
+          <div class="skill-name">sam_wissen-tools</div>
+          <div class="skill-desc">Query the Supabase knowledge base via wissen_api.py. Retrieve prior context, decisions, or patterns relevant to the current task.</div>
+          <div class="skill-trigger">trigger: <strong>"was weisst du ueber X?"</strong></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">cs</div>
+        <div class="skill-body">
+          <div class="skill-name">content-scout</div>
+          <div class="skill-desc">Collect articles from subscribed Substack RSS feeds. Saves each as a searchable Markdown archive — inputs to the knowledge pipeline.</div>
+          <div class="skill-trigger">trigger: <strong>"sammle artikel"</strong> or daily scheduled run</div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">/d</div>
+        <div class="skill-body">
+          <div class="skill-name">sam-infra-doc-standard</div>
+          <div class="skill-desc">Write folder documentation following Sam's infra-doc pattern — shared structure, honest quirks-list, reproducible commands.</div>
+          <div class="skill-trigger">trigger: <strong>"schreib doku fuer X"</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-sub" style="text-align:center;margin-bottom:8px;">
+      <em>Apple Notes is the UI · Telegram is the inbox · the filesystem is the memory · Markdown is the language in between.</em>
+    </div>
   </div>
 
   <!-- ============================================================ -->
@@ -1155,6 +1249,39 @@
   <span class="score">0.841</span>  <span class="src">wissen   </span>  <span class="match">consulting-engagement-playbook</span>
 
 <span class="timing">  ✓ completed in 78 ms · 0 cloud calls · €0</span><span class="terminal-cursor"></span></div>
+    </div>
+
+    <div class="section-title">How new ideas get in</div>
+    <div class="section-sub">Sascha's ideas flow through the system automatically. Apple Notes is the UI, Telegram is the inbox, the filesystem is the memory.</div>
+    <div class="ideas-pipeline">
+      <div class="ideas-flow">
+        <div class="ideas-node">
+          <div class="ideas-node-label">Source</div>
+          <div class="ideas-node-title">Telegram topic</div>
+          <div class="ideas-node-meta">voice or text, on the go</div>
+        </div>
+        <div class="ideas-arrow">&rarr;</div>
+        <div class="ideas-node highlight">
+          <div class="ideas-node-label">Parser</div>
+          <div class="ideas-node-title">watchdog</div>
+          <div class="ideas-node-meta">5-min cron, deduping</div>
+        </div>
+        <div class="ideas-arrow">&rarr;</div>
+        <div class="ideas-node">
+          <div class="ideas-node-label">Storage</div>
+          <div class="ideas-node-title">Markdown file</div>
+          <div class="ideas-node-meta">ideensystem/ideen/</div>
+        </div>
+        <div class="ideas-arrow">&rarr;</div>
+        <div class="ideas-node">
+          <div class="ideas-node-label">UI</div>
+          <div class="ideas-node-title">Apple Note</div>
+          <div class="ideas-node-meta">drag &amp; drop lifecycle</div>
+        </div>
+      </div>
+      <div class="ideas-cycle">
+        Lifecycle moves through Apple Notes folders · <strong>Idea → Plan → Backlog → Done</strong> · watchdog syncs back to the filesystem · nothing ever gets lost
+      </div>
     </div>
 
     <div class="section-title">Brain at a glance</div>
