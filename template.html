@@ -180,6 +180,53 @@
   .milestone-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:600;margin-bottom:2px;}
   .milestone-desc{font-size:12px;color:var(--ink-light);}
 
+  /* === PLAYBOOK TEASER === */
+  .playbook{
+    margin:64px 0 32px;
+    background:linear-gradient(135deg,#0f1430 0%,#1a1840 50%,#2d1d55 100%);
+    border:1px solid var(--accent-soft);border-radius:20px;
+    padding:48px 56px;position:relative;overflow:hidden;
+  }
+  .playbook::before{content:"";position:absolute;top:-120px;left:-80px;width:340px;height:340px;
+    background:radial-gradient(circle,rgba(168,143,212,0.22) 0%,transparent 70%);pointer-events:none;filter:blur(10px);}
+  .playbook::after{content:"";position:absolute;bottom:-120px;right:-80px;width:340px;height:340px;
+    background:radial-gradient(circle,rgba(122,175,240,0.2) 0%,transparent 70%);pointer-events:none;filter:blur(10px);}
+  .playbook-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:center;}
+  .playbook-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:6px 14px;border-radius:99px;
+    background:rgba(168,143,212,0.15);border:1px solid rgba(168,143,212,0.4);
+    font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#c9b1ee;
+    margin-bottom:18px;
+  }
+  .playbook-badge::before{content:"";width:7px;height:7px;border-radius:50%;background:#c9b1ee;box-shadow:0 0 8px #c9b1ee;animation:status-pulse 2s ease-in-out infinite;}
+  .playbook-title{font-family:'Syne',sans-serif;font-size:36px;font-weight:700;line-height:1.05;color:var(--cream);margin-bottom:14px;letter-spacing:-0.03em;}
+  .playbook-title em{font-style:normal;background:linear-gradient(135deg,#c9b1ee,#7AAFF0);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .playbook-sub{font-size:14px;color:var(--ink-mid);line-height:1.6;margin-bottom:24px;max-width:520px;}
+  .playbook-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;}
+  .playbook-chip{padding:5px 11px;border-radius:99px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-mid);}
+  .playbook-form-wrap{background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:22px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
+  .playbook-form-label{font-family:'Syne',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;font-weight:600;}
+  .playbook-form{display:flex;flex-direction:column;gap:10px;}
+  .playbook-input{
+    padding:14px 16px;border-radius:10px;
+    background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.12);
+    color:var(--cream);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:all 0.15s;
+  }
+  .playbook-input:focus{border-color:var(--accent);background:rgba(0,0,0,0.4);}
+  .playbook-input::placeholder{color:var(--ink-light);}
+  .playbook-submit{
+    padding:14px 18px;border-radius:10px;border:none;cursor:pointer;
+    background:linear-gradient(135deg,#7AAFF0,#c9b1ee);color:var(--navy-deep);
+    font-family:'Syne',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.03em;
+    transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .playbook-submit:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(122,175,240,0.35);}
+  .playbook-fine{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-light);margin-top:12px;line-height:1.5;}
+  .playbook-success{display:none;padding:14px 16px;border-radius:10px;background:rgba(122,184,164,0.12);border:1px solid rgba(122,184,164,0.3);color:var(--green);font-size:13px;}
+  .playbook-success.on{display:block;}
+
   /* CTA — spectacular v2 */
   .cta{
     margin:96px 0 40px;
@@ -730,6 +777,13 @@
     .milestone-num{font-size:20px;min-width:28px;}
     .milestone-title{font-size:13px;}
     .milestone-desc{font-size:11px;}
+
+    /* Playbook teaser mobile */
+    .playbook{padding:32px 24px;margin:48px 0 28px;border-radius:16px;}
+    .playbook-inner{grid-template-columns:1fr;gap:28px;}
+    .playbook-title{font-size:26px;}
+    .playbook-sub{font-size:13px;}
+    .playbook-form-wrap{padding:18px;}
 
     /* CTA v2 mobile */
     .cta{padding:32px 24px;margin:56px 0 32px;border-radius:16px;}
@@ -1450,6 +1504,37 @@
     </div>
   </div>
 
+  <div class="playbook">
+    <div class="playbook-inner">
+      <div>
+        <div class="playbook-badge" data-en="Coming soon" data-de="Bald verfuegbar">Coming soon</div>
+        <div class="playbook-title" data-en="Operations for <em>AI Teams</em>" data-de="Operations fuer <em>AI-Teams</em>">Operations for <em>AI Teams</em></div>
+        <div class="playbook-sub" data-en="How a non-developer built an 8-agent company in 5 weeks — the playbook no pure-tech founder could write. From 25 years of operations DNA: autonomy levels, quality gates, task lifecycle, separation patterns, governance for AI work." data-de="Wie ein Nicht-Entwickler in 5 Wochen ein 8-Agenten-Unternehmen gebaut hat — der Playbook, den kein Pure-Tech-Gruender schreiben koennte. Aus 25 Jahren Operations-DNA: Autonomie-Stufen, Quality Gates, Task-Lifecycle, Separation Patterns, Governance fuer AI-Arbeit.">How a non-developer built an 8-agent company in 5 weeks — the playbook no pure-tech founder could write. From 25 years of operations DNA: autonomy levels, quality gates, task lifecycle, separation patterns, governance for AI work.</div>
+        <div class="playbook-chips">
+          <span class="playbook-chip" data-en="autonomy levels" data-de="Autonomie-Stufen">autonomy levels</span>
+          <span class="playbook-chip" data-en="quality gates" data-de="Quality Gates">quality gates</span>
+          <span class="playbook-chip" data-en="task lifecycle" data-de="Task-Lifecycle">task lifecycle</span>
+          <span class="playbook-chip" data-en="separation patterns" data-de="Separation Patterns">separation patterns</span>
+          <span class="playbook-chip" data-en="model cost tiers" data-de="Modell-Kosten">model cost tiers</span>
+        </div>
+      </div>
+      <div class="playbook-form-wrap">
+        <div class="playbook-form-label" data-en="Notify me when it's ready" data-de="Benachrichtige mich">Notify me when it's ready</div>
+        <form class="playbook-form" id="playbookForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <input type="email" name="email" class="playbook-input" id="playbookEmail" placeholder="your@email.com" required data-en-placeholder="your@email.com" data-de-placeholder="deine@email.de">
+          <input type="hidden" name="_subject" value="Sam dashboard · playbook waitlist">
+          <input type="hidden" name="source" value="sam-dashboard">
+          <button type="submit" class="playbook-submit">
+            <span data-en="Get on the list" data-de="Auf die Liste">Get on the list</span>
+            <span>&rarr;</span>
+          </button>
+        </form>
+        <div class="playbook-success" id="playbookSuccess" data-en="Thanks — you're on the list. I'll email you when the playbook is ready." data-de="Danke — du stehst auf der Liste. Ich schreibe dir wenn der Playbook fertig ist.">Thanks — you're on the list. I'll email you when the playbook is ready.</div>
+        <div class="playbook-fine" data-en="Free · no spam · only when the playbook is ready or if I write something directly relevant." data-de="Gratis · kein Spam · nur wenn der Playbook fertig ist oder ich etwas direkt Relevantes schreibe.">Free · no spam · only when the playbook is ready or if I write something directly relevant.</div>
+      </div>
+    </div>
+  </div>
+
   <div class="cta">
     <div class="cta-inner">
       <div class="cta-portrait">
@@ -1518,11 +1603,51 @@
       const txt = el.getAttribute('data-' + lang);
       if (txt !== null) el.innerHTML = txt;
     });
+    document.querySelectorAll('[data-en-placeholder][data-de-placeholder]').forEach(el => {
+      const ph = el.getAttribute('data-' + lang + '-placeholder');
+      if (ph !== null) el.setAttribute('placeholder', ph);
+    });
     document.querySelectorAll('.lang-toggle button').forEach(b => {
       b.classList.toggle('active', b.dataset.lang === lang);
     });
     try { localStorage.setItem('sam-lang', lang); } catch(e){}
   }
+
+  // Playbook waitlist form — uses Formspree when configured, otherwise client-only success
+  (function(){
+    const form = document.getElementById('playbookForm');
+    const success = document.getElementById('playbookSuccess');
+    if (!form) return;
+    form.addEventListener('submit', async (e) => {
+      const action = form.action;
+      if (action.includes('YOUR_FORM_ID')) {
+        // Formspree not configured yet — show success anyway, log to console
+        e.preventDefault();
+        const email = form.querySelector('input[type="email"]').value;
+        console.log('[playbook waitlist] email captured (not yet sent):', email);
+        form.style.display = 'none';
+        success.classList.add('on');
+        return;
+      }
+      // Formspree configured — let native submit with fetch for nice UX
+      e.preventDefault();
+      try {
+        const resp = await fetch(action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (resp.ok) {
+          form.style.display = 'none';
+          success.classList.add('on');
+        } else {
+          alert('Submission failed. Please try again or email me directly.');
+        }
+      } catch(err) {
+        alert('Network error. Please try again.');
+      }
+    });
+  })();
   document.querySelectorAll('.lang-toggle button').forEach(b => {
     b.onclick = () => applyLang(b.dataset.lang);
   });
