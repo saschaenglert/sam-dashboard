@@ -379,6 +379,39 @@
   .ideas-node.highlight{background:linear-gradient(135deg,var(--navy),var(--navy2));border-color:var(--accent-soft);box-shadow:0 0 20px rgba(122,175,240,0.15);}
   .ideas-node.highlight .ideas-node-label{color:var(--accent);}
   .ideas-arrow{color:var(--accent);font-size:18px;opacity:0.7;padding:0 8px;}
+
+  /* Flowing wave — each node lights up in sequence (left to right) */
+  .ideas-flow .ideas-node{animation:idea-wave 8s ease-in-out infinite;}
+  .ideas-flow .ideas-node:nth-child(1){animation-delay:0s;}
+  .ideas-flow .ideas-node:nth-child(3){animation-delay:2s;}
+  .ideas-flow .ideas-node:nth-child(5){animation-delay:4s;}
+  .ideas-flow .ideas-node:nth-child(7){animation-delay:6s;}
+  @keyframes idea-wave{
+    0%,12%{border-color:var(--line);box-shadow:none;}
+    20%,30%{border-color:var(--accent);box-shadow:0 0 32px rgba(122,175,240,0.28), inset 0 0 16px rgba(122,175,240,0.08);}
+    40%,100%{border-color:var(--line);box-shadow:none;}
+  }
+  .ideas-flow .ideas-node-label{animation:idea-wave-label 8s ease-in-out infinite;}
+  .ideas-flow .ideas-node:nth-child(1) .ideas-node-label{animation-delay:0s;}
+  .ideas-flow .ideas-node:nth-child(3) .ideas-node-label{animation-delay:2s;}
+  .ideas-flow .ideas-node:nth-child(5) .ideas-node-label{animation-delay:4s;}
+  .ideas-flow .ideas-node:nth-child(7) .ideas-node-label{animation-delay:6s;}
+  @keyframes idea-wave-label{
+    0%,12%{color:var(--ink-light);}
+    20%,30%{color:var(--accent);}
+    40%,100%{color:var(--ink-light);}
+  }
+
+  /* Arrows also pulse when the wave passes through them */
+  .ideas-flow .ideas-arrow{animation:idea-arrow-pulse 8s ease-in-out infinite;}
+  .ideas-flow .ideas-arrow:nth-child(2){animation-delay:0.8s;}
+  .ideas-flow .ideas-arrow:nth-child(4){animation-delay:2.8s;}
+  .ideas-flow .ideas-arrow:nth-child(6){animation-delay:4.8s;}
+  @keyframes idea-arrow-pulse{
+    0%,10%{opacity:0.35;transform:translateX(0);}
+    22%,28%{opacity:1;transform:translateX(2px);}
+    38%,100%{opacity:0.35;transform:translateX(0);}
+  }
   .ideas-cycle{margin-top:20px;padding-top:20px;border-top:1px dashed var(--line);text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-light);}
   .ideas-cycle strong{color:var(--accent);font-weight:500;}
 
@@ -1148,7 +1181,7 @@
           <div class="ideas-node-meta" data-en="loaded at session start" data-de="beim Session-Start geladen">loaded at session start</div>
         </div>
         <div class="ideas-arrow">&rarr;</div>
-        <div class="ideas-node highlight">
+        <div class="ideas-node">
           <div class="ideas-node-label" data-en="Visible" data-de="Sichtbar">Visible</div>
           <div class="ideas-node-title" data-en="Apple Notes" data-de="Apple Notes">Apple Notes</div>
           <div class="ideas-node-meta" data-en="browsable, auditable" data-de="durchsuchbar, pruefbar">browsable, auditable</div>
@@ -1301,7 +1334,7 @@
           <div class="ideas-node-meta">voice or text, on the go</div>
         </div>
         <div class="ideas-arrow">&rarr;</div>
-        <div class="ideas-node highlight">
+        <div class="ideas-node">
           <div class="ideas-node-label">Parser</div>
           <div class="ideas-node-title">watchdog</div>
           <div class="ideas-node-meta">5-min cron, deduping</div>
