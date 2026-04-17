@@ -206,6 +206,47 @@
   .playbook-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;}
   .playbook-chip{padding:5px 11px;border-radius:99px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);
     font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-mid);}
+
+  /* Content bullet list (Felix-style) */
+  .playbook-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin:18px 0 28px;padding:0;}
+  .playbook-list li{display:flex;gap:12px;font-size:13.5px;color:var(--cream);line-height:1.45;align-items:flex-start;}
+  .playbook-list li::before{content:"→";color:var(--accent);flex-shrink:0;font-weight:700;font-family:'Syne',sans-serif;margin-top:-1px;}
+
+  /* Book mockup */
+  .playbook-book-wrap{display:flex;flex-direction:column;gap:20px;align-items:center;}
+  .playbook-book{
+    width:210px;height:280px;border-radius:6px;
+    background:linear-gradient(145deg,#f5f1e8 0%,#ddd4bd 100%);
+    box-shadow:0 30px 70px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,177,238,0.3), inset 3px 0 6px rgba(0,0,0,0.1);
+    padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;
+    color:#1a1a2e;transform:perspective(900px) rotateY(-7deg);position:relative;
+    transition:transform 0.4s ease;
+  }
+  .playbook-book:hover{transform:perspective(900px) rotateY(-2deg) translateY(-4px);}
+  .playbook-book::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(to right,rgba(0,0,0,0.18),transparent);border-radius:6px 0 0 6px;}
+  .playbook-book-brand-top{font-family:'Syne',sans-serif;font-size:9px;letter-spacing:0.25em;color:#8a6f2e;text-transform:uppercase;font-weight:600;}
+  .playbook-book-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:700;line-height:1.1;letter-spacing:-0.01em;}
+  .playbook-book-sub{font-size:11px;color:#5a544a;line-height:1.5;}
+  .playbook-book-bar{height:1px;background:#c9a94b;margin:0;}
+  .playbook-book-brand{font-family:'Syne',sans-serif;font-size:9px;letter-spacing:0.2em;color:#8a6f2e;text-transform:uppercase;font-weight:600;}
+
+  /* Header playbook pill */
+  .playbook-btn-header{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:9px 15px;border-radius:99px;
+    background:linear-gradient(135deg,#c9b1ee 0%,#7AAFF0 100%);
+    color:#0b0f1e;text-decoration:none;cursor:pointer;
+    font-family:'Syne',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+    box-shadow:0 4px 18px rgba(201,177,238,0.35);white-space:nowrap;
+    transition:all 0.2s;margin-left:6px;
+    animation:pb-header-pulse 3s ease-in-out infinite;
+  }
+  .playbook-btn-header:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,177,238,0.55);}
+  .playbook-btn-header::before{content:"";width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 0 10px #fff;}
+  @keyframes pb-header-pulse{
+    0%,100%{box-shadow:0 4px 18px rgba(201,177,238,0.35), 0 0 0 0 rgba(201,177,238,0.45);}
+    50%{box-shadow:0 4px 18px rgba(201,177,238,0.5), 0 0 0 10px rgba(201,177,238,0);}
+  }
   .playbook-form-wrap{background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:22px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
   .playbook-form-label{font-family:'Syne',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;font-weight:600;}
   .playbook-form{display:flex;flex-direction:column;gap:10px;}
@@ -780,10 +821,14 @@
 
     /* Playbook teaser mobile */
     .playbook{padding:32px 24px;margin:48px 0 28px;border-radius:16px;}
-    .playbook-inner{grid-template-columns:1fr;gap:28px;}
+    .playbook-inner{grid-template-columns:1fr;gap:32px;text-align:left;}
     .playbook-title{font-size:26px;}
     .playbook-sub{font-size:13px;}
-    .playbook-form-wrap{padding:18px;}
+    .playbook-list li{font-size:13px;}
+    .playbook-book{width:180px;height:240px;padding:22px 20px;}
+    .playbook-book-title{font-size:19px;}
+    .playbook-book-wrap{order:-1;margin-bottom:8px;}
+    .playbook-btn-header{padding:8px 12px;font-size:10px;letter-spacing:0.1em;}
 
     /* CTA v2 mobile */
     .cta{padding:32px 24px;margin:56px 0 32px;border-radius:16px;}
@@ -859,6 +904,7 @@
       <a data-page="brain" data-en="Brain" data-de="Gehirn">Brain</a>
       <a data-page="next" data-en="Next" data-de="Naechstes">Next</a>
     </nav>
+    <a href="#playbook" class="playbook-btn-header" onclick="document.getElementById('playbook').scrollIntoView({behavior:'smooth'});return false;" data-en="Playbook" data-de="Playbook">Playbook</a>
     <div class="lang-toggle">
       <button class="active" data-lang="en">EN</button>
       <button data-lang="de">DE</button>
@@ -1504,33 +1550,47 @@
     </div>
   </div>
 
-  <div class="playbook">
+  <div class="playbook" id="playbook">
     <div class="playbook-inner">
       <div>
         <div class="playbook-badge" data-en="Coming soon" data-de="Bald verfuegbar">Coming soon</div>
         <div class="playbook-title" data-en="Operations for <em>AI Teams</em>" data-de="Operations fuer <em>AI-Teams</em>">Operations for <em>AI Teams</em></div>
-        <div class="playbook-sub" data-en="How a non-developer built an 8-agent company in 5 weeks — the playbook no pure-tech founder could write. From 25 years of operations DNA: autonomy levels, quality gates, task lifecycle, separation patterns, governance for AI work." data-de="Wie ein Nicht-Entwickler in 5 Wochen ein 8-Agenten-Unternehmen gebaut hat — der Playbook, den kein Pure-Tech-Gruender schreiben koennte. Aus 25 Jahren Operations-DNA: Autonomie-Stufen, Quality Gates, Task-Lifecycle, Separation Patterns, Governance fuer AI-Arbeit.">How a non-developer built an 8-agent company in 5 weeks — the playbook no pure-tech founder could write. From 25 years of operations DNA: autonomy levels, quality gates, task lifecycle, separation patterns, governance for AI work.</div>
-        <div class="playbook-chips">
-          <span class="playbook-chip" data-en="autonomy levels" data-de="Autonomie-Stufen">autonomy levels</span>
-          <span class="playbook-chip" data-en="quality gates" data-de="Quality Gates">quality gates</span>
-          <span class="playbook-chip" data-en="task lifecycle" data-de="Task-Lifecycle">task lifecycle</span>
-          <span class="playbook-chip" data-en="separation patterns" data-de="Separation Patterns">separation patterns</span>
-          <span class="playbook-chip" data-en="model cost tiers" data-de="Modell-Kosten">model cost tiers</span>
-        </div>
-      </div>
-      <div class="playbook-form-wrap">
-        <div class="playbook-form-label" data-en="Notify me when it's ready" data-de="Benachrichtige mich">Notify me when it's ready</div>
-        <form class="playbook-form" id="playbookForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-          <input type="email" name="email" class="playbook-input" id="playbookEmail" placeholder="your@email.com" required data-en-placeholder="your@email.com" data-de-placeholder="deine@email.de">
+        <div class="playbook-sub" data-en="The practical playbook for running an AI team like a real team. Not a chatbot. Not a demo. The patterns no pure-tech founder could write — from 25 years of operations DNA." data-de="Das praktische Playbook, um ein AI-Team wie ein echtes Team zu fuehren. Kein Chatbot. Keine Demo. Die Patterns die kein Pure-Tech-Gruender schreiben koennte — aus 25 Jahren Operations-DNA.">The practical playbook for running an AI team like a real team. Not a chatbot. Not a demo. The patterns no pure-tech founder could write — from 25 years of operations DNA.</div>
+
+        <ul class="playbook-list">
+          <li data-en="Why ops-thinking applies to AI — processes over prompts" data-de="Warum Ops-Denken auf AI anwendbar ist — Prozesse statt Prompts">Why ops-thinking applies to AI — processes over prompts</li>
+          <li data-en="The autonomy ladder — trust levels L1-L4 with worked examples" data-de="Die Autonomie-Leiter — Vertrauensstufen L1-L4 mit konkreten Beispielen">The autonomy ladder — trust levels L1-L4 with worked examples</li>
+          <li data-en="Quality gates for AI-generated work — 16 checks no human skips" data-de="Quality Gates fuer AI-generierte Arbeit — 16 Pruefungen die kein Mensch ueberspringt">Quality gates for AI-generated work — 16 checks no human skips</li>
+          <li data-en="Task lifecycle framework — Understand → Build → Secure" data-de="Task-Lifecycle Framework — Verstehen → Bauen → Sichern">Task lifecycle framework — Understand → Build → Secure</li>
+          <li data-en="Separation patterns — when one agent becomes many" data-de="Separations-Patterns — wenn aus einem Agent viele werden">Separation patterns — when one agent becomes many</li>
+          <li data-en="Model cost tiers — Haiku vs Sonnet vs Opus, when to use what" data-de="Modell-Kostenstufen — Haiku vs Sonnet vs Opus, wann was">Model cost tiers — Haiku vs Sonnet vs Opus, when to use what</li>
+          <li data-en="Copy-paste templates — CLAUDE.md, rules files, quality checks" data-de="Copy-Paste-Templates — CLAUDE.md, Regel-Dateien, Quality Checks">Copy-paste templates — CLAUDE.md, rules files, quality checks</li>
+          <li data-en="Real case study: the Sam ecosystem, built in public" data-de="Echte Case Study: das Sam-Oekosystem, oeffentlich gebaut">Real case study: the Sam ecosystem, built in public</li>
+        </ul>
+
+        <form class="playbook-form" id="playbookForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="flex-direction:row;flex-wrap:wrap;gap:10px;max-width:520px;">
+          <input type="email" name="email" class="playbook-input" id="playbookEmail" placeholder="your@email.com" required style="flex:1;min-width:200px;" data-en-placeholder="your@email.com" data-de-placeholder="deine@email.de">
           <input type="hidden" name="_subject" value="Sam dashboard · playbook waitlist">
           <input type="hidden" name="source" value="sam-dashboard">
           <button type="submit" class="playbook-submit">
-            <span data-en="Get on the list" data-de="Auf die Liste">Get on the list</span>
+            <span data-en="Get early access" data-de="Early Access">Get early access</span>
             <span>&rarr;</span>
           </button>
         </form>
         <div class="playbook-success" id="playbookSuccess" data-en="Thanks — you're on the list. I'll email you when the playbook is ready." data-de="Danke — du stehst auf der Liste. Ich schreibe dir wenn der Playbook fertig ist.">Thanks — you're on the list. I'll email you when the playbook is ready.</div>
-        <div class="playbook-fine" data-en="Free · no spam · only when the playbook is ready or if I write something directly relevant." data-de="Gratis · kein Spam · nur wenn der Playbook fertig ist oder ich etwas direkt Relevantes schreibe.">Free · no spam · only when the playbook is ready or if I write something directly relevant.</div>
+        <div class="playbook-fine" data-en="Free early access for first subscribers · no spam · unsubscribe anytime." data-de="Gratis Early Access fuer Erst-Abonnenten · kein Spam · jederzeit abmeldbar.">Free early access for first subscribers · no spam · unsubscribe anytime.</div>
+      </div>
+
+      <div class="playbook-book-wrap">
+        <div class="playbook-book">
+          <div class="playbook-book-brand-top" data-en="Sam · Operator Series" data-de="Sam · Operator-Reihe">Sam · Operator Series</div>
+          <div>
+            <div class="playbook-book-title" data-en="Operations<br>for AI Teams" data-de="Operations<br>fuer AI-Teams">Operations<br>for AI Teams</div>
+            <div class="playbook-book-sub" data-en="A practical playbook for running an AI team like a real team." data-de="Ein praktischer Playbook um ein AI-Team wie ein echtes zu fuehren." style="margin-top:10px;">A practical playbook for running an AI team like a real team.</div>
+          </div>
+          <div class="playbook-book-bar"></div>
+          <div class="playbook-book-brand">Sascha Englert</div>
+        </div>
       </div>
     </div>
   </div>
