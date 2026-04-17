@@ -1131,7 +1131,38 @@
     </div>
 
     <div class="section-title" data-en="Skill library" data-de="Skill-Bibliothek">Skill library</div>
-    <div class="section-sub" data-en="Skills are Markdown-defined instructions that teach agents how to handle specific tasks. Each skill has triggers, boundaries, and concrete commands. 48 total across installed, curated, and agent-specific." data-de="Skills sind in Markdown definierte Anweisungen, die Agenten beibringen wie sie bestimmte Aufgaben erledigen. Jeder Skill hat Trigger, Grenzen und konkrete Befehle. 48 insgesamt — installiert, kuratiert und agent-spezifisch.">Skills are Markdown-defined instructions that teach agents how to handle specific tasks. Each skill has triggers, boundaries, and concrete commands. 48 total across installed, curated, and agent-specific.</div>
+    <div class="section-sub" data-en="Skills are Markdown instructions that teach agents how to handle specific tasks. The flow below is why the system is transparent — every skill is a file I can browse, not a black box." data-de="Skills sind Markdown-Anweisungen, die Agenten beibringen wie sie bestimmte Aufgaben erledigen. Der Flow unten ist der Grund fuer die Transparenz — jeder Skill ist eine Datei die ich durchsehen kann, keine Blackbox.">Skills are Markdown instructions that teach agents how to handle specific tasks. The flow below is why the system is transparent — every skill is a file I can browse, not a black box.</div>
+
+    <div class="ideas-pipeline">
+      <div class="ideas-flow">
+        <div class="ideas-node">
+          <div class="ideas-node-label" data-en="Define" data-de="Definieren">Define</div>
+          <div class="ideas-node-title" data-en="Markdown file" data-de="Markdown-Datei">Markdown file</div>
+          <div class="ideas-node-meta" data-en="name, trigger, behavior" data-de="Name, Trigger, Verhalten">name, trigger, behavior</div>
+        </div>
+        <div class="ideas-arrow">&rarr;</div>
+        <div class="ideas-node">
+          <div class="ideas-node-label" data-en="Install" data-de="Installieren">Install</div>
+          <div class="ideas-node-title">~/.claude/skills/</div>
+          <div class="ideas-node-meta" data-en="loaded at session start" data-de="beim Session-Start geladen">loaded at session start</div>
+        </div>
+        <div class="ideas-arrow">&rarr;</div>
+        <div class="ideas-node highlight">
+          <div class="ideas-node-label" data-en="Visible" data-de="Sichtbar">Visible</div>
+          <div class="ideas-node-title" data-en="Apple Notes" data-de="Apple Notes">Apple Notes</div>
+          <div class="ideas-node-meta" data-en="browsable, auditable" data-de="durchsuchbar, pruefbar">browsable, auditable</div>
+        </div>
+        <div class="ideas-arrow">&rarr;</div>
+        <div class="ideas-node">
+          <div class="ideas-node-label" data-en="Invoke" data-de="Aufrufen">Invoke</div>
+          <div class="ideas-node-title" data-en="Slash command" data-de="Slash-Befehl">Slash command</div>
+          <div class="ideas-node-meta" data-en="/idee, /stand, /phase, ..." data-de="/idee, /stand, /phase, ...">/idee, /stand, /phase, ...</div>
+        </div>
+      </div>
+      <div class="ideas-cycle" data-en="48 skills total · installed + curated + agent-specific · <strong>if I can't see what my agents can do, I can't trust them</strong>" data-de="48 Skills insgesamt · installiert + kuratiert + agent-spezifisch · <strong>wenn ich nicht sehen kann was meine Agenten tun, kann ich ihnen nicht vertrauen</strong>">48 skills total · installed + curated + agent-specific · <strong>if I can't see what my agents can do, I can't trust them</strong></div>
+    </div>
+
+    <div class="section-title" data-en="Flagship skills" data-de="Flaggschiff-Skills">Flagship skills</div>
     <div class="skills-grid">
       <div class="skill-card">
         <div class="skill-icon">/i</div>
