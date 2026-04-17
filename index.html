@@ -253,6 +253,14 @@
   .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s, margin 0.3s;font-size:14px;color:var(--ink-mid);line-height:1.65;}
   .faq-item.open .faq-a{max-height:300px;margin-top:14px;}
 
+  /* Disclaimer block */
+  .playbook-disclaimer{
+    margin:32px 0 56px;padding:18px 22px;
+    background:rgba(0,0,0,0.25);border:1px solid var(--line);border-left:3px solid var(--amber);
+    border-radius:10px;
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-mid);line-height:1.7;
+  }
+
   /* Proof block */
   .proof-block{text-align:center;padding:40px 0 20px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ink-mid);}
   .proof-block a{color:var(--accent);text-decoration:none;font-weight:500;}
@@ -1707,17 +1715,19 @@
       </div>
     </div>
 
+    <div class="playbook-disclaimer" data-en="A personal playbook based on my own practice — not consulting, not legal or business advice. Patterns and starters you adapt to your context. Implementation responsibility is yours." data-de="Ein persoenliches Playbook aus eigener Praxis — keine Beratung, keine rechtliche oder geschaeftliche Empfehlung. Patterns und Vorlagen, die du an deinen Kontext anpasst. Umsetzungsverantwortung liegt bei dir.">A personal playbook based on my own practice — not consulting, not legal or business advice. Patterns and starters you adapt to your context. Implementation responsibility is yours.</div>
+
     <div class="section-title" data-en="What's inside" data-de="Was drin ist">What's inside</div>
     <div class="section-sub" data-en="Eight chapters. Each one a pattern you can apply tomorrow." data-de="Acht Kapitel. Jedes ein Pattern das du morgen anwenden kannst.">Eight chapters. Each one a pattern you can apply tomorrow.</div>
 
     <div class="chapters" style="margin-bottom:72px;">
       <div class="chapter"><div class="chapter-num">01</div><div><div class="chapter-title" data-en="Why ops-thinking beats prompt-engineering" data-de="Warum Ops-Denken Prompt-Engineering schlaegt">Why ops-thinking beats prompt-engineering</div><div class="chapter-teaser" data-en="The mindset shift most AI guides skip. Start here to avoid rebuilding when things get real." data-de="Der Mindset-Shift den die meisten AI-Guides ueberspringen. Fang hier an um nicht spaeter neu zu bauen.">The mindset shift most AI guides skip. Start here to avoid rebuilding when things get real.</div></div></div>
       <div class="chapter"><div class="chapter-num">02</div><div><div class="chapter-title" data-en="The autonomy ladder" data-de="Die Autonomie-Leiter">The autonomy ladder</div><div class="chapter-teaser" data-en="A framework for how much trust to give an agent — and when to pull it back. With concrete calibration examples." data-de="Ein Framework wie viel Vertrauen du einem Agenten gibst — und wann du's zuruecknimmst. Mit konkreten Kalibrierungs-Beispielen.">A framework for how much trust to give an agent — and when to pull it back. With concrete calibration examples.</div></div></div>
-      <div class="chapter"><div class="chapter-num">03</div><div><div class="chapter-title" data-en="Quality gates for AI output" data-de="Quality Gates fuer AI-Output">Quality gates for AI output</div><div class="chapter-teaser" data-en="The gate system that makes AI work actually shippable — and why most teams have it backwards." data-de="Das Gate-System das AI-Output wirklich lieferbar macht — und warum die meisten Teams es verkehrt machen.">The gate system that makes AI work actually shippable — and why most teams have it backwards.</div></div></div>
-      <div class="chapter"><div class="chapter-num">04</div><div><div class="chapter-title" data-en="The task lifecycle" data-de="Der Task-Lifecycle">The task lifecycle</div><div class="chapter-teaser" data-en="A repeatable pattern for every AI-driven task. The parts people get wrong and how to notice." data-de="Ein wiederholbares Muster fuer jede AI-getriebene Aufgabe. Die Stellen wo Leute stolpern und wie du's erkennst.">A repeatable pattern for every AI-driven task. The parts people get wrong and how to notice.</div></div></div>
+      <div class="chapter"><div class="chapter-num">03</div><div><div class="chapter-title" data-en="Quality gates for AI output" data-de="Quality Gates fuer AI-Output">Quality gates for AI output</div><div class="chapter-teaser" data-en="How I set up gates to catch AI work before it ships broken — and what I noticed many setups miss." data-de="Wie ich Gates aufgesetzt habe, um AI-Output abzufangen bevor er kaputt in die Welt geht — und was mir bei anderen Setups auffaellt.">How I set up gates to catch AI work before it ships broken — and what I noticed many setups miss.</div></div></div>
+      <div class="chapter"><div class="chapter-num">04</div><div><div class="chapter-title" data-en="The task lifecycle" data-de="Der Task-Lifecycle">The task lifecycle</div><div class="chapter-teaser" data-en="The pattern I run every AI-driven task through. Where I used to stumble and how I learned to spot it." data-de="Das Muster durch das ich jede AI-Aufgabe laufen lasse. Wo ich frueher gestolpert bin und wie ich's lernen musste zu erkennen.">The pattern I run every AI-driven task through. Where I used to stumble and how I learned to spot it.</div></div></div>
       <div class="chapter"><div class="chapter-num">05</div><div><div class="chapter-title" data-en="When one agent becomes many" data-de="Wenn aus einem Agent viele werden">When one agent becomes many</div><div class="chapter-teaser" data-en="The separation problem nobody addresses until it hurts — and the patterns that keep your team coherent." data-de="Das Separations-Problem das niemand anpackt bis es weh tut — und die Patterns die dein Team koherent halten.">The separation problem nobody addresses until it hurts — and the patterns that keep your team coherent.</div></div></div>
       <div class="chapter"><div class="chapter-num">06</div><div><div class="chapter-title" data-en="Matching models to jobs" data-de="Modelle zu Aufgaben matchen">Matching models to jobs</div><div class="chapter-teaser" data-en="The cost question most people get wrong. Which model earns its price, which one just burns it." data-de="Die Kostenfrage die die meisten falsch beantworten. Welches Modell seinen Preis verdient, welches nur verbrennt.">The cost question most people get wrong. Which model earns its price, which one just burns it.</div></div></div>
-      <div class="chapter"><div class="chapter-num">07</div><div><div class="chapter-title" data-en="Starter templates" data-de="Starter-Templates">Starter templates</div><div class="chapter-teaser" data-en="Drop-in files to skip two weeks of fumbling. Only shared with paid readers." data-de="Drop-in-Dateien die dir zwei Wochen Rumbasteln ersparen. Nur fuer zahlende Leser.">Drop-in files to skip two weeks of fumbling. Only shared with paid readers.</div></div></div>
+      <div class="chapter"><div class="chapter-num">07</div><div><div class="chapter-title" data-en="Starter templates" data-de="Starter-Templates">Starter templates</div><div class="chapter-teaser" data-en="The files I use as starters. Exclusive to paid readers — adapt them to your setup." data-de="Die Dateien die ich als Startpunkt nutze. Exklusiv fuer zahlende Leser — du passt sie an dein Setup an.">The files I use as starters. Exclusive to paid readers — adapt them to your setup.</div></div></div>
       <div class="chapter"><div class="chapter-num">08</div><div><div class="chapter-title" data-en="Inside the Sam ecosystem" data-de="Einblick ins Sam-Oekosystem">Inside the Sam ecosystem</div><div class="chapter-teaser" data-en="The live case study you're looking at, disassembled. What the dashboard doesn't show." data-de="Die Live-Case-Study die du gerade anguckst, zerlegt. Was das Dashboard nicht zeigt.">The live case study you're looking at, disassembled. What the dashboard doesn't show.</div></div></div>
     </div>
 
@@ -1733,6 +1743,13 @@
 
     <div class="section-title" data-en="Questions" data-de="Fragen">Questions</div>
     <div class="faq">
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-q">
+          <span data-en="Is this consulting or advice?" data-de="Ist das Beratung?">Is this consulting or advice?</span>
+          <span class="faq-q-toggle">+</span>
+        </div>
+        <div class="faq-a" data-en="No. It's a written playbook based on my own practice. Think of it as a craft book, not a service. What works for me may not work for your specific situation — you adapt, you own the implementation." data-de="Nein. Es ist ein Playbook aus meiner eigenen Praxis. Denke an ein Handwerksbuch, nicht an Beratung. Was bei mir funktioniert muss nicht in deiner Situation passen — du adaptierst, du bist fuer die Umsetzung verantwortlich.">No. It's a written playbook based on my own practice. Think of it as a craft book, not a service. What works for me may not work for your specific situation — you adapt, you own the implementation.</div>
+      </div>
       <div class="faq-item" onclick="this.classList.toggle('open')">
         <div class="faq-q">
           <span data-en="Who is this for?" data-de="Fuer wen ist das?">Who is this for?</span>
