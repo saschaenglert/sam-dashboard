@@ -386,10 +386,11 @@
   .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:48px;}
   .skill-card{background:var(--navy);padding:18px 22px;display:flex;align-items:flex-start;gap:14px;}
   .skill-icon{
-    width:36px;height:36px;border-radius:8px;flex-shrink:0;
-    background:linear-gradient(135deg,var(--accent-soft),var(--accent));
+    width:42px;height:42px;border-radius:10px;flex-shrink:0;
+    background:linear-gradient(135deg,rgba(122,175,240,0.15),rgba(168,143,212,0.15));
+    border:1px solid var(--accent-soft);
     display:flex;align-items:center;justify-content:center;
-    font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--navy-deep);
+    font-size:20px;line-height:1;
   }
   .skill-body{flex:1;min-width:0;}
   .skill-name{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;color:var(--accent);margin-bottom:4px;}
@@ -1162,60 +1163,54 @@
       <div class="ideas-cycle" data-en="48 skills total · installed + curated + agent-specific · <strong>if I can't see what my agents can do, I can't trust them</strong>" data-de="48 Skills insgesamt · installiert + kuratiert + agent-spezifisch · <strong>wenn ich nicht sehen kann was meine Agenten tun, kann ich ihnen nicht vertrauen</strong>">48 skills total · installed + curated + agent-specific · <strong>if I can't see what my agents can do, I can't trust them</strong></div>
     </div>
 
-    <div class="section-title" data-en="Flagship skills" data-de="Flaggschiff-Skills">Flagship skills</div>
+    <div class="section-title" data-en="Flagship skills" data-de="Wichtigste Skills">Flagship skills</div>
     <div class="skills-grid">
       <div class="skill-card">
-        <div class="skill-icon">/i</div>
+        <div class="skill-icon">&#x1F4A1;</div>
         <div class="skill-body">
-          <div class="skill-name">sam_idee</div>
-          <div class="skill-desc">Capture a new idea via CLI or voice. Creates the Markdown file, appends to JSONL log, and writes an Apple Note — all in one call.</div>
-          <div class="skill-trigger">trigger: <strong>/idee &lt;text&gt;</strong></div>
+          <div class="skill-name" data-en="Capture an idea" data-de="Idee einfangen">Capture an idea</div>
+          <div class="skill-desc" data-en="Voice message or quick note becomes a structured Markdown file, a JSONL log entry, and an Apple Note — in one call." data-de="Sprachnachricht oder Kurz-Notiz wird zu strukturierter Markdown-Datei, JSONL-Eintrag und Apple Note — in einem Call.">Voice message or quick note becomes a structured Markdown file, a JSONL log entry, and an Apple Note — in one call.</div>
         </div>
       </div>
       <div class="skill-card">
-        <div class="skill-icon">/p</div>
+        <div class="skill-icon">&#x27A1;</div>
         <div class="skill-body">
-          <div class="skill-name">sam_phase</div>
-          <div class="skill-desc">Move an idea through its lifecycle — Idea → Plan → Backlog → Done — using Apple Notes drag-and-drop; the watchdog syncs the filesystem.</div>
-          <div class="skill-trigger">trigger: <strong>drag Apple Note to target folder</strong></div>
+          <div class="skill-name" data-en="Move lifecycle" data-de="Phase wechseln">Move lifecycle</div>
+          <div class="skill-desc" data-en="Drag a note in Apple Notes between the Idea / Plan / Backlog / Done folders — the watchdog syncs the filesystem to match." data-de="Eine Note in Apple Notes zwischen Idee / Plan / Backlog / Erledigt bewegen — der Watchdog bringt das Dateisystem in Einklang.">Drag a note in Apple Notes between the Idea / Plan / Backlog / Done folders — the watchdog syncs the filesystem to match.</div>
         </div>
       </div>
       <div class="skill-card">
-        <div class="skill-icon">/s</div>
+        <div class="skill-icon">&#x1F9ED;</div>
         <div class="skill-body">
-          <div class="skill-name">sam_stand</div>
-          <div class="skill-desc">Reconstruct the current working state from checkpoints, overnight analysis, Supabase knowledge, and git log. Replaces guessing with receipts.</div>
-          <div class="skill-trigger">trigger: <strong>"wo stehen wir?"</strong></div>
+          <div class="skill-name" data-en="Recover state" data-de="Arbeitsstand rekonstruieren">Recover state</div>
+          <div class="skill-desc" data-en="Where are we? Rebuild the current state from checkpoints, overnight analysis, Supabase knowledge, and git log. Receipts, not guesses." data-de="Wo stehen wir? Der aktuelle Stand wird aus Checkpoints, Nacht-Analyse, Supabase-Wissen und git log rekonstruiert. Belege, kein Raten.">Where are we? Rebuild the current state from checkpoints, overnight analysis, Supabase knowledge, and git log. Receipts, not guesses.</div>
         </div>
       </div>
       <div class="skill-card">
-        <div class="skill-icon">/w</div>
+        <div class="skill-icon">&#x1F50D;</div>
         <div class="skill-body">
-          <div class="skill-name">sam_wissen-tools</div>
-          <div class="skill-desc">Query the Supabase knowledge base via wissen_api.py. Retrieve prior context, decisions, or patterns relevant to the current task.</div>
-          <div class="skill-trigger">trigger: <strong>"was weisst du ueber X?"</strong></div>
+          <div class="skill-name" data-en="Query memory" data-de="Wissen abfragen">Query memory</div>
+          <div class="skill-desc" data-en="Ask the shared brain. Semantic search over past decisions, patterns, and indexed sources — surfaces what's relevant right now." data-de="Das gemeinsame Gehirn befragen. Semantische Suche ueber frueheren Entscheidungen, Mustern und indexierten Quellen — zeigt was jetzt relevant ist.">Ask the shared brain. Semantic search over past decisions, patterns, and indexed sources — surfaces what's relevant right now.</div>
         </div>
       </div>
       <div class="skill-card">
-        <div class="skill-icon">cs</div>
+        <div class="skill-icon">&#x1F4F0;</div>
         <div class="skill-body">
-          <div class="skill-name">content-scout</div>
-          <div class="skill-desc">Collect articles from subscribed Substack RSS feeds. Saves each as a searchable Markdown archive — inputs to the knowledge pipeline.</div>
-          <div class="skill-trigger">trigger: <strong>"sammle artikel"</strong> or daily scheduled run</div>
+          <div class="skill-name" data-en="Harvest content" data-de="Content sammeln">Harvest content</div>
+          <div class="skill-desc" data-en="Pull articles from subscribed Substack feeds. Save each as a searchable Markdown archive — direct input to the knowledge pipeline." data-de="Artikel aus abonnierten Substack-Feeds holen. Jeder wird als durchsuchbares Markdown-Archiv gespeichert — direkter Input fuer die Wissens-Pipeline.">Pull articles from subscribed Substack feeds. Save each as a searchable Markdown archive — direct input to the knowledge pipeline.</div>
         </div>
       </div>
       <div class="skill-card">
-        <div class="skill-icon">/d</div>
+        <div class="skill-icon">&#x1F4DA;</div>
         <div class="skill-body">
-          <div class="skill-name">sam-infra-doc-standard</div>
-          <div class="skill-desc">Write folder documentation following Sam's infra-doc pattern — shared structure, honest quirks-list, reproducible commands.</div>
-          <div class="skill-trigger">trigger: <strong>"schreib doku fuer X"</strong></div>
+          <div class="skill-name" data-en="Document a folder" data-de="Ordner dokumentieren">Document a folder</div>
+          <div class="skill-desc" data-en="Write folder documentation following Sam's infra-doc standard — shared structure, honest quirks-list, reproducible commands." data-de="Ordner-Doku nach Sams Infra-Doku-Standard schreiben — einheitliche Struktur, ehrliche Eigenheiten-Liste, reproduzierbare Befehle.">Write folder documentation following Sam's infra-doc standard — shared structure, honest quirks-list, reproducible commands.</div>
         </div>
       </div>
     </div>
 
     <div class="section-sub" style="text-align:center;margin-bottom:8px;">
-      <em>Apple Notes is the UI · Telegram is the inbox · the filesystem is the memory · Markdown is the language in between.</em>
+      <em data-en="Apple Notes is the UI · Telegram is the inbox · the filesystem is the memory · Markdown is the language in between." data-de="Apple Notes ist das UI · Telegram der Eingang · das Dateisystem das Gedaechtnis · Markdown die Sprache dazwischen.">Apple Notes is the UI · Telegram is the inbox · the filesystem is the memory · Markdown is the language in between.</em>
     </div>
   </div>
 
