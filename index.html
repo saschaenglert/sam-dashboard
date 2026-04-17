@@ -257,7 +257,7 @@
   .build-log-entry-dot{width:8px;height:8px;border-radius:50%;background:#27c93f;box-shadow:0 0 8px rgba(39,201,63,0.5);}
   .build-log-entry-dot.wip{background:#ffbd2e;box-shadow:0 0 8px rgba(255,189,46,0.6);animation:bl-pulse 1.1s ease-in-out infinite;}
   @keyframes bl-pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.2);}}
-  .build-log-entry-name{color:var(--cream);font-weight:500;}
+  .build-log-entry-name{color:var(--cream);font-weight:500;font-family:'Inter',sans-serif;font-size:12.5px;letter-spacing:-0.005em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   .build-log-entry-status{color:var(--green);font-size:11px;}
   .build-log-entry-status.wip{color:var(--amber);}
   .build-log-entry-time{color:var(--ink-light);font-size:11px;min-width:36px;text-align:right;}
@@ -741,12 +741,12 @@
         <div class="build-log-body">
 <span class="prompt">$</span> <span class="cmd">sam status --all</span>
 
-          <div class="build-log-entry"><span class="build-log-entry-dot"></span><span class="build-log-entry-name">real-estate-inv</span><span class="build-log-entry-status">live</span><span class="build-log-entry-time">2m</span></div>
-          <div class="build-log-entry"><span class="build-log-entry-dot"></span><span class="build-log-entry-name">rental-manager</span><span class="build-log-entry-status">live</span><span class="build-log-entry-time">14m</span></div>
-          <div class="build-log-entry"><span class="build-log-entry-dot"></span><span class="build-log-entry-name">restaurant-plan</span><span class="build-log-entry-status">live</span><span class="build-log-entry-time">1h</span></div>
-          <div class="build-log-entry"><span class="build-log-entry-dot"></span><span class="build-log-entry-name">fl-accountant</span><span class="build-log-entry-status">live</span><span class="build-log-entry-time">3h</span></div>
-          <div class="build-log-entry"><span class="build-log-entry-dot wip"></span><span class="build-log-entry-name">property-mgmt</span><span class="build-log-entry-status wip">building</span><span class="build-log-entry-time">—</span></div>
-          <div class="build-log-entry"><span class="build-log-entry-dot"></span><span class="build-log-entry-name">shared-infra</span><span class="build-log-entry-status">live</span><span class="build-log-entry-time">4h</span></div>
+          <div class="build-log-entry"><span class="build-log-entry-dot"></span><span class="build-log-entry-name">Real Estate Investment</span><span class="build-log-entry-status">live</span><span class="build-log-entry-time">2m</span></div>
+          <div class="build-log-entry"><span class="build-log-entry-dot"></span><span class="build-log-entry-name">Restaurant Business Planner</span><span class="build-log-entry-status">live</span><span class="build-log-entry-time">14m</span></div>
+          <div class="build-log-entry"><span class="build-log-entry-dot"></span><span class="build-log-entry-name">Airbnb &amp; Booking Manager</span><span class="build-log-entry-status">live</span><span class="build-log-entry-time">1h</span></div>
+          <div class="build-log-entry"><span class="build-log-entry-dot"></span><span class="build-log-entry-name">Freelance &amp; Rental Accountant</span><span class="build-log-entry-status">live</span><span class="build-log-entry-time">3h</span></div>
+          <div class="build-log-entry"><span class="build-log-entry-dot wip"></span><span class="build-log-entry-name">Property Management Suite</span><span class="build-log-entry-status wip">building</span><span class="build-log-entry-time">—</span></div>
+          <div class="build-log-entry"><span class="build-log-entry-dot"></span><span class="build-log-entry-name">Shared Infrastructure</span><span class="build-log-entry-status">live</span><span class="build-log-entry-time">4h</span></div>
           <div class="build-log-sep">────────────────────────</div>
           <span class="build-log-summary">✓ 5/6 live · 16/16 checks · all green</span><span class="build-log-cursor"></span>
         </div>
