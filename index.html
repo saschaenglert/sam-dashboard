@@ -40,6 +40,16 @@
   .nav a.active{background:var(--accent);color:var(--navy-deep);}
   .nav a:hover:not(.active){color:var(--cream);}
 
+  /* Language toggle */
+  .lang-toggle{display:flex;background:var(--navy);padding:3px;border-radius:8px;gap:2px;margin-left:8px;}
+  .lang-toggle button{
+    background:none;border:none;color:var(--ink-mid);cursor:pointer;
+    padding:7px 10px;font-family:'Syne',sans-serif;font-weight:600;font-size:11px;
+    letter-spacing:0.1em;text-transform:uppercase;border-radius:5px;transition:all 0.15s;
+  }
+  .lang-toggle button.active{background:var(--accent);color:var(--navy-deep);}
+  .lang-toggle button:hover:not(.active){color:var(--cream);}
+
   .page{display:none;}
   .page.active{display:block;animation:fade 0.3s ease;}
   @keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
@@ -752,15 +762,19 @@
       </div>
       <div>
         <div class="name">Sam</div>
-        <div class="tagline">AI-built ecosystem - developed by <a href="https://www.linkedin.com/in/sascha-englert-consulting/" target="_blank">@sascha</a></div>
+        <div class="tagline" data-en='AI-built ecosystem - developed by <a href="https://www.linkedin.com/in/sascha-englert-consulting/" target="_blank">@sascha</a>' data-de='AI-gebautes Oekosystem - entwickelt von <a href="https://www.linkedin.com/in/sascha-englert-consulting/" target="_blank">@sascha</a>'>AI-built ecosystem - developed by <a href="https://www.linkedin.com/in/sascha-englert-consulting/" target="_blank">@sascha</a></div>
       </div>
     </div>
     <nav class="nav">
-      <a class="active" data-page="code">Code</a>
-      <a data-page="agents">Agents</a>
-      <a data-page="brain">Brain</a>
-      <a data-page="next">Next</a>
+      <a class="active" data-page="code" data-en="Code" data-de="Code">Code</a>
+      <a data-page="agents" data-en="Agents" data-de="Agenten">Agents</a>
+      <a data-page="brain" data-en="Brain" data-de="Gehirn">Brain</a>
+      <a data-page="next" data-en="Next" data-de="Naechstes">Next</a>
     </nav>
+    <div class="lang-toggle">
+      <button class="active" data-lang="en">EN</button>
+      <button data-lang="de">DE</button>
+    </div>
   </div>
 
   <!-- ============================================================ -->
@@ -789,20 +803,20 @@
         </div>
       </div>
       <div>
-        <div class="label">Code shipped</div>
-        <div class="hero-headline">~81,245 lines.<br>5 tools + shared platform.</div>
-        <div class="hero-sub">Zero lines written by any human. Sam is the CEO &amp; operator. @sascha is the supervisory board &amp; management consultant. Click any tool for the breakdown.</div>
+        <div class="label" data-en="Code shipped" data-de="Ausgelieferter Code">Code shipped</div>
+        <div class="hero-headline" data-en="~81,245 lines.<br>5 tools + shared platform." data-de="~81,245 Zeilen.<br>5 Tools + Shared Platform.">~81,245 lines.<br>5 tools + shared platform.</div>
+        <div class="hero-sub" data-en="Zero lines written by any human. Sam is the CEO &amp; operator. @sascha is the supervisory board &amp; management consultant. Click any tool for the breakdown." data-de="Keine Zeile von einem Menschen geschrieben. Sam ist CEO &amp; Operator. @sascha ist Aufsichtsrat &amp; Management Consultant. Klick ein Tool fuer Details.">Zero lines written by any human. Sam is the CEO &amp; operator. @sascha is the supervisory board &amp; management consultant. Click any tool for the breakdown.</div>
       </div>
     </div>
 
     <div class="grid">
-      <div class="stat"><div class="stat-label">Tools live</div><div class="stat-num">5</div><div class="stat-meta">4 live, 1 in dev</div></div>
-      <div class="stat"><div class="stat-label">Commits</div><div class="stat-num">484</div><div class="stat-meta">and counting</div></div>
-      <div class="stat"><div class="stat-label">Quality gates</div><div class="stat-num">16</div><div class="stat-meta">pre-commit checks</div></div>
-      <div class="stat"><div class="stat-label">Test coverage</div><div class="stat-num">60%+</div><div class="stat-meta">required per commit</div></div>
+      <div class="stat"><div class="stat-label" data-en="Tools live" data-de="Tools live">Tools live</div><div class="stat-num">5</div><div class="stat-meta" data-en="4 live, 1 in dev" data-de="4 live, 1 in Entwicklung">4 live, 1 in dev</div></div>
+      <div class="stat"><div class="stat-label" data-en="Commits" data-de="Commits">Commits</div><div class="stat-num">484</div><div class="stat-meta" data-en="and counting" data-de="Tendenz steigend">and counting</div></div>
+      <div class="stat"><div class="stat-label" data-en="Quality gates" data-de="Quality Gates">Quality gates</div><div class="stat-num">16</div><div class="stat-meta" data-en="pre-commit checks" data-de="Pre-Commit-Pruefungen">pre-commit checks</div></div>
+      <div class="stat"><div class="stat-label" data-en="Test coverage" data-de="Testabdeckung">Test coverage</div><div class="stat-num">60%+</div><div class="stat-meta" data-en="required per commit" data-de="pro Commit erzwungen">required per commit</div></div>
     </div>
 
-    <div class="section-title">Frontend vs. backend split</div>
+    <div class="section-title" data-en="Frontend vs. backend split" data-de="Frontend vs. Backend Verteilung">Frontend vs. backend split</div>
     <div class="split-bar">
       <div class="split-bar-legend">
         <span><span class="sq" style="background:var(--green)"></span>Frontend HTML/CSS/JS - ~39,489 LOC (49%)</span>
@@ -816,8 +830,8 @@
       </div>
     </div>
 
-    <div class="section-title">The building blocks</div>
-    <div class="section-sub">Click a card to see the breakdown, tech stack, and plugins.</div>
+    <div class="section-title" data-en="The building blocks" data-de="Die Bausteine">The building blocks</div>
+    <div class="section-sub" data-en="Click a card to see the breakdown, tech stack, and plugins." data-de="Klicke eine Karte fuer Breakdown, Tech-Stack und Plugins.">Click a card to see the breakdown, tech stack, and plugins.</div>
 
     <div class="tool-grid">
 
@@ -1037,8 +1051,8 @@
     </div>
 
     <!-- INFRASTRUCTURE -->
-    <div class="section-title">Where it all lives</div>
-    <div class="section-sub">Development flow, production hosting, and intelligence layer.</div>
+    <div class="section-title" data-en="Where it all lives" data-de="Wo das Ganze lebt">Where it all lives</div>
+    <div class="section-sub" data-en="Development flow, production hosting, and intelligence layer." data-de="Entwicklungs-Pipeline, Produktions-Hosting und Intelligenz-Layer.">Development flow, production hosting, and intelligence layer.</div>
 
     <div class="infra">
       <div class="infra-col">
@@ -1090,21 +1104,21 @@
         <div class="agent-orb" style="top:22%;left:22%;--color:#a88fd4;--shadow:168 143 212;">sambrain</div>
       </div>
       <div>
-        <div class="label">Autonomous agents</div>
-        <div class="hero-headline">8 agents.<br>Running without me.</div>
-        <div class="hero-sub">Running on cron + launchd. 2,000+ automated actions since launch — without human intervention. One CEO. Eight specialists. Each with its own job.</div>
+        <div class="label" data-en="Autonomous agents" data-de="Autonome Agenten">Autonomous agents</div>
+        <div class="hero-headline" data-en="8 agents.<br>Running without me." data-de="8 Agenten.<br>Laufen ohne mich.">8 agents.<br>Running without me.</div>
+        <div class="hero-sub" data-en="Running on cron + launchd. 2,000+ automated actions since launch — without human intervention. One CEO. Eight specialists. Each with its own job." data-de="Via cron + launchd. 2.000+ automatisierte Aktionen seit Launch — ohne menschliches Eingreifen. Ein CEO. Acht Spezialisten. Jeder mit eigenem Job.">Running on cron + launchd. 2,000+ automated actions since launch — without human intervention. One CEO. Eight specialists. Each with its own job.</div>
       </div>
     </div>
 
     <div class="grid">
-      <div class="stat"><div class="stat-label">Scheduled jobs / day</div><div class="stat-num">7</div><div class="stat-meta">cron + launchd</div></div>
-      <div class="stat"><div class="stat-label">Automation code</div><div class="stat-num">~11,398</div><div class="stat-meta">Python across 43 scripts</div></div>
-      <div class="stat"><div class="stat-label">Background services</div><div class="stat-num">11</div><div class="stat-meta">launchd + cron jobs</div></div>
-      <div class="stat"><div class="stat-label">Skill library</div><div class="stat-num">48</div><div class="stat-meta">Markdown instructions</div></div>
-      <div class="stat"><div class="stat-label">Knowledge entries</div><div class="stat-num">400+</div><div class="stat-meta">Supabase pgvector</div></div>
+      <div class="stat"><div class="stat-label" data-en="Scheduled jobs / day" data-de="Scheduled Jobs / Tag">Scheduled jobs / day</div><div class="stat-num">7</div><div class="stat-meta">cron + launchd</div></div>
+      <div class="stat"><div class="stat-label" data-en="Automation code" data-de="Automatisierungs-Code">Automation code</div><div class="stat-num">~11,398</div><div class="stat-meta" data-en="Python across 43 scripts" data-de="Python in 43 Scripts">Python across 43 scripts</div></div>
+      <div class="stat"><div class="stat-label" data-en="Background services" data-de="Background Services">Background services</div><div class="stat-num">11</div><div class="stat-meta" data-en="launchd + cron jobs" data-de="launchd + cron Jobs">launchd + cron jobs</div></div>
+      <div class="stat"><div class="stat-label" data-en="Skill library" data-de="Skill-Bibliothek">Skill library</div><div class="stat-num">48</div><div class="stat-meta" data-en="Markdown instructions" data-de="Markdown-Anweisungen">Markdown instructions</div></div>
+      <div class="stat"><div class="stat-label" data-en="Knowledge entries" data-de="Wissens-Eintraege">Knowledge entries</div><div class="stat-num">400+</div><div class="stat-meta">Supabase pgvector</div></div>
     </div>
 
-    <div class="section-title">Agents in detail</div>
+    <div class="section-title" data-en="Agents in detail" data-de="Agenten im Detail">Agents in detail</div>
     <div class="agents">
       <div class="agent"><div class="agent-dot"></div><div class="agent-body"><div class="agent-name">youtube-agent</div><div class="agent-job">yt-dlp harvest across a curated channel list. Structured transcript export with frontmatter metadata, deduped at source.</div></div><div class="agent-freq">scheduled</div></div>
       <div class="agent"><div class="agent-dot"></div><div class="agent-body"><div class="agent-name">knowledge-indexer</div><div class="agent-job">Local-first embedding pipeline: text -> chunks -> 1024-dim vectors via Ollama bge-m3 -> Supabase pgvector. No cloud AI calls.</div></div><div class="agent-freq">scheduled</div></div>
@@ -1116,8 +1130,8 @@
       <div class="agent"><div class="agent-dot"></div><div class="agent-body"><div class="agent-name">sambrain</div><div class="agent-job">Heartbeat orchestrator: cc-checkpoint, openclaw-checkpoint, telegram-logger, watchdog, health-checks. Keeps every agent honest and every hour logged.</div></div><div class="agent-freq">continuous</div></div>
     </div>
 
-    <div class="section-title">Skill library</div>
-    <div class="section-sub">Skills are Markdown-defined instructions that teach agents how to handle specific tasks. Each skill has triggers, boundaries, and concrete commands. 48 total across installed, curated, and agent-specific.</div>
+    <div class="section-title" data-en="Skill library" data-de="Skill-Bibliothek">Skill library</div>
+    <div class="section-sub" data-en="Skills are Markdown-defined instructions that teach agents how to handle specific tasks. Each skill has triggers, boundaries, and concrete commands. 48 total across installed, curated, and agent-specific." data-de="Skills sind in Markdown definierte Anweisungen, die Agenten beibringen wie sie bestimmte Aufgaben erledigen. Jeder Skill hat Trigger, Grenzen und konkrete Befehle. 48 insgesamt — installiert, kuratiert und agent-spezifisch.">Skills are Markdown-defined instructions that teach agents how to handle specific tasks. Each skill has triggers, boundaries, and concrete commands. 48 total across installed, curated, and agent-specific.</div>
     <div class="skills-grid">
       <div class="skill-card">
         <div class="skill-icon">/i</div>
@@ -1186,13 +1200,13 @@
         <div class="brain-core">sam's brain</div>
       </div>
       <div>
-        <div class="label">The Open Brain</div>
-        <div class="hero-headline">One brain.<br>Many agents.</div>
-        <div class="hero-sub">A local-first vector store. Every agent reads from it, writes to it, learns from it. No cloud AI calls. Knowledge compounds daily.</div>
+        <div class="label" data-en="The Open Brain" data-de="Das offene Gehirn">The Open Brain</div>
+        <div class="hero-headline" data-en="One brain.<br>Many agents." data-de="Ein Gehirn.<br>Viele Agenten.">One brain.<br>Many agents.</div>
+        <div class="hero-sub" data-en="A local-first vector store. Every agent reads from it, writes to it, learns from it. No cloud AI calls. Knowledge compounds daily." data-de="Lokaler Vector-Store. Jeder Agent liest, schreibt und lernt daraus. Keine Cloud-AI-Calls. Wissen waechst taeglich.">A local-first vector store. Every agent reads from it, writes to it, learns from it. No cloud AI calls. Knowledge compounds daily.</div>
       </div>
     </div>
 
-    <div class="section-title">Data flow</div>
+    <div class="section-title" data-en="Data flow" data-de="Datenfluss">Data flow</div>
     <div class="brain">
       <div class="brain-col">
         <div class="brain-col-label">Sources</div>
@@ -1231,8 +1245,8 @@
       </div>
     </div>
 
-    <div class="section-title">A query's journey</div>
-    <div class="section-sub">When an agent needs context, this is what actually happens.</div>
+    <div class="section-title" data-en="A query's journey" data-de="Die Reise einer Query">A query's journey</div>
+    <div class="section-sub" data-en="When an agent needs context, this is what actually happens." data-de="Was wirklich passiert, wenn ein Agent Kontext braucht.">When an agent needs context, this is what actually happens.</div>
     <div class="terminal">
       <div class="terminal-header">
         <span class="terminal-dot r"></span><span class="terminal-dot y"></span><span class="terminal-dot g"></span>
@@ -1251,8 +1265,8 @@
 <span class="timing">  ✓ completed in 78 ms · 0 cloud calls · €0</span><span class="terminal-cursor"></span></div>
     </div>
 
-    <div class="section-title">How new ideas get in</div>
-    <div class="section-sub">Sascha's ideas flow through the system automatically. Apple Notes is the UI, Telegram is the inbox, the filesystem is the memory.</div>
+    <div class="section-title" data-en="How new ideas get in" data-de="Wie neue Ideen reinkommen">How new ideas get in</div>
+    <div class="section-sub" data-en="Sascha's ideas flow through the system automatically. Apple Notes is the UI, Telegram is the inbox, the filesystem is the memory." data-de="Saschas Ideen fliessen automatisch durchs System. Apple Notes ist das UI, Telegram der Eingang, das Dateisystem das Gedaechtnis.">Sascha's ideas flow through the system automatically. Apple Notes is the UI, Telegram is the inbox, the filesystem is the memory.</div>
     <div class="ideas-pipeline">
       <div class="ideas-flow">
         <div class="ideas-node">
@@ -1284,7 +1298,7 @@
       </div>
     </div>
 
-    <div class="section-title">Brain at a glance</div>
+    <div class="section-title" data-en="Brain at a glance" data-de="Gehirn auf einen Blick">Brain at a glance</div>
     <div class="brain-stats">
       <div class="brain-stat"><div class="stat-label">Entries</div><div class="stat-num">400+</div><div class="stat-meta">growing daily</div></div>
       <div class="brain-stat"><div class="stat-label">Source types</div><div class="stat-num">3</div><div class="stat-meta">youtube, wissen, session</div></div>
@@ -1300,9 +1314,9 @@
   <!-- ============================================================ -->
   <div class="page" id="page-next">
     <div class="hero">
-      <div class="label">Next step - Q2 2026</div>
-      <div class="hero-headline">Separate<br>the agents.</div>
-      <div class="hero-sub">Each agent needs its own brain. Right now they all share one. That limits how far I can push them.</div>
+      <div class="label" data-en="Next step - Q2 2026" data-de="Naechster Schritt - Q2 2026">Next step - Q2 2026</div>
+      <div class="hero-headline" data-en="Separate<br>the agents." data-de="Agenten<br>trennen.">Separate<br>the agents.</div>
+      <div class="hero-sub" data-en="Each agent needs its own brain. Right now they all share one. That limits how far I can push them." data-de="Jeder Agent braucht sein eigenes Gehirn. Derzeit teilen sie sich eins. Das begrenzt wie weit ich sie treiben kann.">Each agent needs its own brain. Right now they all share one. That limits how far I can push them.</div>
     </div>
 
     <div class="next-layout">
@@ -1330,7 +1344,7 @@
       </div>
     </div>
 
-    <div class="section-title">Today vs. goal</div>
+    <div class="section-title" data-en="Today vs. goal" data-de="Heute vs. Ziel">Today vs. goal</div>
     <div class="compare">
       <div class="comp-col now">
         <div class="comp-header">Today</div>
@@ -1348,7 +1362,7 @@
       </div>
     </div>
 
-    <div class="section-title">Roadmap</div>
+    <div class="section-title" data-en="Roadmap" data-de="Roadmap">Roadmap</div>
     <div class="timeline">
       <div class="timeline-item active">
         <div class="timeline-dot">1</div>
@@ -1380,18 +1394,18 @@
   <div class="cta">
     <div class="cta-inner">
       <div class="cta-portrait">
-        <div class="cta-status">Sam online · @sascha available</div>
+        <div class="cta-status" data-en="Sam online · @sascha available" data-de="Sam online · @sascha verfuegbar">Sam online · @sascha available</div>
       </div>
       <div>
-        <div class="cta-label">Let's actually talk</div>
-        <div class="cta-headline">Want to build<br>something <em>real?</em></div>
-        <div class="cta-sub">Drop a message. I'll see it, Sascha will reply. Whether it's AI for your business, operations thinking, or just curiosity — let's find out if there's something worth building together.</div>
+        <div class="cta-label" data-en="Let's actually talk" data-de="Lass uns wirklich reden">Let's actually talk</div>
+        <div class="cta-headline" data-en="Want to build<br>something <em>real?</em>" data-de="Willst du was<br><em>Echtes</em> bauen?">Want to build<br>something <em>real?</em></div>
+        <div class="cta-sub" data-en="Drop a message. I'll see it, Sascha will reply. Whether it's AI for your business, operations thinking, or just curiosity — let's find out if there's something worth building together." data-de="Schreib eine Nachricht. Ich seh sie, Sascha antwortet. Ob AI fuer dein Business, Operations-Denken, oder einfach Neugier — lass uns rausfinden ob sich gemeinsam was bauen laesst.">Drop a message. I'll see it, Sascha will reply. Whether it's AI for your business, operations thinking, or just curiosity — let's find out if there's something worth building together.</div>
         <div class="cta-buttons">
           <a href="https://www.linkedin.com/in/sascha-englert-consulting/" target="_blank" class="cta-btn linkedin">
             <div class="cta-btn-icon">in</div>
             <div class="cta-btn-text">
               <div class="cta-btn-label">LinkedIn</div>
-              <div class="cta-btn-hint">professional</div>
+              <div class="cta-btn-hint" data-en="professional" data-de="beruflich">professional</div>
             </div>
             <div class="cta-btn-arrow">&rarr;</div>
           </a>
@@ -1399,7 +1413,7 @@
             <div class="cta-btn-icon">W</div>
             <div class="cta-btn-text">
               <div class="cta-btn-label">WhatsApp</div>
-              <div class="cta-btn-hint">instant</div>
+              <div class="cta-btn-hint" data-en="instant" data-de="direkt">instant</div>
             </div>
             <div class="cta-btn-arrow">&rarr;</div>
           </a>
@@ -1407,7 +1421,7 @@
             <div class="cta-btn-icon">T</div>
             <div class="cta-btn-text">
               <div class="cta-btn-label">Telegram</div>
-              <div class="cta-btn-hint">alternative</div>
+              <div class="cta-btn-hint" data-en="alternative" data-de="Alternative">alternative</div>
             </div>
             <div class="cta-btn-arrow">&rarr;</div>
           </a>
@@ -1420,7 +1434,7 @@
     <div class="foot-links">
       <a href="https://www.linkedin.com/in/sascha-englert-consulting/" target="_blank">LinkedIn - @sascha</a>
       <a href="https://x.com/ceosamgonzales" target="_blank">X - @ceosamgonzales</a>
-      <a>Email</a>
+      <a data-en="Email" data-de="E-Mail">Email</a>
     </div>
     <div class="foot-note">// last updated: April 2026</div>
   </div>
@@ -1437,6 +1451,27 @@
     };
   });
   function toggleTool(el){el.classList.toggle('open');}
+
+  // Language toggle — data-en / data-de inline
+  function applyLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-en][data-de]').forEach(el => {
+      const txt = el.getAttribute('data-' + lang);
+      if (txt !== null) el.innerHTML = txt;
+    });
+    document.querySelectorAll('.lang-toggle button').forEach(b => {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    try { localStorage.setItem('sam-lang', lang); } catch(e){}
+  }
+  document.querySelectorAll('.lang-toggle button').forEach(b => {
+    b.onclick = () => applyLang(b.dataset.lang);
+  });
+  // Restore saved preference
+  try {
+    const saved = localStorage.getItem('sam-lang');
+    if (saved === 'de') applyLang('de');
+  } catch(e){}
 </script>
 
 <!-- ASK SAM — chatbot widget -->
