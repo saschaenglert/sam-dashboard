@@ -393,6 +393,7 @@ def main():
         "HEATMAP_WEEKS": str(heatmap_weeks),
 
         "LAST_UPDATED": last_updated,
+        "GENERATED_AT": datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ"),
     }
 
     if args.dry_run:
