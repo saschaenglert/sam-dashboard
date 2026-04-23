@@ -1101,6 +1101,64 @@
   @supports(padding:max(0px)){
     .shell{padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right));}
   }
+
+  /* ============================================================ */
+  /* CV PAGE                                                       */
+  /* ============================================================ */
+  #page-cv .cv-inner{max-width:860px;margin:0 auto;padding:16px 0 64px;}
+  #page-cv .cv-hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:40px;gap:32px;flex-wrap:wrap;}
+  #page-cv .cv-hdr-left h1{font-family:'Syne',sans-serif;font-weight:800;font-size:42px;letter-spacing:-0.03em;color:var(--cream);line-height:1;}
+  #page-cv .cv-hdr-left .cv-subtitle{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);margin-top:8px;}
+  #page-cv .cv-hdr-right{text-align:right;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-light);line-height:1.8;}
+  #page-cv .cv-hdr-right a{color:var(--accent);text-decoration:none;transition:color 0.2s,text-shadow 0.2s;}
+  #page-cv .cv-hdr-right a:hover{color:var(--purple);text-shadow:0 0 12px rgba(168,143,212,0.6);}
+  #page-cv .cv-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:40px;}
+  #page-cv .cv-stat{background:var(--navy);padding:22px 18px;transition:background 0.2s,transform 0.15s;cursor:default;}
+  #page-cv .cv-stat:hover{background:var(--navy2);transform:translateY(-3px);}
+  #page-cv .cv-stat:hover .cv-stat-num{color:var(--accent);}
+  #page-cv .cv-stat-num{font-family:'Syne',sans-serif;font-weight:700;font-size:32px;letter-spacing:-0.02em;color:var(--cream);}
+  #page-cv .cv-stat-label{font-family:'Syne',sans-serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-light);margin-top:5px;}
+  #page-cv .cv-section-label{font-family:'Syne',sans-serif;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-weight:600;}
+  #page-cv .cv-summary{background:var(--navy);border:1px solid var(--line);border-radius:12px;padding:24px 28px;margin-bottom:40px;font-size:13px;color:var(--ink-mid);line-height:1.7;}
+  #page-cv .cv-summary p+p{margin-top:10px;}
+  #page-cv .cv-summary strong{color:var(--cream);font-weight:600;}
+  #page-cv .cv-summary a{color:var(--accent);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:11px;transition:color 0.2s,text-shadow 0.2s;}
+  #page-cv .cv-summary a:hover{color:var(--purple);text-shadow:0 0 12px rgba(168,143,212,0.6);}
+  #page-cv .cv-xp-list{margin-bottom:40px;}
+  #page-cv .cv-xp-item{display:grid;grid-template-columns:120px 1fr;border-left:2px solid var(--line);margin-bottom:4px;position:relative;}
+  #page-cv .cv-xp-item::before{content:'';position:absolute;left:-5px;top:20px;width:8px;height:8px;border-radius:50%;background:var(--accent-soft);border:2px solid var(--navy-deep);}
+  #page-cv .cv-xp-item:first-child::before{background:var(--accent);}
+  #page-cv .cv-xp-period{padding:16px 16px 16px 14px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-light);line-height:1.4;}
+  #page-cv .cv-xp-card{background:var(--navy);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:4px;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s,background 0.2s;cursor:default;}
+  #page-cv .cv-xp-card:hover{border-color:var(--accent);transform:translateX(6px);box-shadow:-4px 0 0 var(--accent),0 8px 32px rgba(122,175,240,0.12);background:linear-gradient(135deg,var(--navy),var(--navy2));}
+  #page-cv .cv-xp-card:hover .cv-xp-title{color:var(--accent);}
+  #page-cv .cv-xp-card:hover .cv-tag.hi{background:var(--accent);color:var(--navy-deep);border-color:var(--accent);}
+  #page-cv .cv-xp-title{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--cream);margin-bottom:2px;}
+  #page-cv .cv-xp-context{font-size:11px;color:var(--accent);font-family:'JetBrains Mono',monospace;margin-bottom:6px;}
+  #page-cv .cv-xp-company{font-size:11px;color:var(--ink-light);margin-bottom:8px;}
+  #page-cv .cv-xp-tags{display:flex;flex-wrap:wrap;gap:5px;}
+  #page-cv .cv-tag{background:var(--navy-deep);border:1px solid var(--line);color:var(--ink-mid);padding:2px 8px;border-radius:4px;font-size:10px;font-family:'JetBrains Mono',monospace;transition:all 0.15s;cursor:default;}
+  #page-cv .cv-tag:hover{border-color:var(--ink-light);color:var(--cream);transform:translateY(-1px);}
+  #page-cv .cv-tag.hi{border-color:var(--accent-soft);color:var(--accent);}
+  #page-cv .cv-tag.hi:hover{background:var(--accent);color:var(--navy-deep);border-color:var(--accent);}
+  #page-cv .cv-footer{background:var(--navy);border:1px solid var(--line);border-radius:12px;display:flex;overflow:hidden;}
+  #page-cv .cv-footer-block{padding:22px 24px;flex:1;}
+  #page-cv .cv-footer-block--narrow{flex:0 0 185px;}
+  #page-cv .cv-footer-divider{width:1px;background:var(--line);flex-shrink:0;}
+  #page-cv .cv-edu{display:flex;flex-direction:column;gap:10px;}
+  #page-cv .cv-edu-item{display:flex;flex-direction:column;gap:2px;}
+  #page-cv .cv-edu-year{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-light);}
+  #page-cv .cv-edu-name{font-size:12px;font-weight:600;color:var(--cream);}
+  #page-cv .cv-edu-school{font-size:11px;color:var(--ink-light);}
+  #page-cv .cv-langs{display:flex;flex-direction:column;gap:12px;}
+  #page-cv .cv-lang{display:flex;flex-direction:column;gap:4px;}
+  #page-cv .cv-lang-name{font-family:'Syne',sans-serif;font-weight:600;font-size:12px;color:var(--cream);}
+  #page-cv .cv-lang-bar{height:3px;background:var(--navy-deep);border-radius:2px;overflow:hidden;}
+  #page-cv .cv-lang-bar span{display:block;height:100%;background:var(--accent);border-radius:2px;}
+  #page-cv .cv-lang-level{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-light);}
+  #page-cv .cv-contact{display:flex;flex-direction:column;gap:8px;}
+  #page-cv .cv-contact a{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);text-decoration:none;transition:color 0.2s,text-shadow 0.2s;}
+  #page-cv .cv-contact a:hover{color:var(--purple);text-shadow:0 0 12px rgba(168,143,212,0.6);}
 </style>
 </head>
 <body>
@@ -1132,6 +1190,7 @@
       <a data-page="brain" data-en="Brain" data-de="Gehirn">Brain</a>
       <a data-page="next" data-en="Next" data-de="Naechstes">Next</a>
       <a data-page="playbook" class="playbook-nav" data-en="Manual" data-de="Manual">Manual</a>
+      <a data-page="cv" data-en="CV" data-de="CV">CV</a>
     </nav>
     <div class="lang-toggle">
       <button class="active" data-lang="en">EN</button>
@@ -1927,6 +1986,176 @@
     </div>
     <div class="foot-note">// last updated: April 2026</div>
   </div>
+
+  <!-- ============================================================ -->
+  <!-- PAGE 6: CV                                                   -->
+  <!-- ============================================================ -->
+  <div class="page" id="page-cv">
+    <div class="cv-inner">
+
+      <div class="cv-hdr">
+        <div class="cv-hdr-left">
+          <h1>Sascha Englert</h1>
+          <div class="cv-subtitle">Senior Operations &amp; Transformation · Asset Management</div>
+        </div>
+        <div class="cv-hdr-right">
+          Forstgasse 1, 67152 Ruppertsberg<br>
+          +49 176 28948811<br>
+          <a href="mailto:sascha.englert@web.de">sascha.englert@web.de</a><br>
+          <a href="https://linkedin.com/in/sascha-englert-consulting">linkedin.com/in/sascha-englert-consulting</a>
+        </div>
+      </div>
+
+      <div class="cv-stats">
+        <div class="cv-stat"><div class="cv-stat-num">10</div><div class="cv-stat-label" data-en="Years Deutsche Bank" data-de="Jahre Deutsche Bank">Jahre Deutsche Bank</div></div>
+        <div class="cv-stat"><div class="cv-stat-num">6</div><div class="cv-stat-label" data-en="Years as CEO" data-de="Jahre Geschäftsführer">Jahre Geschäftsführer</div></div>
+        <div class="cv-stat"><div class="cv-stat-num">15</div><div class="cv-stat-label" data-en="Years Consulting" data-de="Jahre Consulting">Jahre Consulting</div></div>
+        <div class="cv-stat"><div class="cv-stat-num">5</div><div class="cv-stat-label" data-en="Countries" data-de="Länder">Länder</div></div>
+      </div>
+
+      <div class="cv-section-label" data-en="Profile" data-de="Profil">Profil</div>
+      <div class="cv-summary">
+        <p data-en="For over 25 years I have been bringing operational stability and transformation together in asset management organisations — where products, processes, partners and regulation must be aligned to produce something that holds." data-de="Seit über 25 Jahren bringe ich operative Stabilität und Transformation in Asset-Management-Organisationen zusammen — dort, wo Produkte, Prozesse, Partner und Regulatorik zusammengebracht werden müssen.">Seit über 25 Jahren bringe ich operative Stabilität und Transformation in Asset-Management-Organisationen zusammen — dort, wo Produkte, Prozesse, Partner und Regulatorik zusammengebracht werden müssen.</p>
+        <p data-en="Foundation: 10 years at DWS with responsibility for master fund platform, onboarding and operations functions within the Deutsche Bank Group. Built on that: international leadership and consulting roles in Hong Kong, Singapore and Europe." data-de="Fundament: 10 Jahre DWS mit Verantwortung für Master-Fonds-Plattform, Onboarding und Operations-Funktionen im DB-Konzern. Darauf aufgebaut: internationale Führungs- und Beratungsrollen in Hongkong, Singapur und Europa.">Fundament: 10 Jahre DWS mit Verantwortung für Master-Fonds-Plattform, Onboarding und Operations-Funktionen im DB-Konzern. Darauf aufgebaut: internationale Führungs- und Beratungsrollen in Hongkong, Singapur und Europa.</p>
+        <p data-en="&lt;strong&gt;Own AI infrastructure.&lt;/strong&gt; Alongside my professional work I operate a self-designed system of productive tools, knowledge bases and autonomous AI agents — built without a developer background and used daily. &lt;a href='https://saschaenglert.github.io/sam-dashboard'&gt;saschaenglert.github.io/sam-dashboard&lt;/a&gt;" data-de="&lt;strong&gt;Eigene KI-Infrastruktur.&lt;/strong&gt; Parallel betreibe ich ein selbst konzipiertes System aus produktiven Tools, Wissensdatenbanken und autonomen KI-Agenten — ohne Entwickler-Hintergrund gebaut und täglich genutzt. &lt;a href='https://saschaenglert.github.io/sam-dashboard'&gt;saschaenglert.github.io/sam-dashboard&lt;/a&gt;"><strong>Eigene KI-Infrastruktur.</strong> Parallel betreibe ich ein selbst konzipiertes System aus produktiven Tools, Wissensdatenbanken und autonomen KI-Agenten — ohne Entwickler-Hintergrund gebaut und täglich genutzt. <a href="https://saschaenglert.github.io/sam-dashboard">saschaenglert.github.io/sam-dashboard</a></p>
+      </div>
+
+      <div class="cv-section-label" data-en="Professional Experience" data-de="Berufliche Erfahrung">Berufliche Erfahrung</div>
+      <div class="cv-xp-list">
+
+        <div class="cv-xp-item">
+          <div class="cv-xp-period" data-en="01/2026<br>— present" data-de="01/2026<br>— aktuell">01/2026<br>— aktuell</div>
+          <div class="cv-xp-card">
+            <div class="cv-xp-title">Lead Business Analyst Operations</div>
+            <div class="cv-xp-context">Enterprise Data Management</div>
+            <div class="cv-xp-company">Flossbach von Storch — Köln</div>
+            <div class="cv-xp-tags"><span class="cv-tag hi" data-en="RFP Lead" data-de="RFP-Leitung">RFP-Leitung</span><span class="cv-tag" data-en="Portfolio Data" data-de="Portfoliodaten">Portfoliodaten</span><span class="cv-tag" data-en="Target Architecture" data-de="Zielbildarchitektur">Zielbildarchitektur</span><span class="cv-tag">Operations</span></div>
+          </div>
+        </div>
+
+        <div class="cv-xp-item">
+          <div class="cv-xp-period">03/2025<br>— 12/2025</div>
+          <div class="cv-xp-card">
+            <div class="cv-xp-title">Transformation Lead Derivative Operations</div>
+            <div class="cv-xp-context">Derivatives &amp; Post-Trade</div>
+            <div class="cv-xp-company">Flossbach von Storch — Köln</div>
+            <div class="cv-xp-tags"><span class="cv-tag hi">CDS Clearing</span><span class="cv-tag">Collateral Management</span><span class="cv-tag">Front-to-Back Operating Model</span></div>
+          </div>
+        </div>
+
+        <div class="cv-xp-item">
+          <div class="cv-xp-period">01/2023<br>— 12/2024</div>
+          <div class="cv-xp-card">
+            <div class="cv-xp-title">Head of Front-Office Operations Workstream</div>
+            <div class="cv-xp-context">Global Outsourcing Transformation</div>
+            <div class="cv-xp-company">HSBC Global Asset Management — Hongkong · Singapur · Europa · USA</div>
+            <div class="cv-xp-tags"><span class="cv-tag hi">&gt; 600 Mrd. USD AUM</span><span class="cv-tag">State Street</span><span class="cv-tag">SLA &amp; KPI-Management</span><span class="cv-tag">5 Standorte</span></div>
+          </div>
+        </div>
+
+        <div class="cv-xp-item">
+          <div class="cv-xp-period">10/2021<br>— 12/2022</div>
+          <div class="cv-xp-card">
+            <div class="cv-xp-title">Head of Post-M&amp;A Operations Workstream</div>
+            <div class="cv-xp-context">Derivatives &amp; Collateral</div>
+            <div class="cv-xp-company">HSBC Global Asset Management — Singapur · Hongkong</div>
+            <div class="cv-xp-tags"><span class="cv-tag hi">AXA IM Integration</span><span class="cv-tag">Post-Trade-Lifecycle</span><span class="cv-tag">ISDA / CSA</span></div>
+          </div>
+        </div>
+
+        <div class="cv-xp-item">
+          <div class="cv-xp-period">10/2020<br>— 10/2021</div>
+          <div class="cv-xp-card">
+            <div class="cv-xp-title">Head of Derivatives Operations Workstream</div>
+            <div class="cv-xp-context">Derivatives &amp; Collateral</div>
+            <div class="cv-xp-company">HSBC Global Asset Management — Hongkong</div>
+            <div class="cv-xp-tags"><span class="cv-tag hi">6× AUM-Skalierung</span><span class="cv-tag">UMR</span><span class="cv-tag">Equity Derivatives</span></div>
+          </div>
+        </div>
+
+        <div class="cv-xp-item">
+          <div class="cv-xp-period">06/2019<br>— 09/2020</div>
+          <div class="cv-xp-card">
+            <div class="cv-xp-title">Global Program Director</div>
+            <div class="cv-xp-context">BPO &amp; Operations Services</div>
+            <div class="cv-xp-company">Avaloq Asia Pacific — Singapur</div>
+            <div class="cv-xp-tags"><span class="cv-tag hi">Deutsche Bank BPO</span><span class="cv-tag">+15% Profitabilität</span><span class="cv-tag">−30% Projektkosten</span></div>
+          </div>
+        </div>
+
+        <div class="cv-xp-item">
+          <div class="cv-xp-period">01/2010<br>— 05/2016</div>
+          <div class="cv-xp-card">
+            <div class="cv-xp-title">Chief Operating Officer</div>
+            <div class="cv-xp-context" data-en="Operations, Technology &amp; Scaling" data-de="Operations, Technologie &amp; Skalierung">Operations, Technologie &amp; Skalierung</div>
+            <div class="cv-xp-company">Coding Ant GmbH / Softskills GmbH — Frankfurt</div>
+            <div class="cv-xp-tags"><span class="cv-tag hi" data-en="FinTech Founder" data-de="FinTech-Gründung">FinTech-Gründung</span><span class="cv-tag" data-en="Revenue ×2" data-de="Umsatz ×2">Umsatz ×2</span><span class="cv-tag" data-en="Front-to-Back Solutions" data-de="Front-to-Back-Lösungen">Front-to-Back-Lösungen</span></div>
+          </div>
+        </div>
+
+        <div class="cv-xp-item">
+          <div class="cv-xp-period">01/2005<br>— 12/2009</div>
+          <div class="cv-xp-card">
+            <div class="cv-xp-title">Head of Master-KVG Outsourcing &amp; Fund Onboarding</div>
+            <div class="cv-xp-context">AVP / Prokurist</div>
+            <div class="cv-xp-company">DWS / Deutsche Bank Asset Management — Frankfurt</div>
+            <div class="cv-xp-tags"><span class="cv-tag hi">10 Jahre DWS</span><span class="cv-tag">Fonds-Onboarding</span><span class="cv-tag">OMGEO Matching-System</span></div>
+          </div>
+        </div>
+
+        <div class="cv-xp-item">
+          <div class="cv-xp-period" data-en="until 2005" data-de="bis 2005">bis 2005</div>
+          <div class="cv-xp-card">
+            <div class="cv-xp-title" data-en="Securities Settlement Expert" data-de="Experte Wertpapierabwicklung">Experte Wertpapierabwicklung</div>
+            <div class="cv-xp-context">Securities &amp; FX Operations</div>
+            <div class="cv-xp-company">DB Advisors / DWS, Deutsche Bank AG</div>
+            <div class="cv-xp-tags"><span class="cv-tag hi">OMGEO Matching-System</span><span class="cv-tag">300 Broker-Dealer</span><span class="cv-tag" data-en="30 Custodian Banks" data-de="30 Depotbanken">30 Depotbanken</span><span class="cv-tag" data-en="First DE-wide Settlement System" data-de="Erstes DE-weites Settlement-System">Erstes DE-weites Settlement-System</span></div>
+          </div>
+        </div>
+
+        <div class="cv-xp-item">
+          <div class="cv-xp-period" data-en="until 2001" data-de="bis 2001">bis 2001</div>
+          <div class="cv-xp-card">
+            <div class="cv-xp-title" data-en="Securities Settlement Expert" data-de="Experte Wertpapierabwicklung">Experte Wertpapierabwicklung</div>
+            <div class="cv-xp-context">Securities Operations</div>
+            <div class="cv-xp-company">ETB, Deutsche Bank AG</div>
+            <div class="cv-xp-tags"><span class="cv-tag">10 europäische Länder</span><span class="cv-tag">Zentralverwahrer</span><span class="cv-tag">Depotbanken</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="cv-footer">
+        <div class="cv-footer-block">
+          <div class="cv-section-label" data-en="Education" data-de="Ausbildung">Ausbildung</div>
+          <div class="cv-edu">
+            <div class="cv-edu-item"><span class="cv-edu-year">2003–2007</span><span class="cv-edu-name">Betriebswirt VWA</span><span class="cv-edu-school">VWA Mannheim</span></div>
+            <div class="cv-edu-item"><span class="cv-edu-year">2000–2001</span><span class="cv-edu-name">Securities Operations Specialist L1 &amp; L2</span><span class="cv-edu-school">Business School of Finance · Deutsche Bank</span></div>
+            <div class="cv-edu-item"><span class="cv-edu-year">1996–1999</span><span class="cv-edu-name" data-en="Industrial Management Apprenticeship" data-de="Industriekaufmann">Industriekaufmann</span><span class="cv-edu-school">Sensus Metering Systems</span></div>
+          </div>
+        </div>
+        <div class="cv-footer-divider"></div>
+        <div class="cv-footer-block cv-footer-block--narrow">
+          <div class="cv-section-label" data-en="Languages" data-de="Sprachen">Sprachen</div>
+          <div class="cv-langs">
+            <div class="cv-lang"><span class="cv-lang-name" data-en="German" data-de="Deutsch">Deutsch</span><div class="cv-lang-bar"><span style="width:100%"></span></div><span class="cv-lang-level" data-en="Native" data-de="Muttersprache">Muttersprache</span></div>
+            <div class="cv-lang"><span class="cv-lang-name" data-en="English" data-de="Englisch">Englisch</span><div class="cv-lang-bar"><span style="width:88%"></span></div><span class="cv-lang-level" data-en="Business fluent" data-de="Verhandlungssicher">Verhandlungssicher</span></div>
+          </div>
+        </div>
+        <div class="cv-footer-divider"></div>
+        <div class="cv-footer-block cv-footer-block--narrow">
+          <div class="cv-section-label" data-en="Contact" data-de="Kontakt">Kontakt</div>
+          <div class="cv-contact">
+            <a href="mailto:sascha.englert@web.de">sascha.englert@web.de</a>
+            <a href="https://linkedin.com/in/sascha-englert-consulting">LinkedIn</a>
+            <a href="https://saschaenglert.github.io/sam-dashboard">sam-dashboard</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </div>
 
 <script>
@@ -1936,6 +2165,8 @@
       document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
       a.classList.add('active');
       document.getElementById('page-'+a.dataset.page).classList.add('active');
+      const cta=document.querySelector('.cta');
+      if(cta) cta.style.display=a.dataset.page==='cv'?'none':'';
       window.scrollTo({top:0,behavior:'smooth'});
     };
   });
